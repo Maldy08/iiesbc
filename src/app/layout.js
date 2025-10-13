@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import './globals.css'; // Asegúrate de tener un archivo de estilos globales
 
 export const metadata = {
-  title: 'Mi Institución Educativa',
+  title: 'IIESBC - Instituto Interamericano de Estudios Superiores de Baja California',
   description: 'Formando líderes para el futuro.',
 };
 

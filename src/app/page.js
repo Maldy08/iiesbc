@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
     return (
-      <main className="pt-20">
+      <main className="pt-0">
         {/* Hero Section - Presentación Principal */}
         <section className="relative overflow-hidden">
           {/* Imagen de fondo con overlay */}
