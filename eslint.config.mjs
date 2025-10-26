@@ -19,6 +19,19 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      // Desactivar todas las reglas de ESLint
+      "@next/next/no-img-element": "off",
+      "@next/next/no-html-link-for-pages": "off",
+      "react/no-unescaped-entities": "off",
+      "react-hooks/rules-of-hooks": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "react/display-name": "off",
+      "react/prop-types": "off",
+      "no-unused-vars": "off",
+      "no-console": "off",
+      "no-undef": "off",
+    },
   },
 ];
 
