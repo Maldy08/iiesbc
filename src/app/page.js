@@ -1,8 +1,10 @@
 import Image from "next/image";
+import CongresoGallery from "./components/CongresoGallery";
 
 export default function Home() {
     return (
       <main className="pt-0">
+        <CongresoGallery/>
         {/* Hero Section - Presentación Principal */}
         <section className="relative overflow-hidden">
           {/* Imagen de fondo con overlay */}
