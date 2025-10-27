@@ -10,7 +10,8 @@ export default function RegistroCongresoForm() {
     nivelAcademico: '',
     modalidad: '',
     ejeTematico: '',
-    reciboPago: null
+    reciboPago: null,
+    interesPosgrado: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -161,7 +162,8 @@ export default function RegistroCongresoForm() {
           nivelAcademico: '',
           modalidad: '',
           ejeTematico: '',
-          reciboPago: null
+          reciboPago: null,
+          interesPosgrado: ''
         });
         setFileName('');
       } else {
@@ -226,7 +228,7 @@ export default function RegistroCongresoForm() {
             name="nombreCompleto"
             value={formData.nombreCompleto}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 ${
               errors.nombreCompleto ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="Ingresa tu nombre completo"
@@ -252,7 +254,7 @@ export default function RegistroCongresoForm() {
             name="correoElectronico"
             value={formData.correoElectronico}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 ${
               errors.correoElectronico ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="ejemplo@correo.com"
@@ -278,7 +280,7 @@ export default function RegistroCongresoForm() {
             name="institucion"
             value={formData.institucion}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 ${
               errors.institucion ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="Nombre de tu institución"
@@ -305,9 +307,9 @@ export default function RegistroCongresoForm() {
             onChange={handleChange}
             className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all appearance-none bg-white ${
               errors.nivelAcademico ? 'border-red-500' : 'border-gray-200'
-            }`}
+            } ${!formData.nivelAcademico ? 'text-gray-500' : 'text-gray-900'}`}
           >
-            <option value="">Selecciona tu nivel académico</option>
+            <option value="" className="text-gray-500">Selecciona tu nivel académico</option>
             {nivelesAcademicos.map(nivel => (
               <option key={nivel.value} value={nivel.value}>
                 {nivel.label}
@@ -336,9 +338,9 @@ export default function RegistroCongresoForm() {
             onChange={handleChange}
             className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all appearance-none bg-white ${
               errors.modalidad ? 'border-red-500' : 'border-gray-200'
-            }`}
+            } ${!formData.modalidad ? 'text-gray-500' : 'text-gray-900'}`}
           >
-            <option value="">Selecciona una modalidad</option>
+            <option value="" className="text-gray-500">Selecciona una modalidad</option>
             {modalidades.map(modalidad => (
               <option key={modalidad.value} value={modalidad.value}>
                 {modalidad.label}
@@ -367,9 +369,9 @@ export default function RegistroCongresoForm() {
             onChange={handleChange}
             className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all appearance-none bg-white ${
               errors.ejeTematico ? 'border-red-500' : 'border-gray-200'
-            }`}
+            } ${!formData.ejeTematico ? 'text-gray-500' : 'text-gray-900'}`}
           >
-            <option value="">Selecciona un eje temático</option>
+            <option value="" className="text-gray-500">Selecciona un eje temático</option>
             {ejesTematicos.map(eje => (
               <option key={eje.value} value={eje.value}>
                 {eje.label}
@@ -431,6 +433,25 @@ export default function RegistroCongresoForm() {
               {errors.reciboPago}
             </p>
           )}
+        </div>
+
+        {/* Interés en Posgrado */}
+        <div>
+          <label htmlFor="interesPosgrado" className="block text-sm font-semibold text-gray-700 mb-2">
+            ¿Te interesa estudiar algún posgrado?
+          </label>
+          <select
+            id="interesPosgrado"
+            name="interesPosgrado"
+            value={formData.interesPosgrado}
+            onChange={handleChange}
+            className={`w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all appearance-none bg-white ${!formData.interesPosgrado ? 'text-gray-500' : 'text-gray-900'}`}
+          >
+            <option value="" className="text-gray-500">Selecciona una opción</option>
+            <option value="maestria">Maestría</option>
+            <option value="doctorado">Doctorado</option>
+            <option value="no-interesa">No me interesa</option>
+          </select>
         </div>
       </div>
 
