@@ -137,10 +137,10 @@ export async function POST(request) {
         data.nivelAcademico,
         data.modalidad,
         data.ejeTematico,
-        data.interesPosgrado || 'No especificado',
         blob.url,
         fechaRegistro,
-        'Pendiente'
+        'Pendiente',
+        data.interesPosgrado || 'No especificado',
       ]];
 
       await sheets.spreadsheets.values.append({
@@ -168,7 +168,7 @@ export async function POST(request) {
       console.log('📧 Enviando email de confirmación al participante...');
       
       await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'congreso@iiesbc.edu.mx',
+        from: process.env.EMAIL_FROM || 'congreso@iiesbc.mx',
         to: data.correoElectronico,
         subject: '✅ Registro Recibido - Congreso IIESBC',
         html: `
@@ -273,10 +273,10 @@ export async function POST(request) {
     try {
       console.log('📧 Enviando notificación a administradores...');
       
-      const adminEmails = process.env.EMAIL_TO?.split(',') || ['admin@iiesbc.edu.mx'];
+      const adminEmails = process.env.EMAIL_TO?.split(',') || ['camv29@gmail.com'];
       
       await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'congreso@iiesbc.edu.mx',
+        from: process.env.EMAIL_FROM || 'congreso@iiesbc.mx',
         to: adminEmails,
         subject: '🔔 Nuevo Registro - Congreso IIESBC',
         html: `

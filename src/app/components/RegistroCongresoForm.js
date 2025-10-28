@@ -228,7 +228,7 @@ export default function RegistroCongresoForm() {
             name="nombreCompleto"
             value={formData.nombreCompleto}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 text-black ${
               errors.nombreCompleto ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="Ingresa tu nombre completo"
@@ -254,7 +254,7 @@ export default function RegistroCongresoForm() {
             name="correoElectronico"
             value={formData.correoElectronico}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 text-black ${
               errors.correoElectronico ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="ejemplo@correo.com"
@@ -280,7 +280,7 @@ export default function RegistroCongresoForm() {
             name="institucion"
             value={formData.institucion}
             onChange={handleChange}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-all placeholder:text-gray-500 text-black ${
               errors.institucion ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="Nombre de tu institución"
