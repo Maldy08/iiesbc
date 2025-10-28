@@ -4,9 +4,15 @@ import { NextResponse } from 'next/server';
 import { put } from '@vercel/blob';
 import { Resend } from 'resend';
 import { google } from 'googleapis';
+import crypto from 'crypto';
 
 // Inicializar Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Función para generar token único
+const generarToken = () => {
+  return crypto.randomBytes(16).toString('hex');
+};
 
 // Configurar Google Sheets
 const getGoogleSheetsClient = () => {
@@ -114,11 +120,16 @@ export async function POST(request) {
       second: '2-digit'
     });
 
+    // Generar token único para subir ponencia
+    const token = generarToken();
+
     const registroCompleto = {
       ...data,
       reciboUrl: blob.url,
       fechaRegistro,
       estado: 'Pendiente',
+      token,
+      ponenciaSubida: 'No'
     };
 
     // ====================================
@@ -131,21 +142,23 @@ export async function POST(request) {
       const sheets = getGoogleSheetsClient();
       
       const values = [[
-        data.nombreCompleto,
-        data.correoElectronico,
-        data.institucion,
-        data.nivelAcademico,
-        data.modalidad,
-        data.ejeTematico,
-        blob.url,
-        fechaRegistro,
-        'Pendiente',
-        data.interesPosgrado || 'No especificado',
+        data.nombreCompleto,           // A
+        data.correoElectronico,        // B
+        data.institucion,              // C
+        data.nivelAcademico,           // D
+        data.modalidad,                // E
+        data.ejeTematico,              // F
+        blob.url,                      // G - Recibo URL
+        fechaRegistro,                 // H - Fecha Registro
+        'Pendiente',                   // I - Estado
+        data.interesPosgrado || 'N/A', // J - Interés Posgrado
+        token,                         // K - Token
+        'No'                           // L - Ponencia Subida
       ]];
 
       await sheets.spreadsheets.values.append({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: 'Registros!A:J',
+        range: 'Registros!A:L',
         valueInputOption: 'RAW',
         insertDataOption: 'INSERT_ROWS',
         requestBody: {
@@ -157,7 +170,6 @@ export async function POST(request) {
     } catch (sheetsError) {
       console.error('❌ Error al guardar en Google Sheets:', sheetsError);
       // Continuamos aunque falle Google Sheets
-      // El registro se procesará y se enviarán los emails
     }
 
     // ====================================
@@ -166,6 +178,8 @@ export async function POST(request) {
     
     try {
       console.log('📧 Enviando email de confirmación al participante...');
+      
+      const urlBase = process.env.NEXT_PUBLIC_URL || 'https://iiesbc.mx';
       
       await resend.emails.send({
         from: process.env.EMAIL_FROM || 'congreso@iiesbc.mx',
@@ -187,6 +201,7 @@ export async function POST(request) {
               h2 { color: #1e3a8a; margin-top: 0; }
               .info-row { margin: 10px 0; }
               .label { font-weight: bold; color: #1e3a8a; }
+              .btn { display: inline-block; padding: 12px 24px; background: #16a34a; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 10px 0; }
             </style>
           </head>
           <body>
@@ -220,11 +235,6 @@ export async function POST(request) {
                   <div class="info-row">
                     <span class="label">Eje Temático:</span> ${data.ejeTematico}
                   </div>
-                  ${data.interesPosgrado ? `
-                  <div class="info-row">
-                    <span class="label">Interés en Posgrado:</span> ${data.interesPosgrado === 'maestria' ? 'Maestría' : data.interesPosgrado === 'doctorado' ? 'Doctorado' : 'No me interesa'}
-                  </div>
-                  ` : ''}
                   <div class="info-row">
                     <span class="label">Fecha de Registro:</span> ${fechaRegistro}
                   </div>
@@ -237,6 +247,19 @@ export async function POST(request) {
                     <li>Confirmaremos tu registro en las próximas 24-48 horas</li>
                     <li>Te enviaremos los detalles del evento y credenciales de acceso</li>
                   </ol>
+                </div>
+
+                <div class="info-box" style="border-left-color: #16a34a;">
+                  <h2>🔗 Tu Link Personal para Subir Ponencia</h2>
+                  <p>Una vez confirmado tu pago, podrás subir tu ponencia usando este link:</p>
+                  <p style="text-align: center; margin: 20px 0;">
+                    <a href="${urlBase}/subir-ponencia?token=${token}" class="btn">
+                      Subir Mi Ponencia
+                    </a>
+                  </p>
+                  <p style="font-size: 14px; color: #666;">
+                    <strong>Importante:</strong> Este link es personal y único. Guárdalo para cuando necesites subir tu ponencia.
+                  </p>
                 </div>
 
                 <p><strong>📎 Comprobante de Pago:</strong> Tu recibo ha sido adjuntado correctamente.</p>
@@ -263,7 +286,6 @@ export async function POST(request) {
       console.log('✅ Email enviado al participante');
     } catch (emailError) {
       console.error('⚠️ Error al enviar email al participante:', emailError);
-      // No bloqueamos el registro si falla el email
     }
 
     // ====================================
@@ -320,13 +342,14 @@ export async function POST(request) {
                   <div class="info-row">
                     <span class="label">Eje Temático:</span> ${data.ejeTematico}
                   </div>
-                  ${data.interesPosgrado ? `
                   <div class="info-row">
-                    <span class="label">Interés en Posgrado:</span> ${data.interesPosgrado === 'maestria' ? 'Maestría' : data.interesPosgrado === 'doctorado' ? 'Doctorado' : 'No me interesa'}
+                    <span class="label">Interés Posgrado:</span> ${data.interesPosgrado || 'N/A'}
                   </div>
-                  ` : ''}
                   <div class="info-row">
                     <span class="label">Fecha:</span> ${fechaRegistro}
+                  </div>
+                  <div class="info-row">
+                    <span class="label">Token:</span> ${token}
                   </div>
                 </div>
 
@@ -346,7 +369,6 @@ export async function POST(request) {
       console.log('✅ Email enviado a administradores');
     } catch (emailError) {
       console.error('⚠️ Error al enviar email a administradores:', emailError);
-      // No bloqueamos el registro si falla el email
     }
 
     // ====================================
@@ -361,7 +383,8 @@ export async function POST(request) {
           nombreCompleto: registroCompleto.nombreCompleto,
           correoElectronico: registroCompleto.correoElectronico,
           fechaRegistro: registroCompleto.fechaRegistro,
-          reciboUrl: blob.url
+          reciboUrl: blob.url,
+          token: token
         }
       },
       { status: 200 }
