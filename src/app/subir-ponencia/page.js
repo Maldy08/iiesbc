@@ -1,10 +1,10 @@
 // src/app/subir-ponencia/page.js
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function SubirPonenciaPage() {
+function SubirPonenciaContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
 
@@ -362,5 +362,21 @@ export default function SubirPonenciaPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+// Componente principal con Suspense
+export default function SubirPonenciaPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-red-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto mb-4"></div>
+          <p className="text-gray-600">Cargando...</p>
+        </div>
+      </div>
+    }>
+      <SubirPonenciaContent />
+    </Suspense>
   );
 }
