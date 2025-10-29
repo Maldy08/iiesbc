@@ -17,7 +17,7 @@ export default function Home() {
         <section className="relative py-12 bg-gradient-to-br from-green-900/95 via-green-800/90 to-orange-900/95">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <Link
-              href="/congreso"
+              href="https://forms.gle/Vj5kYjGVVPAUkY4v7"
               className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xl font-bold rounded-2xl hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-500/50 group"
             >
               <span>Regístrate Aquí</span>
