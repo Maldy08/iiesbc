@@ -30,7 +30,7 @@ export default function RegistroCongresoForm() {
 
   const modalidades = [
     { value: 'platica-experiencia-profesional', label: '1.- Plática sobre experiencia profesional (Mesa de trabajo)' },
-    { value: 'platica-experiencia-investigacion', label: '2.- Plática sobre experiencia investigación' },
+    { value: 'platica-experiencia-investigacion', label: '2.- Plática sobre experiencia investigación (Mesa de trabajo)' },
     { value: 'ponencia', label: '3.- Ponencia' }
   ];
 
@@ -120,9 +120,10 @@ export default function RegistroCongresoForm() {
       newErrors.ejeTematico = 'Selecciona un eje temático';
     }
 
-    if (!formData.reciboPago) {
-      newErrors.reciboPago = 'El recibo de pago es requerido';
-    }
+    // Recibo de pago ahora es opcional
+    // if (!formData.reciboPago) {
+    //   newErrors.reciboPago = 'El recibo de pago es requerido';
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -202,9 +203,7 @@ export default function RegistroCongresoForm() {
   return (
     <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12">
       <div className="mb-8 text-center">
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-green-800 to-orange-700 bg-clip-text text-transparent mb-3">
-          Formulario de Registro
-        </h2>
+
         <p className="text-gray-600">
           Completa todos los campos para confirmar tu participación
         </p>
@@ -391,7 +390,7 @@ export default function RegistroCongresoForm() {
         {/* Recibo de Pago */}
         <div>
           <label htmlFor="reciboPago" className="block text-sm font-semibold text-gray-700 mb-2">
-            Recibo de Pago <span className="text-red-500">*</span>
+            Recibo de Pago <span className="text-gray-500 text-sm font-normal">(Opcional)</span>
           </label>
           <div className="relative">
             <input

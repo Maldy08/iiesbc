@@ -1,10 +1,41 @@
 import Image from "next/image";
 import CongresoGallery from "./components/CongresoGallery";
+import Link from "next/link";
+
+//metadata
+export const metadata = {
+  title: 'IIESBC - Instituto Interamericano de Estudios Superiores de Baja California',
+  description: 'Formando líderes para el futuro.',
+};
 
 export default function Home() {
     return (
       <main className="pt-0">
         <CongresoGallery/>
+        
+        {/* Botón de Registro del Congreso */}
+        <section className="relative py-12 bg-gradient-to-br from-green-900/95 via-green-800/90 to-orange-900/95">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <Link
+              href="/congreso"
+              className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xl font-bold rounded-2xl hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-500/50 group"
+            >
+              <span>Regístrate Aquí</span>
+              <svg 
+                className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="text-green-100 mt-4 text-lg">
+              ¡No te pierdas esta gran oportunidad de participar!
+            </p>
+          </div>
+        </section>
+
         {/* Hero Section - Presentación Principal */}
         <section className="relative overflow-hidden">
           {/* Imagen de fondo con overlay */}

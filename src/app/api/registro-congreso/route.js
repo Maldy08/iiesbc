@@ -61,50 +61,52 @@ export async function POST(request) {
       );
     }
 
-    // Extraer archivo del recibo
+    // Extraer archivo del recibo (ahora es opcional)
     const file = formData.get('reciboPago');
     
-    if (!file) {
-      return NextResponse.json(
-        { error: 'No se recibió el comprobante de pago' },
-        { status: 400 }
-      );
-    }
+    // Validar archivo solo si se proporciona
+    if (file && file.size > 0) {
+      // Validar tipo de archivo (solo PDF, JPG, PNG)
+      const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        return NextResponse.json(
+          { error: 'Formato de archivo no válido. Solo se permiten PDF, JPG y PNG' },
+          { status: 400 }
+        );
+      }
 
-    // Validar tipo de archivo (solo PDF, JPG, PNG)
-    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
-    if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json(
-        { error: 'Formato de archivo no válido. Solo se permiten PDF, JPG y PNG' },
-        { status: 400 }
-      );
-    }
-
-    // Validar tamaño de archivo (máximo 5MB)
-    const maxSize = 5 * 1024 * 1024; // 5MB
-    if (file.size > maxSize) {
-      return NextResponse.json(
-        { error: 'El archivo es demasiado grande. Máximo 5MB' },
-        { status: 400 }
-      );
+      // Validar tamaño de archivo (máximo 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (file.size > maxSize) {
+        return NextResponse.json(
+          { error: 'El archivo es demasiado grande. Máximo 5MB' },
+          { status: 400 }
+        );
+      }
     }
 
     // ====================================
-    // SUBIR ARCHIVO A VERCEL BLOB
+    // SUBIR ARCHIVO A VERCEL BLOB (SI EXISTE)
     // ====================================
     
-    const timestamp = Date.now();
-    const fileExtension = file.name.split('.').pop();
-    const fileName = `recibo_${data.nombreCompleto.replace(/\s+/g, '_')}_${timestamp}.${fileExtension}`;
+    let blob = { url: 'No proporcionado' };
     
-    console.log('📤 Subiendo archivo a Vercel Blob:', fileName);
-    
-    const blob = await put(fileName, file, {
-      access: 'public',
-      addRandomSuffix: false,
-    });
+    if (file && file.size > 0) {
+      const timestamp = Date.now();
+      const fileExtension = file.name.split('.').pop();
+      const fileName = `recibo_${data.nombreCompleto.replace(/\s+/g, '_')}_${timestamp}.${fileExtension}`;
+      
+      console.log('📤 Subiendo archivo a Vercel Blob:', fileName);
+      
+      blob = await put(fileName, file, {
+        access: 'public',
+        addRandomSuffix: false,
+      });
 
-    console.log('✅ Archivo subido exitosamente:', blob.url);
+      console.log('✅ Archivo subido exitosamente:', blob.url);
+    } else {
+      console.log('ℹ️ No se proporcionó recibo de pago');
+    }
 
     // ====================================
     // PREPARAR DATOS COMPLETOS
@@ -243,7 +245,10 @@ export async function POST(request) {
                 <div class="info-box" style="border-left-color: #dc2626;">
                   <h2>⏳ Próximos Pasos</h2>
                   <ol>
-                    <li>Verificaremos tu comprobante de pago</li>
+                    ${blob.url !== 'No proporcionado' 
+                      ? '<li>Verificaremos tu comprobante de pago</li>' 
+                      : '<li>Recuerda enviar tu comprobante de pago para completar tu registro</li>'
+                    }
                     <li>Confirmaremos tu registro en las próximas 24-48 horas</li>
                     <li>Te enviaremos los detalles del evento y credenciales de acceso</li>
                   </ol>
@@ -354,11 +359,18 @@ export async function POST(request) {
                 </div>
 
                 <p><strong>📎 Comprobante de Pago:</strong></p>
-                <a href="${blob.url}" class="btn" target="_blank">Ver Comprobante</a>
-
-                <p style="margin-top: 20px; color: #666; font-size: 14px;">
-                  Por favor, verifica el comprobante y actualiza el estado en Google Sheets.
-                </p>
+                ${blob.url !== 'No proporcionado' 
+                  ? `<a href="${blob.url}" class="btn" target="_blank">Ver Comprobante</a>
+                     <p style="margin-top: 20px; color: #666; font-size: 14px;">
+                       Por favor, verifica el comprobante y actualiza el estado en Google Sheets.
+                     </p>`
+                  : `<p style="margin-top: 10px; color: #dc2626; font-weight: bold;">
+                       ⚠️ No se proporcionó comprobante de pago
+                     </p>
+                     <p style="color: #666; font-size: 14px;">
+                       El participante deberá enviar el comprobante posteriormente.
+                     </p>`
+                }
               </div>
             </div>
           </body>
