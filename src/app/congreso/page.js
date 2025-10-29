@@ -1,6 +1,7 @@
 // src/app/registro-congreso/page.js
 
 import RegistroCongresoForm from '../components/RegistroCongresoForm';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Registro al Congreso - IIESBC',
@@ -11,8 +12,20 @@ export default function RegistroCongresoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       {/* Header de la página */}
-      <div className="bg-gradient-to-r from-green-900 via-green-800 to-orange-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="relative bg-gradient-to-r from-green-900 via-green-800 to-orange-900 text-white py-20 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/registro.jpg"
+          alt="Registro al Congreso - IIESBC"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/85 via-green-800/75 to-orange-900/85" />
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center">
             <div className="inline-block mb-4">
               <span className="px-4 py-2 bg-white/20 rounded-full text-sm font-semibold backdrop-blur-sm">
@@ -29,8 +42,6 @@ export default function RegistroCongresoPage() {
         </div>
       </div>
 
-
-
       {/* Formulario */}
       <div className="max-w-6xl mx-auto px-4 pb-20">
         <RegistroCongresoForm />
@@ -39,48 +50,6 @@ export default function RegistroCongresoPage() {
       {/* Información adicional */}
       <div className="bg-gradient-to-r from-green-50 to-orange-50 py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">
-            Información Importante
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <h4 className="font-bold text-lg text-gray-800 mb-3 flex items-center">
-                <svg className="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-                Datos Bancarios
-              </h4>
-              <p className="text-gray-600 text-sm mb-2">
-                <strong>Banco:</strong> Bancomer<br />
-                <strong>Cuenta:</strong> 1234567890<br />
-                <strong>CLABE:</strong> 012345678901234567<br />
-                <strong>Beneficiario:</strong> IIESBC
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <h4 className="font-bold text-lg text-gray-800 mb-3 flex items-center">
-                <svg className="w-5 h-5 text-orange-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-                Instrucciones
-              </h4>
-              <ul className="text-gray-600 text-sm space-y-2">
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  Realiza tu pago y guarda el comprobante
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  Completa el formulario adjuntando tu recibo
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  Recibirás confirmación por correo en 24-48hrs
-                </li>
-              </ul>
-            </div>
-          </div>
 
           <div className="mt-8 text-center">
             <p className="text-gray-600 mb-4">
