@@ -75,12 +75,18 @@ export default function Home() {
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <Link
+                      href="#programas"
+                      className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
                       Conoce Nuestros Programas
-                    </button>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    </Link>
+                    <Link
+                      href="#inscripciones"
+                      className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
                       Inscríbete Ahora
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 
@@ -121,9 +127,12 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      <button className="w-full bg-gradient-to-r from-green-600 to-orange-500 text-white py-3 rounded-lg font-bold text-lg hover:from-green-700 hover:to-orange-600 transition-all duration-300 shadow-lg">
+                      <Link
+                        href="#inscripciones"
+                        className="w-full bg-gradient-to-r from-green-600 to-orange-500 text-white py-3 rounded-lg font-bold text-lg hover:from-green-700 hover:to-orange-600 transition-all duration-300 shadow-lg text-center"
+                      >
                         Más Información
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -183,9 +192,12 @@ export default function Home() {
               
               {/* Botón de acción mejorado */}
               <div className="mt-12">
-                <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-2 hover:scale-105 backdrop-blur-sm border border-white/20">
+                <Link
+                  href="/sobre-nosotros"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-2 hover:scale-105 backdrop-blur-sm border border-white/20 inline-flex items-center justify-center"
+                >
                   Conoce Nuestra Historia
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -241,9 +253,12 @@ export default function Home() {
                   </p>
                   
                   <div className="mt-6">
-                    <button className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-full font-semibold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <Link
+                      href="/contacto"
+                      className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-full font-semibold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center justify-center"
+                    >
                       Más información
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -278,9 +293,12 @@ export default function Home() {
                   </p>
                   
                   <div className="mt-6">
-                    <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <Link
+                      href="/contacto"
+                      className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center justify-center"
+                    >
                       Más información
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -317,9 +335,12 @@ export default function Home() {
                   </p>
                   
                   <div className="mt-6">
-                    <button className="bg-gradient-to-r from-green-600 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-green-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <Link
+                      href="/contacto"
+                      className="bg-gradient-to-r from-green-600 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-green-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center justify-center"
+                    >
                       Más información
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -355,9 +376,12 @@ export default function Home() {
                   </p>
                   
                   <div className="mt-6">
-                    <button className="bg-gradient-to-r from-orange-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <Link
+                      href="/contacto"
+                      className="bg-gradient-to-r from-orange-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center justify-center"
+                    >
                       Más información
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -366,7 +390,7 @@ export default function Home() {
         </section>
 
         {/* Academic Programs - Oferta Académica con efectos mejorados */}
-        <section className="py-8 bg-gray-100">
+        <section id="programas" className="py-8 bg-gray-100">
           <div className="max-w-7xl mx-auto px-4 mb-8">
             <div className="text-center">
               <h2 className="text-5xl font-bold text-gray-800 mb-4">Nuestra Oferta Académica</h2>
@@ -415,9 +439,12 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30">
+                    <Link
+                      href="/oferta-academica#licenciaturas"
+                      className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30 inline-flex items-center justify-center"
+                    >
                       Ver más detalles
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -460,9 +487,12 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30">
+                    <Link
+                      href="/oferta-academica#maestrias"
+                      className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30 inline-flex items-center justify-center"
+                    >
                       Ver más detalles
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -500,9 +530,12 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30">
+                    <Link
+                      href="/oferta-academica#doctorado"
+                      className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30 inline-flex items-center justify-center"
+                    >
                       Ver más detalles
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -663,12 +696,18 @@ export default function Home() {
                     </div>
                     
                     <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                      <button className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-full font-semibold hover:from-green-700 hover:to-green-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                      <Link
+                        href="/sobre-nosotros"
+                        className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-full font-semibold hover:from-green-700 hover:to-green-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
+                      >
                         Seguir leyendo
-                      </button>
-                      <button className="border-2 border-orange-500 text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-orange-500 hover:text-white transform hover:scale-105 transition-all duration-300">
+                      </Link>
+                      <Link
+                        href="/sobre-nosotros"
+                        className="border-2 border-orange-500 text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-orange-500 hover:text-white transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
+                      >
                         Conoce más sobre nosotros
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -710,7 +749,7 @@ export default function Home() {
         </section>
 
         {/* Inscripciones Section - Renovada */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-gray-50 to-white">
+        <section id="inscripciones" className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-gray-50 to-white">
           {/* Elementos decorativos de fondo */}
           <div className="absolute inset-0">
             <div className="absolute top-20 left-10 w-40 h-40 bg-orange-200/20 rounded-full blur-2xl animate-pulse"></div>
@@ -830,12 +869,18 @@ export default function Home() {
                     </div>
                     
                     <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                      <button className="bg-gradient-to-r from-orange-600 to-orange-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                      <Link
+                        href="/contacto"
+                        className="bg-gradient-to-r from-orange-600 to-orange-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
+                      >
                         Más Información
-                      </button>
-                      <button className="border-2 border-green-500 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-500 hover:text-white transform hover:scale-105 transition-all duration-300">
+                      </Link>
+                      <Link
+                        href="/contacto?tema=becas"
+                        className="border-2 border-green-500 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-500 hover:text-white transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center"
+                      >
                         Solicitar Beca
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
