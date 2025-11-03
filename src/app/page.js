@@ -40,10 +40,12 @@ export default function Home() {
         <section className="relative overflow-hidden">
           {/* Imagen de fondo con overlay */}
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/images/slid-IIESBC-Inscrip.jpg"
               alt="Instituto Interamericano de Estudios Superiores"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
@@ -134,10 +136,11 @@ export default function Home() {
         <section className="relative py-24 text-white overflow-hidden">
           {/* Imagen de fondo con efectos modernos */}
           <div className="absolute inset-0">
-            <img
+            <Image
               src="/images/brooke-cagle.jpg"
               alt="Universidad comprometida"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
             {/* Overlay gradient con efecto moderno */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-800/85 via-green-700/75 to-green-900/90"></div>
