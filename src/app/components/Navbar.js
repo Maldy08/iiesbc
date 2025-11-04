@@ -109,7 +109,7 @@ export default function Navbar() {
           aria-label="Ir al inicio"
         >
           <Image
-            src="/images/ico.png"
+            src="/images/ICO.png"
             alt="Ícono IIESBC"
             width={scrolled ? 60 : 80}
             height={scrolled ? 60 : 80}
