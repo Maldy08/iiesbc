@@ -1,14 +1,188 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import CongresoGallery from "./components/CongresoGallery";
 import Link from "next/link";
 
-//metadata
-export const metadata = {
-  title: 'IIESBC - Instituto Interamericano de Estudios Superiores de Baja California',
-  description: 'Formando líderes para el futuro.',
-};
-
 export default function Home() {
+  const [isWhatsAppVisible, setIsWhatsAppVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("todos");
+  const [selectedProgram, setSelectedProgram] = useState(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
+  // Control de scroll para mostrar WhatsApp
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsWhatsAppVisible(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Contador animado
+  const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
+    const [count, setCount] = useState(0);
+    const countRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.5 }
+      );
+
+      if (countRef.current) {
+        observer.observe(countRef.current);
+      }
+
+      return () => {
+        if (countRef.current) {
+          observer.unobserve(countRef.current);
+        }
+      };
+    }, []);
+
+    useEffect(() => {
+      if (!isVisible) return;
+
+      let startTime;
+      let animationFrame;
+
+      const animate = (currentTime) => {
+        if (!startTime) startTime = currentTime;
+        const progress = (currentTime - startTime) / duration;
+
+        if (progress < 1) {
+          setCount(Math.floor(end * progress));
+          animationFrame = requestAnimationFrame(animate);
+        } else {
+          setCount(end);
+        }
+      };
+
+      animationFrame = requestAnimationFrame(animate);
+      return () => cancelAnimationFrame(animationFrame);
+    }, [isVisible, end, duration]);
+
+    return <span ref={countRef}>{count}{suffix}</span>;
+  };
+
+  // Datos de programas
+  const programas = [
+    {
+      id: 1,
+      tipo: "licenciatura",
+      nombre: "Licenciatura en Ciencias de la Educación",
+      duracion: "8 semestres",
+      modalidad: "Escolarizada / En línea",
+      descripcion: "Forma profesionales capaces de diseñar, implementar y evaluar programas educativos innovadores.",
+      icono: "🎓",
+      imagen: "/images/educacion.jpg",
+    },
+    {
+      id: 2,
+      tipo: "licenciatura",
+      nombre: "Licenciatura en Criminología",
+      duracion: "8 semestres",
+      modalidad: "Escolarizada",
+      descripcion: "Prepara especialistas en prevención y análisis del delito con enfoque multidisciplinario.",
+      icono: "⚖️",
+      imagen: "/images/criminologia.jpg",
+    },
+    {
+      id: 3,
+      tipo: "licenciatura",
+      nombre: "Licenciatura en Derecho",
+      duracion: "9 semestres",
+      modalidad: "Escolarizada",
+      descripcion: "Forma abogados con sólidos conocimientos jurídicos y ética profesional.",
+      icono: "⚖️",
+      imagen: "/images/derecho.jpg",
+    },
+    {
+      id: 4,
+      tipo: "maestria",
+      nombre: "Maestría en Educación",
+      duracion: "4 semestres",
+      modalidad: "En línea",
+      descripcion: "Especialización en procesos educativos y desarrollo de competencias docentes.",
+      icono: "🎯",
+      imagen: "/images/meducacion.jpg",
+    },
+    {
+      id: 5,
+      tipo: "maestria",
+      nombre: "Maestría en Administración Competitiva",
+      duracion: "4 semestres",
+      modalidad: "Escolarizada / En línea",
+      descripcion: "Desarrolla líderes empresariales con visión estratégica y competitiva.",
+      icono: "💼",
+      imagen: "/images/madministracion.jpg",
+    },
+    {
+      id: 6,
+      tipo: "maestria",
+      nombre: "Maestría en Gestión de Políticas Públicas",
+      duracion: "4 semestres",
+      modalidad: "En línea",
+      descripcion: "Forma especialistas en diseño e implementación de políticas públicas efectivas.",
+      icono: "🏛️",
+      imagen: "/images/mpublicas.jpg",
+    },
+    {
+      id: 7,
+      tipo: "doctorado",
+      nombre: "Doctorado en Administración de Instituciones Educativas",
+      duracion: "6 semestres",
+      modalidad: "En línea",
+      descripcion: "Máximo grado académico para líderes en gestión educativa e investigación.",
+      icono: "🎓",
+      imagen: "/images/comunicacion.jpg",
+    },
+  ];
+
+  // Testimonios
+  const testimonios = [
+    {
+      nombre: "María González",
+      programa: "Maestría en Educación",
+      foto: "👩‍🎓",
+      comentario: "IIESBC transformó mi carrera profesional. Los profesores son excelentes y el contenido es muy aplicable.",
+      estrellas: 5,
+    },
+    {
+      nombre: "Carlos Rodríguez",
+      programa: "Licenciatura en Derecho",
+      foto: "👨‍⚖️",
+      comentario: "La mejor decisión que pude tomar. El nivel académico es excepcional y las instalaciones son de primer nivel.",
+      estrellas: 5,
+    },
+    {
+      nombre: "Ana Martínez",
+      programa: "Maestría en Administración",
+      foto: "👩‍💼",
+      comentario: "Gracias a IIESBC obtuve el ascenso que buscaba. La modalidad en línea me permitió estudiar y trabajar.",
+      estrellas: 5,
+    },
+  ];
+
+  const filteredProgramas = activeFilter === "todos" 
+    ? programas 
+    : programas.filter(p => p.tipo === activeFilter);
+
+  // Auto-scroll testimonios
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonios.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
     return (
       <main className="pt-0">
         <CongresoGallery/>
@@ -365,151 +539,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Academic Programs - Oferta Académica con efectos mejorados */}
-        <section className="py-8 bg-gray-100">
-          <div className="max-w-7xl mx-auto px-4 mb-8">
-            <div className="text-center">
-              <h2 className="text-5xl font-bold text-gray-800 mb-4">Nuestra Oferta Académica</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Programas educativos de excelencia diseñados para formar líderes del futuro
-              </p>
-              <div className="w-32 h-1 bg-gradient-to-r from-green-600 to-orange-500 mx-auto mt-6 rounded-full"></div>
-            </div>
-          </div>
-          
-          <div className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4">
-            {/* Licenciaturas */}
-            <div className="group relative overflow-hidden rounded-2xl shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1">
-              <div className="h-96 bg-cover bg-center relative" style={{backgroundImage: 'url(/images/licenc-IIESBC.jpg)'}}>
-                {/* Overlay gradient animado */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-600/40 via-green-700/30 to-green-800/50 group-hover:from-green-500/30 group-hover:via-green-600/20 group-hover:to-green-700/40 transition-all duration-500"></div>
-                
-                {/* Partículas decorativas */}
-                <div className="absolute top-4 right-4 w-3 h-3 bg-white/30 rounded-full animate-pulse"></div>
-                <div className="absolute top-12 right-8 w-2 h-2 bg-orange-400/40 rounded-full animate-ping"></div>
-                <div className="absolute bottom-8 left-4 w-4 h-4 bg-yellow-300/20 rounded-full animate-bounce"></div>
-                
-                {/* Contenido */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                  <div className="transform group-hover:-translate-y-2 transition-transform duration-300">
-                    {/* Ícono */}
-                    <div className="w-16 h-16 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                      </svg>
-                    </div>
-                    
-                    <h3 className="text-4xl font-black text-white mb-6 drop-shadow-lg group-hover:text-green-100 transition-colors duration-300">
-                      Licenciaturas
-                    </h3>
-                    
-                    <div className="space-y-3 mb-6">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">📚 Lic. en Derecho</p>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">🔍 Lic. en Criminología</p>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">📖 Lic. en Ciencias de la Educación</p>
-                      </div>
-                    </div>
-                    
-                    <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30">
-                      Ver más detalles
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Maestrías */}
-            <div className="group relative overflow-hidden rounded-2xl shadow-2xl transform transition-all duration-500 hover:scale-105 hover:-rotate-1">
-              <div className="h-96 bg-cover bg-center relative" style={{backgroundImage: 'url(/images/maestri-IIESBC.jpg)'}}>
-                {/* Overlay gradient animado */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 via-orange-600/30 to-orange-700/50 group-hover:from-orange-400/30 group-hover:via-orange-500/20 group-hover:to-orange-600/40 transition-all duration-500"></div>
-                
-                {/* Partículas decorativas */}
-                <div className="absolute top-6 left-4 w-3 h-3 bg-white/30 rounded-full animate-pulse"></div>
-                <div className="absolute top-8 left-12 w-2 h-2 bg-green-400/40 rounded-full animate-ping"></div>
-                <div className="absolute bottom-12 right-6 w-4 h-4 bg-yellow-300/20 rounded-full animate-bounce"></div>
-                
-                {/* Contenido */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                  <div className="transform group-hover:-translate-y-2 transition-transform duration-300">
-                    {/* Ícono */}
-                    <div className="w-16 h-16 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                    </div>
-                    
-                    <h3 className="text-4xl font-black text-white mb-6 drop-shadow-lg group-hover:text-orange-100 transition-colors duration-300">
-                      Maestrías
-                    </h3>
-                    
-                    <div className="space-y-3 mb-6">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">🎓 Maestría en Educación</p>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">💼 M. en Administración Competitiva</p>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">🏛️ M. en Gestión de Políticas Públicas</p>
-                      </div>
-                    </div>
-                    
-                    <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30">
-                      Ver más detalles
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Doctorado */}
-            <div className="group relative overflow-hidden rounded-2xl shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-1">
-              <div className="h-96 bg-cover bg-center relative" style={{backgroundImage: 'url(/images/docto-IIESBC.jpg)'}}>
-                {/* Overlay gradient animado */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-700/40 via-green-800/30 to-green-900/50 group-hover:from-green-600/30 group-hover:via-green-700/20 group-hover:to-green-800/40 transition-all duration-500"></div>
-                
-                {/* Partículas decorativas */}
-                <div className="absolute top-8 right-6 w-3 h-3 bg-white/30 rounded-full animate-pulse"></div>
-                <div className="absolute top-4 right-12 w-2 h-2 bg-orange-400/40 rounded-full animate-ping"></div>
-                <div className="absolute bottom-6 left-8 w-4 h-4 bg-yellow-300/20 rounded-full animate-bounce"></div>
-                
-                {/* Contenido */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                  <div className="transform group-hover:-translate-y-2 transition-transform duration-300">
-                    {/* Ícono */}
-                    <div className="w-16 h-16 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      </svg>
-                    </div>
-                    
-                    <h3 className="text-4xl font-black text-white mb-6 drop-shadow-lg group-hover:text-green-100 transition-colors duration-300">
-                      Doctorado
-                    </h3>
-                    
-                    <div className="space-y-3 mb-6">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 transform group-hover:bg-white/20 transition-all duration-300">
-                        <p className="font-semibold text-white drop-shadow-md">👨‍🎓 Doctorado en Administración de Instituciones Educativas</p>
-                      </div>
-                    </div>
-                    
-                    <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full font-semibold hover:bg-white/30 transform hover:scale-105 transition-all duration-300 border border-white/30">
-                      Ver más detalles
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Success & Motivation Section - Renovada */}
         <section className="relative py-24 bg-gradient-to-br from-green-600 via-green-700 to-green-800 overflow-hidden">
           {/* Elementos de fondo animados */}
@@ -843,6 +872,560 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Sección de Programas con Filtros - VERSIÓN PROFESIONAL */}
+        <section className="py-32 bg-gradient-to-br from-slate-50 via-white to-gray-50 relative overflow-hidden">
+          {/* Elementos decorativos de fondo sutiles */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-full opacity-5">
+              <div className="absolute top-20 left-20 w-64 h-64 bg-green-600 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-20 right-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+              <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-gray-600 rounded-full blur-3xl"></div>
+            </div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4">
+            {/* Encabezado Profesional */}
+            <div className="text-center mb-20">
+              <div className="inline-block mb-6">
+                <span className="text-sm font-bold text-green-600 uppercase tracking-widest bg-green-50 px-6 py-2 rounded-full">
+                  Programas Académicos
+                </span>
+              </div>
+              <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
+                Excelencia en <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600">Educación Superior</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Programas académicos con reconocimiento oficial diseñados para formar 
+                profesionales de alto nivel en un entorno de aprendizaje excepcional
+              </p>
+              <div className="flex items-center justify-center gap-2 mt-8">
+                <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-green-600 to-green-600"></div>
+                <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+                <div className="w-20 h-0.5 bg-gradient-to-r from-green-600 via-orange-500 to-orange-500"></div>
+                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div className="w-20 h-0.5 bg-gradient-to-l from-transparent via-orange-500 to-orange-500"></div>
+              </div>
+            </div>
+
+            {/* Sistema de Filtros Refinado */}
+            <div className="mb-16">
+              <div className="bg-white rounded-2xl shadow-xl p-3 max-w-4xl mx-auto border border-gray-100">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  <button
+                    onClick={() => setActiveFilter("todos")}
+                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
+                      activeFilter === "todos"
+                        ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-lg"
+                        : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    {activeFilter === "todos" && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-orange-600/20 animate-pulse"></div>
+                    )}
+                    <div className="relative flex items-center justify-center gap-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                      </svg>
+                      <span>Todos</span>
+                    </div>
+                  </button>
+                  
+                  <button
+                    onClick={() => setActiveFilter("licenciatura")}
+                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
+                      activeFilter === "licenciatura"
+                        ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30"
+                        : "bg-gray-50 text-gray-600 hover:bg-orange-50"
+                    }`}
+                  >
+                    <div className="relative flex items-center justify-center gap-2">
+                      <span className="text-lg">🎓</span>
+                      <span>Licenciaturas</span>
+                    </div>
+                  </button>
+                  
+                  <button
+                    onClick={() => setActiveFilter("maestria")}
+                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
+                      activeFilter === "maestria"
+                        ? "bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg shadow-green-600/30"
+                        : "bg-gray-50 text-gray-600 hover:bg-green-50"
+                    }`}
+                  >
+                    <div className="relative flex items-center justify-center gap-2">
+                      <span className="text-lg">🎯</span>
+                      <span>Maestrías</span>
+                    </div>
+                  </button>
+                  
+                  <button
+                    onClick={() => setActiveFilter("doctorado")}
+                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
+                      activeFilter === "doctorado"
+                        ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg shadow-purple-600/30"
+                        : "bg-gray-50 text-gray-600 hover:bg-purple-50"
+                    }`}
+                  >
+                    <div className="relative flex items-center justify-center gap-2">
+                      <span className="text-lg">🏆</span>
+                      <span>Doctorados</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              
+              {/* Contador de resultados */}
+              <div className="text-center mt-6">
+                <p className="text-sm text-gray-500">
+                  Mostrando <span className="font-bold text-gray-700">{filteredProgramas.length}</span> programa{filteredProgramas.length !== 1 ? 's' : ''}
+                </p>
+              </div>
+            </div>
+
+            {/* Grid de Programas Premium */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProgramas.map((programa, index) => (
+                <div
+                  key={programa.id}
+                  className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-green-200"
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                  }}
+                >
+                  {/* Badge de categoría */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${
+                      programa.tipo === 'licenciatura' 
+                        ? 'bg-orange-100 text-orange-700' 
+                        : programa.tipo === 'maestria' 
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-purple-100 text-purple-700'
+                    }`}>
+                      {programa.tipo}
+                    </span>
+                  </div>
+
+                  {/* Header con imagen o gradiente */}
+                  <div className="relative h-48 overflow-hidden">
+                    {programa.imagen ? (
+                      <>
+                        {/* Imagen de fondo */}
+                        <Image
+                          src={programa.imagen}
+                          alt={programa.nombre}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        />
+                        {/* Overlay con gradiente */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
+                        
+                        {/* Efecto de brillo en hover */}
+                        <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 transition-opacity duration-500 ${
+                          programa.tipo === 'licenciatura' 
+                            ? 'from-orange-500 to-orange-600' 
+                            : programa.tipo === 'maestria' 
+                            ? 'from-green-500 to-green-600'
+                            : 'from-purple-500 to-purple-600'
+                        }`}></div>
+
+                        <div className="relative h-full flex flex-col justify-between p-8 z-10">
+                          {/* Ícono */}
+                          <div className="text-6xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 drop-shadow-lg">
+                            {programa.icono}
+                          </div>
+                          
+                          {/* Línea decorativa */}
+                          <div className={`w-16 h-1 rounded-full ${
+                            programa.tipo === 'licenciatura' 
+                              ? 'bg-orange-500' 
+                              : programa.tipo === 'maestria' 
+                              ? 'bg-green-500'
+                              : 'bg-purple-500'
+                          }`}></div>
+                        </div>
+                      </>
+                    ) : (
+                      // Fallback: gradiente si no hay imagen
+                      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8">
+                        <div className="absolute inset-0 opacity-10">
+                          <div className="absolute inset-0" style={{
+                            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+                            backgroundSize: '24px 24px'
+                          }}></div>
+                        </div>
+                        
+                        <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${
+                          programa.tipo === 'licenciatura' 
+                            ? 'from-orange-500 to-orange-600' 
+                            : programa.tipo === 'maestria' 
+                            ? 'from-green-500 to-green-600'
+                            : 'from-purple-500 to-purple-600'
+                        }`}></div>
+
+                        <div className="relative h-full flex flex-col justify-between">
+                          <div className="text-6xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                            {programa.icono}
+                          </div>
+                          
+                          <div className={`w-16 h-1 rounded-full ${
+                            programa.tipo === 'licenciatura' 
+                              ? 'bg-orange-500' 
+                              : programa.tipo === 'maestria' 
+                              ? 'bg-green-500'
+                              : 'bg-purple-500'
+                          }`}></div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Contenido */}
+                  <div className="p-8">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-green-700 transition-colors duration-300">
+                      {programa.nombre}
+                    </h3>
+                    
+                    {/* Metadatos */}
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
+                          programa.tipo === 'licenciatura' 
+                            ? 'bg-orange-50' 
+                            : programa.tipo === 'maestria' 
+                            ? 'bg-green-50'
+                            : 'bg-purple-50'
+                        }`}>
+                          <svg className={`w-4 h-4 ${
+                            programa.tipo === 'licenciatura' 
+                              ? 'text-orange-600' 
+                              : programa.tipo === 'maestria' 
+                              ? 'text-green-600'
+                              : 'text-purple-600'
+                          }`} fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="font-medium">{programa.duracion}</span>
+                      </div>
+                      
+                      <div className="flex items-center text-sm text-gray-600">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
+                          programa.tipo === 'licenciatura' 
+                            ? 'bg-orange-50' 
+                            : programa.tipo === 'maestria' 
+                            ? 'bg-green-50'
+                            : 'bg-purple-50'
+                        }`}>
+                          <svg className={`w-4 h-4 ${
+                            programa.tipo === 'licenciatura' 
+                              ? 'text-orange-600' 
+                              : programa.tipo === 'maestria' 
+                              ? 'text-green-600'
+                              : 'text-purple-600'
+                          }`} fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                          </svg>
+                        </div>
+                        <span className="font-medium">{programa.modalidad}</span>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                      {programa.descripcion}
+                    </p>
+
+                    {/* Divisor */}
+                    <div className="border-t border-gray-100 mb-6"></div>
+
+                    {/* Botón de acción */}
+                    <button
+                      onClick={() => setSelectedProgram(programa)}
+                      className={`group/btn w-full relative px-6 py-4 rounded-xl font-semibold text-white overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ${
+                        programa.tipo === 'licenciatura' 
+                          ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700' 
+                          : programa.tipo === 'maestria' 
+                          ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800'
+                          : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800'
+                      }`}
+                    >
+                      <span className="relative flex items-center justify-center gap-2">
+                        <span>Conocer programa</span>
+                        <svg className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                      
+                      {/* Efecto de brillo en hover */}
+                      <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    </button>
+                  </div>
+
+                  {/* Línea de acento inferior */}
+                  <div className={`h-1.5 w-full ${
+                    programa.tipo === 'licenciatura' 
+                      ? 'bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600' 
+                      : programa.tipo === 'maestria' 
+                      ? 'bg-gradient-to-r from-green-500 via-green-600 to-green-700'
+                      : 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700'
+                  }`}></div>
+                </div>
+              ))}
+            </div>
+
+            {/* Call to Action Final */}
+            <div className="mt-20 text-center">
+              <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-12 relative overflow-hidden">
+                {/* Elementos decorativos */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 left-0 w-64 h-64 bg-green-500 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 right-0 w-64 h-64 bg-orange-500 rounded-full blur-3xl"></div>
+                </div>
+
+                <div className="relative">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                    ¿No encuentras el programa que buscas?
+                  </h3>
+                  <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+                    Nuestro equipo de asesores académicos está listo para ayudarte 
+                    a encontrar la opción educativa perfecta para ti
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link
+                      href="/contacto"
+                      className="bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl inline-flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      Contactar a un asesor
+                    </Link>
+                    <a
+                      href="https://wa.me/526464470066?text=Hola,%20necesito%20información%20sobre%20los%20programas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-xl inline-flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                      </svg>
+                      WhatsApp directo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Animación CSS */}
+          <style jsx>{`
+            @keyframes fadeInUp {
+              from {
+                opacity: 0;
+                transform: translateY(30px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          `}</style>
+        </section>
+
+        {/* Estadísticas con Contadores Animados */}
+        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-green-800 via-green-700 to-green-900">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-black text-white mb-4">
+                Números que nos <span className="text-orange-400">Respaldan</span>
+              </h2>
+              <p className="text-xl text-green-100">
+                Más de una década formando profesionales de excelencia
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
+                <div className="text-5xl lg:text-6xl font-black text-white mb-2">
+                  <AnimatedCounter end={15} suffix="+" />
+                </div>
+                <p className="text-green-100 text-lg font-semibold">Años de Experiencia</p>
+              </div>
+              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
+                <div className="text-5xl lg:text-6xl font-black text-orange-400 mb-2">
+                  <AnimatedCounter end={2500} suffix="+" />
+                </div>
+                <p className="text-green-100 text-lg font-semibold">Estudiantes</p>
+              </div>
+              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
+                <div className="text-5xl lg:text-6xl font-black text-white mb-2">
+                  <AnimatedCounter end={98} suffix="%" />
+                </div>
+                <p className="text-green-100 text-lg font-semibold">Satisfacción</p>
+              </div>
+              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
+                <div className="text-5xl lg:text-6xl font-black text-orange-400 mb-2">
+                  <AnimatedCounter end={7} suffix="+" />
+                </div>
+                <p className="text-green-100 text-lg font-semibold">Programas</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonios */}
+        <section className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-black text-gray-900 mb-4">
+                Lo que dicen <span className="text-green-600">nuestros estudiantes</span>
+              </h2>
+              <p className="text-xl text-gray-600">
+                Testimonios reales de quienes han transformado su futuro con nosotros
+              </p>
+            </div>
+
+            <div className="relative max-w-4xl mx-auto">
+              <div className="bg-white rounded-3xl shadow-2xl p-12 relative overflow-hidden">
+                <div className="absolute top-0 left-0 text-9xl text-green-100 font-serif leading-none">"</div>
+                <div className="absolute bottom-0 right-0 text-9xl text-green-100 font-serif leading-none">"</div>
+                
+                <div className="relative text-center">
+                  <div className="text-7xl mb-6">{testimonios[currentTestimonial].foto}</div>
+                  <p className="text-2xl text-gray-700 mb-6 italic leading-relaxed">
+                    {testimonios[currentTestimonial].comentario}
+                  </p>
+                  
+                  <div className="flex justify-center mb-4">
+                    {[...Array(testimonios[currentTestimonial].estrellas)].map((_, i) => (
+                      <svg key={i} className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <h4 className="text-xl font-bold text-gray-900">{testimonios[currentTestimonial].nombre}</h4>
+                  <p className="text-green-600 font-semibold">{testimonios[currentTestimonial].programa}</p>
+                </div>
+              </div>
+
+              {/* Indicadores */}
+              <div className="flex justify-center gap-3 mt-8">
+                {testimonios.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentTestimonial === index
+                        ? "bg-green-600 w-12"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Botón Flotante de WhatsApp */}
+        {isWhatsAppVisible && (
+          <a
+            href="https://wa.me/526464470066?text=Hola,%20me%20interesa%20más%20información%20sobre%20IIESBC"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce"
+          >
+            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </a>
+        )}
+
+        {/* Modal de Programa */}
+        {selectedProgram && (
+          <div
+            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+            onClick={() => setSelectedProgram(null)}
+          >
+            <div
+              className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-br from-green-600 to-green-700 p-8 text-white relative">
+                <button
+                  onClick={() => setSelectedProgram(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-300"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <div className="text-6xl mb-4">{selectedProgram.icono}</div>
+                <h3 className="text-3xl font-bold mb-2">{selectedProgram.nombre}</h3>
+                <div className="flex gap-4">
+                  <span className="bg-white/20 px-4 py-2 rounded-full text-sm">{selectedProgram.duracion}</span>
+                  <span className="bg-white/20 px-4 py-2 rounded-full text-sm">{selectedProgram.modalidad}</span>
+                </div>
+              </div>
+              
+              <div className="p-8">
+                <p className="text-gray-700 text-lg mb-6 leading-relaxed">{selectedProgram.descripcion}</p>
+                
+                <div className="space-y-4 mb-8">
+                  <h4 className="text-xl font-bold text-gray-900">Beneficios del programa:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">Profesores con experiencia profesional activa</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">Reconocimiento de Validez Oficial (RVOE)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">Instalaciones modernas y equipadas</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">Becas y financiamiento disponible</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/contacto"
+                    className="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white text-center px-8 py-4 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg"
+                  >
+                    Solicitar Información
+                  </Link>
+                  <button
+                    onClick={() => setSelectedProgram(null)}
+                    className="flex-1 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
   );
 }

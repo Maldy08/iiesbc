@@ -116,10 +116,12 @@ export default function EventosAcademicos() {
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[500px] flex items-center">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/eventos-academicos/eventos-academicos.jpg"
             alt="Eventos Académicos IIESBC"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-br from-green-800/60 via-green-700/50 to-orange-800/60"></div>
         </div>
@@ -209,10 +211,12 @@ export default function EventosAcademicos() {
                   onClick={() => setSelectedImage(`/images/eventos-academicos/${imagen}`)}
                 >
                   <div className="aspect-square relative">
-                    <img
+                    <Image
                       src={`/images/eventos-academicos/${imagen}`}
                       alt={`${evento.titulo} - Foto ${imgIndex + 1}`}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -244,12 +248,14 @@ export default function EventosAcademicos() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div className="max-w-6xl max-h-[90vh] relative">
-            <img
+          <div className="max-w-6xl w-full h-[90vh] relative">
+            <Image
               src={selectedImage}
               alt="Imagen ampliada"
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              fill
+              className="object-contain rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
+              sizes="100vw"
             />
           </div>
         </div>
@@ -258,10 +264,11 @@ export default function EventosAcademicos() {
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/eventos-academicos/eventos-academicos-2.jpg"
             alt="Únete a nuestros eventos"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-green-700/65 via-green-800/55 to-orange-800/65"></div>
         </div>

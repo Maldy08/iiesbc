@@ -1,210 +1,346 @@
-"use client"; // Muy importante para que los hooks de React funcionen
+"use client";
 
-import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
-  // Estados para controlar la visibilidad
+  const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef(null);
-  const pathname = usePathname();
 
-  // Detectar scroll para cambiar estilo del navbar
+  // Helpers
+  const isActive = useCallback(
+    (href) => pathname === href || pathname.startsWith(href + "/"),
+    [pathname]
+  );
+
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      setScrolled(offset > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Cierra el dropdown si se hace clic fuera de él
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
+    const { style } = document.body;
+    if (mobileMenuOpen) {
+      const scrollY = window.scrollY;
+      style.position = "fixed";
+      style.top = `-${scrollY}px`;
+      style.left = "0";
+      style.right = "0";
+      style.width = "100%";
+    } else {
+      const top = style.top;
+      style.position = "";
+      style.top = "";
+      style.left = "";
+      style.right = "";
+      style.width = "";
+      if (top) {
+        const y = -parseInt(top, 10);
+        window.scrollTo(0, y);
       }
     }
-    // Agrega el event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    // Limpia el event listener al desmontar el componente
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
+  }, [mobileMenuOpen]);
 
-  // Función para verificar si la ruta está activa
-  const isActive = (href) => pathname === href || pathname.startsWith(href + '/');
+  // Scroll detection
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const onDown = (e) => {
+      if (!dropdownRef.current) return;
+      if (!dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, []);
+
+  // Close with Escape + on route change
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setDropdownOpen(false);
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
+  useEffect(() => {
+    setDropdownOpen(false);
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  const navLink = (href) =>
+    `group relative flex items-center transition-all duration-300 px-5 font-medium tracking-wide ${
+      isActive(href)
+        ? "text-green-700"
+        : "text-gray-700 hover:text-green-700"
+    }`;
 
   return (
-    <nav className={`bg-white/90 backdrop-blur-md text-gray-800 shadow-lg sticky top-0 z-50 transition-all duration-300 border-b border-white/20 ${
-      scrolled ? 'py-2 bg-white/95 shadow-xl' : 'py-4'
-    }`}>
-      <div className="container mx-auto flex justify-between items-center px-4">
-        <Link href="/" className="hover:scale-105 transition-transform duration-300 flex items-center gap-3">
-          <Image 
-            src="/images/icono.png" 
-            alt="Ícono IIESBC" 
-            width={scrolled ? 60 : 80} 
-            height={scrolled ? 60 : 80} 
-            className="transition-all duration-300 flex-shrink-0" 
+    <nav
+      className={[
+        "sticky top-0 z-50 border-b border-white/20 transition-all duration-300",
+        "bg-white/90 supports-[backdrop-filter]:backdrop-blur-md",
+        scrolled ? "py-2 bg-white/95 shadow-xl" : "py-4 shadow-lg",
+      ].join(" ")}
+      aria-label="Navegación principal"
+    >
+      {/* Skip link */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 rounded bg-white/95 px-3 py-2 shadow"
+      >
+        Saltar al contenido
+      </a>
+
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
+        <Link
+          href="/"
+          className="flex items-center gap-3 transition-transform duration-300 hover:scale-[1.03]"
+          aria-label="Ir al inicio"
+        >
+          <Image
+            src="/images/ico.png"
+            alt="Ícono IIESBC"
+            width={scrolled ? 60 : 80}
+            height={scrolled ? 60 : 80}
+            priority
+            sizes="(max-width: 1024px) 48px, 80px"
+            className="flex-shrink-0 transition-all duration-300"
           />
-          <Image 
-            src="/images/NOMBRE.png" 
-            alt="Nombre IIESBC" 
-            width={scrolled ? 150 : 300} 
-            height={scrolled ? 37 : 5} 
-            className="transition-all duration-300 object-contain" 
+          <Image
+            src="/images/iiesbc.png"
+            alt="Nombre IIESBC"
+            width={scrolled ? 150 : 200}
+            height={40}
+            sizes="(max-width: 1024px) 120px, 200px"
+            className="h-10 w-auto object-contain transition-all duration-300"
           />
         </Link>
-        {/* Menú Desktop */}
-        <ul className="hidden lg:flex items-center space-x-6">
-          <li><Link href="/" className={`transition-all duration-300 py-2 px-4 rounded-full ${
-            isActive('/') ? 'text-green-700 bg-green-100 font-semibold shadow-md' : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
-          }`}>Inicio</Link></li>
-          <li><Link href="/sobre-nosotros" className={`transition-all duration-300 py-2 px-4 rounded-full ${
-            isActive('/sobre-nosotros') ? 'text-green-700 bg-green-100 font-semibold shadow-md' : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
-          }`}>Sobre Nosotros</Link></li>
-          
-          {/* ----- Contenedor del Dropdown ----- */}
-          <li className="relative" ref={dropdownRef}>
+
+        {/* Desktop */}
+        <ul className="hidden h-full items-stretch space-x-2 lg:flex">
+          <li className="flex items-stretch">
+            <Link href="/" className={navLink("/")} aria-current={isActive("/") ? "page" : undefined}>
+              Inicio
+              {/* Indicador de página activa */}
+              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
+                isActive("/") 
+                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-green-500" 
+                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
+              }`} />
+            </Link>
+          </li>
+          <li className="flex items-stretch">
+            <Link
+              href="/sobre-nosotros"
+              className={navLink("/sobre-nosotros")}
+              aria-current={isActive("/sobre-nosotros") ? "page" : undefined}
+            >
+              Sobre Nosotros
+              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
+                isActive("/sobre-nosotros") 
+                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-green-500" 
+                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
+              }`} />
+            </Link>
+          </li>
+
+          {/* Dropdown */}
+          <li className="relative flex items-stretch" ref={dropdownRef}>
             <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className={`flex items-center py-2 px-4 rounded-full transition-all duration-300 ${
-                isActive('/oferta-academica') ? 'text-green-700 bg-green-100 font-semibold shadow-md' : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
-              }`}
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded={dropdownOpen}
+              aria-controls="menu-oferta"
+              onClick={() => {
+                setDropdownOpen((v) => !v);
+                setMobileMenuOpen(false);
+              }}
+              className={navLink("/oferta-academica")}
             >
               Oferta Académica
-              <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              <svg
+                className={`ml-1 h-4 w-4 transform transition-transform duration-300 ${
+                  dropdownOpen ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth="2" fill="none" />
               </svg>
+              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
+                isActive("/oferta-academica") 
+                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-green-500" 
+                  : dropdownOpen
+                  ? "scale-x-100 bg-orange-500"
+                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
+              }`} />
             </button>
-            
-            {/* ----- El Menú Desplegable Mejorado ----- */}
-            <div className={`absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl z-20 border border-gray-200 transform transition-all duration-300 ease-out ${
-              dropdownOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
-            }`}>
+
+            <div
+              id="menu-oferta"
+              role="menu"
+              aria-label="Oferta Académica"
+              className={[
+                "absolute left-0 mt-2 w-80 rounded-lg border border-gray-200 bg-white shadow-2xl",
+                "transform transition-all duration-200 ease-out",
+                dropdownOpen
+                  ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
+                  : "pointer-events-none -translate-y-2 scale-95 opacity-0",
+              ].join(" ")}
+            >
               <div className="py-3">
-                <div className="px-4 py-2 text-green-700 text-xs uppercase font-bold tracking-wider border-b border-gray-100">Licenciaturas</div>
-                <Link href="/oferta-academica/licenciaturas/derecho" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Lic. en Derecho
-                </Link>
-                <Link href="/oferta-academica/licenciaturas/criminologia" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Lic. en Criminología
-                </Link>
-                <Link href="/oferta-academica/licenciaturas/ciencias-de-la-educacion" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <div className="border-b border-gray-100 px-4 py-2 text-xs font-bold uppercase tracking-wider text-green-700">
+                  Licenciaturas
+                </div>
+                <MenuItem href="/oferta-academica/licenciaturas/derecho">Lic. en Derecho</MenuItem>
+                <MenuItem href="/oferta-academica/licenciaturas/criminologia">Lic. en Criminología</MenuItem>
+                <MenuItem href="/oferta-academica/licenciaturas/ciencias-de-la-educacion">
                   Lic. en Ciencias de la Educación
-                </Link>
-                
-                <div className="border-t border-gray-100 my-2"></div>
+                </MenuItem>
 
-                <div className="px-4 py-2 text-green-700 text-xs uppercase font-bold tracking-wider">Maestrías</div>
-                <Link href="/oferta-academica/maestrias/educacion" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Maestría en Educación
-                </Link>
-                <Link href="/oferta-academica/maestrias/administracion-competitiva" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <div className="my-2 border-t border-gray-100" />
+
+                <div className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-green-700">Maestrías</div>
+                <MenuItem href="/oferta-academica/maestrias/educacion">Maestría en Educación</MenuItem>
+                <MenuItem href="/oferta-academica/maestrias/administracion-competitiva">
                   Maestría en Administración Competitiva
-                </Link>
-                <Link href="/oferta-academica/maestrias/gestion-de-politicas-publicas" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                </MenuItem>
+                <MenuItem href="/oferta-academica/maestrias/gestion-de-politicas-publicas">
                   Maestría en Gestión de Políticas Públicas
-                </Link>
+                </MenuItem>
 
-                <div className="border-t border-gray-100 my-2"></div>
-                <div className="px-4 py-2 text-green-700 text-xs uppercase font-bold tracking-wider">Doctorados</div>
-                <Link href="/oferta-academica/doctorado/administracion-de-instituciones-educativas" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <div className="my-2 border-t border-gray-100" />
+
+                <div className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-green-700">Doctorados</div>
+                <MenuItem href="/oferta-academica/doctorado/administracion-de-instituciones-educativas">
                   Doctorado en Administración de Instituciones Educativas
-                </Link>
-                 
-                <div className="border-t border-gray-100 my-2"></div>
-                <div className="px-4 py-2 text-green-700 text-xs uppercase font-bold tracking-wider">Diplomados</div>
-                <Link href="/oferta-academica/diplomados/desarrollo-del-lenguaje" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Diplomado en Desarrollo del Lenguaje
-                </Link>
-                <Link href="/oferta-academica/diplomados/trantornos-del-neurodesarrollo" className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-200 group">
-                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  Diplomado en Trastornos del Neurodesarrollo
-                </Link>
+                </MenuItem>
 
-                <div className="px-4 py-3 bg-gray-50 rounded-b-lg">
-                  <Link href="/oferta-academica" className="text-green-700 font-semibold text-sm hover:text-orange-500 transition-colors">
+                <div className="rounded-b-lg bg-gray-50 px-4 py-3">
+                  <Link
+                    href="/oferta-academica"
+                    className="text-sm font-semibold text-green-700 underline-offset-2 hover:text-orange-500 hover:underline"
+                    role="menuitem"
+                  >
                     Ver toda la oferta académica →
                   </Link>
                 </div>
               </div>
             </div>
           </li>
-          {/* ----- Fin del Dropdown ----- */}
 
-          <li><Link href="/eventos-academicos" className={`transition-all duration-300 py-2 px-4 rounded-full ${
-            isActive('/eventos-academicos') ? 'text-green-700 bg-green-100 font-semibold shadow-md' : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
-          }`}>Eventos Académicos</Link></li>
-          <li><Link href="/contacto" className={`transition-all duration-300 py-2 px-4 rounded-full ${
-            isActive('/contacto') ? 'text-green-700 bg-green-100 font-semibold shadow-md' : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
-          }`}>Contacto</Link></li>
+          <li className="flex items-stretch">
+            <Link
+              href="/eventos-academicos"
+              className={navLink("/eventos-academicos")}
+              aria-current={isActive("/eventos-academicos") ? "page" : undefined}
+            >
+              Eventos Académicos
+              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
+                isActive("/eventos-academicos") 
+                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-green-500" 
+                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
+              }`} />
+            </Link>
+          </li>
+          <li className="flex items-stretch">
+            <Link
+              href="/contacto"
+              className={navLink("/contacto")}
+              aria-current={isActive("/contacto") ? "page" : undefined}
+            >
+              Contacto
+              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
+                isActive("/contacto") 
+                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-green-500" 
+                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
+              }`} />
+            </Link>
+          </li>
         </ul>
 
-        {/* Botón hamburguesa para móviles */}
+        {/* Botón hamburguesa */}
         <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors duration-200"
-          aria-label="Abrir menú"
+          onClick={() => {
+            setMobileMenuOpen((v) => !v);
+            setDropdownOpen(false);
+          }}
+          className="rounded-md p-2 transition-colors duration-200 hover:bg-gray-100 lg:hidden"
+          aria-label="Abrir menú móvil"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
+          <span className="sr-only">Abrir menú</span>
           <div className="space-y-1">
-            <span className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            <span
+              className={`block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
+                mobileMenuOpen ? "translate-y-1.5 rotate-45" : ""
+              }`}
+            />
+            <span className={`block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
+            <span
+              className={`block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
+                mobileMenuOpen ? "-translate-y-1.5 -rotate-45" : ""
+              }`}
+            />
           </div>
         </button>
       </div>
 
       {/* Menú móvil */}
-            <div className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-        mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <div className="px-4 py-3 bg-white/95 backdrop-blur-md border-t border-gray-200/50">
+      <div
+        id="mobile-menu"
+        className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
+          mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="border-t border-gray-200/50 bg-white/95 px-4 py-3 supports-[backdrop-filter]:backdrop-blur-md">
           <div className="space-y-2">
-            <Link href="/" className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
-              isActive('/') ? 'text-green-700 bg-green-100 font-semibold' : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
-            }`} onClick={() => setMobileMenuOpen(false)}>
-              Inicio
-            </Link>
-            <Link href="/sobre-nosotros" className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
-              isActive('/sobre-nosotros') ? 'text-green-700 bg-green-100 font-semibold' : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
-            }`} onClick={() => setMobileMenuOpen(false)}>
-              Sobre Nosotros
-            </Link>
-            <Link href="/oferta-academica" className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
-              isActive('/oferta-academica') ? 'text-green-700 bg-green-100 font-semibold' : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
-            }`} onClick={() => setMobileMenuOpen(false)}>
-              Oferta Académica
-            </Link>
-            <Link href="/eventos-academicos" className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
-              isActive('/eventos-academicos') ? 'text-green-700 bg-green-100 font-semibold' : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
-            }`} onClick={() => setMobileMenuOpen(false)}>
-              Eventos Académicos
-            </Link>
-            <Link href="/contacto" className={`block py-3 px-4 rounded-lg transition-all duration-200 ${
-              isActive('/contacto') ? 'text-green-700 bg-green-100 font-semibold' : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
-            }`} onClick={() => setMobileMenuOpen(false)}>
-              Contacto
-            </Link>
+            <MobileItem href="/" active={isActive("/")}>Inicio</MobileItem>
+            <MobileItem href="/sobre-nosotros" active={isActive("/sobre-nosotros")}>Sobre Nosotros</MobileItem>
+            <MobileItem href="/oferta-academica" active={isActive("/oferta-academica")}>Oferta Académica</MobileItem>
+            <MobileItem href="/eventos-academicos" active={isActive("/eventos-academicos")}>Eventos Académicos</MobileItem>
+            <MobileItem href="/contacto" active={isActive("/contacto")}>Contacto</MobileItem>
           </div>
         </div>
       </div>
     </nav>
+  );
+}
+
+function MenuItem({ href, children }) {
+  return (
+    <Link
+      href={href}
+      role="menuitem"
+      className="group flex items-center px-4 py-3 text-sm text-gray-700 transition-all duration-200 hover:bg-green-600 hover:text-white"
+    >
+      <span className="mr-3 h-2 w-2 rounded-full bg-orange-500 opacity-0 transition-opacity group-hover:opacity-100" />
+      {children}
+    </Link>
+  );
+}
+
+function MobileItem({ href, active, children }) {
+  return (
+    <Link
+      href={href}
+      className={`block rounded-lg px-4 py-3 transition-all duration-200 ${
+        active ? "bg-green-100 font-semibold text-green-700" : "text-gray-700 hover:bg-green-50 hover:text-green-600"
+      }`}
+    >
+      {children}
+    </Link>
   );
 }
