@@ -2,175 +2,151 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function LicenciaturaEducacion() {
-  const [activeTab, setActiveTab] = useState(0);
   const [hoveredCard, setHoveredCard] = useState();
 
-  const tabs = [
+  // Contenido organizado por secciones (similar a la maestría)
+  const perfilEgresado = [
+    "Aplicar las técnicas de investigación de tipo cualitativo y cuantitativo",
+    "Desarrollar propuestas educativas innovadoras para responder a la demanda de la sociedad globalizada",
+    "Intervenir y dirigir innovaciones en las gestiones educativas",
+    "Asesorar empresas para la optimización de Capital Humano",
+    "Evaluar programas de orientación educativa que promuevan el desarrollo humano",
+    "Manejar fundamentos teóricos e instrumentos pedagógicos necesarios",
+    "Aplicar las nuevas tecnologías de la información y comunicación",
+    "Ejercer la docencia en los diferentes niveles educativos",
+    "Ejecutar y evaluar proyectos educativos en distintos niveles y modalidades",
+    "Formular proyectos de investigación desde una perspectiva interdisciplinaria",
+    "Aplicar diferentes tipos de didácticas en el proceso enseñanza-aprendizaje",
+    "Diseñar estrategias educativas en modelos alternativos de formación",
+    "Planear, organizar, controlar y evaluar procesos de gestión educativa",
+    "Generar proyectos de intervención didáctica significativos",
+    "Analizar corrientes filosóficas y efectos sociológicos en educación",
+    "Diseñar, instrumentar y evaluar planes y programas de estudio",
+    "Desarrollar proyectos de investigación con herramientas estadísticas",
+    "Desarrollar propuestas de mejora continua en instituciones educativas"
+  ];
+
+  const campoLaboral = [
+    "Instituciones educativas de diferente nivel",
+    "Instituciones o centros de investigación",
+    "Escuelas, instituciones y organizaciones públicas y privadas",
+    "Autogestor de su propia institución educativa",
+    "Centros de asesoramiento y formación docente",
+    "Bufetes de asesorías y consultoría en materia educativa",
+    "Organizaciones de transformación educativa",
+    "Empresas e industrias en capacitación y capital humano",
+    "Áreas de docencia, diseño curricular, planeación e investigación",
+    "Centros de planeación educativa",
+    "Organizaciones de mejora en calidad educativa",
+    "Instituciones de asistencia social",
+    "Centros de asesoría y capacitación educativa"
+  ];
+
+  const planEstudios = [
     {
-      id: 0,
-      icon: "👨‍🏫",
-      title: "Perfil del Egresado",
-      color: "from-sky-600 to-sky-800",
-      content: [
-        "Aplicar las técnicas de investigación de tipo cualitativo y cuantitativo",
-        "Desarrollar propuestas educativas innovadoras para responder a la demanda de la sociedad globalizada",
-        "Intervenir y dirigir innovaciones en las gestiones educativas",
-        "Asesorar empresas para la optimización de Capital Humano",
-        "Evaluar programas de orientación educativa que promuevan el desarrollo humano",
-        "Manejar fundamentos teóricos e instrumentos pedagógicos necesarios",
-        "Aplicar las nuevas tecnologías de la información y comunicación",
-        "Ejercer la docencia en los diferentes niveles educativos",
-        "Ejecutar y evaluar proyectos educativos en distintos niveles y modalidades",
-        "Formular proyectos de investigación desde una perspectiva interdisciplinaria",
-        "Aplicar diferentes tipos de didácticas en el proceso enseñanza-aprendizaje",
-        "Diseñar estrategias educativas en modelos alternativos de formación",
-        "Planear, organizar, controlar y evaluar procesos de gestión educativa",
-        "Generar proyectos de intervención didáctica significativos",
-        "Analizar corrientes filosóficas y efectos sociológicos en educación",
-        "Diseñar, instrumentar y evaluar planes y programas de estudio",
-        "Desarrollar proyectos de investigación con herramientas estadísticas",
-        "Desarrollar propuestas de mejora continua en instituciones educativas"
-      ]
+      nombre: "PRIMER CUATRIMESTRE",
+      materias: [
+        "Principios de Administración",
+        "Metodología de la Investigación",
+        "Sistemas Computacionales",
+        "Principios de la Sociología",
+        "Formas de Comunicación",
+      ],
     },
     {
-      id: 1,
-      icon: "🎓",
-      title: "Campo Laboral",
-      color: "from-emerald-600 to-emerald-800",
-      content: [
-        "Instituciones educativas de diferente nivel",
-        "Instituciones o centros de investigación",
-        "Escuelas, instituciones y organizaciones públicas y privadas",
-        "Autogestor de su propia institución educativa",
-        "Centros de asesoramiento y formación docente",
-        "Bufetes de asesorías y consultoría en materia educativa",
-        "Organizaciones de transformación educativa",
-        "Empresas e industrias en capacitación y capital humano",
-        "Áreas de docencia, diseño curricular, planeación e investigación",
-        "Centros de planeación educativa",
-        "Organizaciones de mejora en calidad educativa",
-        "Instituciones de asistencia social",
-        "Centros de asesoría y capacitación educativa"
-      ]
+      nombre: "SEGUNDO CUATRIMESTRE",
+      materias: [
+        "Antecedentes de la Educación en México",
+        "Filosofía en la Educación",
+        "TICS Aplicadas a la Educación",
+        "Teorías del Aprendizaje",
+        "Teoría de la Educación I",
+      ],
     },
     {
-      id: 2,
-      icon: "📘",
-      title: "Plan de Estudios",
-      color: "from-violet-600 to-violet-800",
-      content: {
-        cuatrimestres: [
-          {
-            nombre: "PRIMER CUATRIMESTRE",
-            materias: [
-              "Principios de Administración",
-              "Metodología de la Investigación",
-              "Sistemas Computacionales",
-              "Principios de la Sociología",
-              "Formas de Comunicación"
-            ]
-          },
-          {
-            nombre: "SEGUNDO CUATRIMESTRE",
-            materias: [
-              "Antecedentes de la Educación en México",
-              "Filosofía en la Educación",
-              "TICS Aplicadas a la Educación",
-              "Teorías del Aprendizaje",
-              "Teoría de la Educación I"
-            ]
-          },
-          {
-            nombre: "TERCER CUATRIMESTRE",
-            materias: [
-              "Teoría de la Educación II",
-              "Legislación Educativa",
-              "Investigación de Campo",
-              "Principios de Aprendizaje",
-              "Didáctica Educativa I"
-            ]
-          },
-          {
-            nombre: "CUARTO CUATRIMESTRE",
-            materias: [
-              "Educación Infantil y Especial",
-              "Educación y Creatividad",
-              "Planeación de la Educación",
-              "Didáctica Educativa II",
-              "Diseño de Material Didáctico en el Aula"
-            ]
-          },
-          {
-            nombre: "QUINTO CUATRIMESTRE",
-            materias: [
-              "Psicología Educativa I",
-              "Pedagogía y Evaluación",
-              "Planeación Estratégica de la Educación Actual",
-              "Métodos de Investigación Cuantitativa",
-              "Administración de la Educación"
-            ]
-          },
-          {
-            nombre: "SEXTO CUATRIMESTRE",
-            materias: [
-              "Teoría y Dinámica de Grupos",
-              "Diseño Curricular",
-              "Investigación Cualitativa",
-              "Principios de Aprendizaje del Adolescente y Adulto",
-              "Microenseñanza",
-              "Psicología Educativa II"
-            ]
-          },
-          {
-            nombre: "SEPTIMO CUATRIMESTRE",
-            materias: [
-              "Teoría y Manejo de Grupos",
-              "Educación y Economía",
-              "Elaboración de Programas de Capacitación",
-              "Tecnología Educativa",
-              "Eficiencia de Centros Educativos",
-              "OPTATIVA"
-            ]
-          },
-          {
-            nombre: "OCTAVO CUATRIMESTRE",
-            materias: [
-              "Evaluación Curricular",
-              "Medición de la Calidad Educativa",
-              "Gestión Educativa",
-              "Medición de la Inteligencia",
-              "OPTATIVA"
-            ]
-          },
-          {
-            nombre: "NOVENO CUATRIMESTRE",
-            materias: [
-              "OPTATIVA",
-              "Desarrollo y Evaluación de Proyectos Educativos",
-              "Valores y Ética Profesional",
-              "Seminario de Tésis",
-              "Educación Virtual"
-            ]
-          }
-        ]
-      }
+      nombre: "TERCER CUATRIMESTRE",
+      materias: [
+        "Teoría de la Educación II",
+        "Legislación Educativa",
+        "Investigación de Campo",
+        "Principios de Aprendizaje",
+        "Didáctica Educativa I",
+      ],
     },
     {
-      id: 3,
-      icon: "📝",
-      title: "Requisitos de Ingreso",
-      color: "from-rose-600 to-rose-800",
-      content: [
-        "Copia de CURP",
-        "Certificado de estudios de Preparatoria (original y copia)",
-        "Acta de nacimiento (original y 2 copias)",
-        "Fotografías tamaño credencial e infantil en blanco y negro",
-        "Identificación oficial (copia)",
-        "Recibo de pagos correspondientes"
-      ]
-    }
+      nombre: "CUARTO CUATRIMESTRE",
+      materias: [
+        "Educación Infantil y Especial",
+        "Educación y Creatividad",
+        "Planeación de la Educación",
+        "Didáctica Educativa II",
+        "Diseño de Material Didáctico en el Aula",
+      ],
+    },
+    {
+      nombre: "QUINTO CUATRIMESTRE",
+      materias: [
+        "Psicología Educativa I",
+        "Pedagogía y Evaluación",
+        "Planeación Estratégica de la Educación Actual",
+        "Métodos de Investigación Cuantitativa",
+        "Administración de la Educación",
+      ],
+    },
+    {
+      nombre: "SEXTO CUATRIMESTRE",
+      materias: [
+        "Teoría y Dinámica de Grupos",
+        "Diseño Curricular",
+        "Investigación Cualitativa",
+        "Principios de Aprendizaje del Adolescente y Adulto",
+        "Microenseñanza",
+        "Psicología Educativa II",
+      ],
+    },
+    {
+      nombre: "SEPTIMO CUATRIMESTRE",
+      materias: [
+        "Teoría y Manejo de Grupos",
+        "Educación y Economía",
+        "Elaboración de Programas de Capacitación",
+        "Tecnología Educativa",
+        "Eficiencia de Centros Educativos",
+        "OPTATIVA",
+      ],
+    },
+    {
+      nombre: "OCTAVO CUATRIMESTRE",
+      materias: [
+        "Evaluación Curricular",
+        "Medición de la Calidad Educativa",
+        "Gestión Educativa",
+        "Medición de la Inteligencia",
+        "OPTATIVA",
+      ],
+    },
+    {
+      nombre: "NOVENO CUATRIMESTRE",
+      materias: [
+        "OPTATIVA",
+        "Desarrollo y Evaluación de Proyectos Educativos",
+        "Valores y Ética Profesional",
+        "Seminario de Tésis",
+        "Educación Virtual",
+      ],
+    },
+  ];
+
+  const requisitos = [
+    "Copia de CURP",
+    "Certificado de estudios de Preparatoria (original y copia)",
+    "Acta de nacimiento (original y 2 copias)",
+    "Fotografías tamaño credencial e infantil en blanco y negro",
+    "Identificación oficial (copia)",
+    "Recibo de pagos correspondientes",
   ];
 
   const estadisticas = [
@@ -206,7 +182,7 @@ export default function LicenciaturaEducacion() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative text-white py-24 overflow-hidden">
+  <section className="relative text-white py-24 overflow-hidden">
         {/* Background image */}
         <Image
           src="/images/comunicacion.jpg"
@@ -216,14 +192,12 @@ export default function LicenciaturaEducacion() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-700/80 via-sky-600/70 to-cyan-500/60" />
+  {/* Gradient overlay for readability (alineado al estilo del sitio) */}
+  <div className="absolute inset-0 bg-gradient-to-br from-green-900/85 via-green-800/75 to-orange-800/65" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
-              <span className="text-blue-100 font-semibold">RVOE-BC (229 a la 235) M1/13</span>
-            </div>
+
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
               Licenciatura en Ciencias de la Educación
             </h1>
@@ -231,25 +205,38 @@ export default function LicenciaturaEducacion() {
               Transforma vidas a través de la educación. Conviértete en un líder educativo que innova y hace la diferencia
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#informacion" className="bg-white text-blue-700 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl">
+              <a href="#informacion" className="bg-white text-green-700 px-8 py-4 rounded-full font-bold hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-xl">
                 Descubre el Programa
               </a>
-              <a href="/inscripciones" className="bg-orange-500 text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                Inscríbete Ahora
+              <a href="#plan-estudios" className="bg-white/15 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold hover:bg-white/25 border-2 border-white transition-all">
+                Ver Plan de Estudios
               </a>
+              <Link href="/contacto" className="bg-gradient-to-r from-green-600 to-orange-600 text-white px-8 py-4 rounded-full font-bold hover:from-green-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                Solicitar Información
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Estadísticas */}
+      {/* Datos Clave del Programa */}
       <section className="bg-white py-12 shadow-lg -mt-8 relative z-20 mx-4 md:mx-8 lg:mx-16 rounded-2xl">
         <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Datos Clave del Programa</h2>
+            <p className="text-gray-600">Información general de la Licenciatura</p>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {estadisticas.map((stat, idx) => (
-              <div key={idx} className="text-center p-4 rounded-xl hover:bg-sky-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
-                <div className="text-4xl mb-2">{stat.icon}</div>
-                <div className="text-4xl font-bold text-sky-700 mb-2">{stat.numero}</div>
+              <div
+                key={idx}
+                className="relative text-center p-5 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-green-50 hover:to-orange-50 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] border border-gray-100 shadow-sm"
+              >
+                <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-500/60 to-transparent rounded-full" />
+                <div className="text-3xl mb-2">{stat.icon}</div>
+                <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600 mb-1">
+                  {stat.numero}
+                </div>
                 <div className="text-gray-600 font-semibold">{stat.texto}</div>
               </div>
             ))}
@@ -282,110 +269,138 @@ export default function LicenciaturaEducacion() {
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Información del Programa (estilo con detalles + imagen) */}
       <section id="informacion" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          
-          {/* Sidebar con imagen */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="sticky top-24">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                <Image
-                  src="/images/educacion-iiesbc.jpg"
-                  alt="Licenciatura en Ciencias de la Educación"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto transform group-hover:scale-110 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Educa el Futuro</h3>
-                  <p className="text-sky-200">Forma líderes educativos del mañana</p>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Columna Izquierda - Accordions */}
+          <div>
+            <div className="mb-8">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Información del Programa</h2>
+              <p className="text-lg text-gray-600">Conoce los detalles de la Licenciatura en Ciencias de la Educación</p>
+            </div>
 
-              {/* Mini tabs */}
-              <div className="mt-6 bg-white rounded-2xl shadow-lg p-4 space-y-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? 'bg-gradient-to-r ' + tab.color + ' text-white shadow-lg'
-                        : 'hover:bg-gray-100 text-gray-700'
-                    }`}
-                  >
-                    <span className="text-2xl">{tab.icon}</span>
-                    <span className="font-semibold">{tab.title}</span>
-                  </button>
-                ))}
-              </div>
+            <div className="space-y-4">
+              {/* Perfil del Egresado */}
+              <details className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-xl overflow-hidden shadow-lg">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-base">👨‍🏫</span>
+                    </div>
+                    <span>Perfil del Egresado</span>
+                  </div>
+                  <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="p-6 pt-0 bg-white/70">
+                  <ul className="space-y-2">
+                    {perfilEgresado.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-orange-500 font-bold mt-1">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+
+              {/* Campo Laboral */}
+              <details className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-xl overflow-hidden shadow-lg">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-base">🎓</span>
+                    </div>
+                    <span>Campo Laboral</span>
+                  </div>
+                  <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="p-6 pt-0 bg-white/70">
+                  <ul className="space-y-2">
+                    {campoLaboral.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-orange-500 font-bold mt-1">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+
+              {/* Requisitos de Ingreso */}
+              <details className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-xl overflow-hidden shadow-lg">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-base">📝</span>
+                    </div>
+                    <span>Requisitos de Ingreso</span>
+                  </div>
+                  <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="p-6 pt-0 bg-white/70">
+                  <ul className="space-y-2">
+                    {requisitos.map((req, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-orange-500 font-bold mt-1">•</span>
+                        <span>{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
             </div>
           </div>
 
-          {/* Content Area */}
-          <div className="lg:col-span-3">
-            <div className={`bg-gradient-to-br ${tabs[activeTab].color} rounded-2xl p-8 shadow-2xl min-h-[600px] text-white`}>
-              <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/20">
-                <div className="text-6xl bg-white/20 p-4 rounded-2xl backdrop-blur-sm">
-                  {tabs[activeTab].icon}
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold">{tabs[activeTab].title}</h2>
-                  <p className="text-white/80">Información completa del programa</p>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                {activeTab === 2 ? (
-                  // Plan de Estudios
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-                    {tabs[activeTab].content.cuatrimestres.map((cuatrimestre, idx) => (
-                      <div 
-                        key={idx} 
-                        className="bg-white/15 backdrop-blur-md rounded-xl p-5 hover:bg-white/25 transition-all duration-300 border border-white/20"
-                      >
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="bg-white/30 px-3 py-1 rounded-full">
-                            <span className="font-bold text-sm">{idx + 1}°</span>
-                          </div>
-                          <h4 className="font-bold text-sm uppercase tracking-wide">
-                            Cuatrimestre
-                          </h4>
-                        </div>
-                        <ul className="space-y-2">
-                          {cuatrimestre.materias.map((materia, mIdx) => (
-                            <li key={mIdx} className="flex items-start gap-2 text-sm">
-                              <span className="text-white/60 mt-1 text-xs">▪</span>
-                              <span className="leading-tight">{materia}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                ) : Array.isArray(tabs[activeTab].content) ? (
-                  // Perfil, Campo Laboral y Requisitos
-                  <div className="grid grid-cols-1 gap-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-                    {tabs[activeTab].content.map((item, idx) => (
-                      <div 
-                        key={idx}
-                        className="bg-white/15 backdrop-blur-md rounded-xl p-5 hover:bg-white/25 transition-all duration-300 border border-white/20 flex items-start gap-4"
-                      >
-                        <div className="bg-white/30 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                          <span className="font-bold text-sm">{idx + 1}</span>
-                        </div>
-                        <p className="leading-relaxed text-lg flex-1">{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
+          {/* Columna Derecha - Imagen destacada */}
+          <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src="/images/educacion-iiesbc.jpg"
+              alt="Licenciatura en Ciencias de la Educación"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <h3 className="text-3xl font-bold mb-2">Educa el Futuro</h3>
+              <p className="text-lg opacity-90">Forma líderes educativos del mañana</p>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* Plan de Estudios */}
+      <section id="plan-estudios" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold mb-4 text-gray-900">Plan de Estudios</h2>
+            <p className="text-xl text-gray-600">Programa académico estructurado en 9 cuatrimestres</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {planEstudios.map((periodo, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-green-50 to-orange-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+                <div className="text-center mb-6">
+                  <div className="inline-block bg-gradient-to-r from-green-600 to-orange-600 text-white px-6 py-2 rounded-full font-bold mb-2">
+                    {idx + 1}º Cuatrimestre
+                  </div>
+                  <h3 className="text-sm text-gray-600 font-semibold">{periodo.nombre}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {periodo.materias.map((materia, i) => (
+                    <li key={i} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                      <p className="font-semibold text-gray-800 text-center">{materia}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -417,10 +432,11 @@ export default function LicenciaturaEducacion() {
               </div>
             </div>
             <a
-              href="/inscripciones"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfSsj4lfLF9akHmCPjL5pTK8PaebMFQ2__qE-wJZpShmka01A/viewform?usp=publish-editor"
+              target="_blank"
               className="inline-block bg-white text-orange-600 px-12 py-5 rounded-full text-xl font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-2xl"
             >
-              Solicita Información Ahora
+              Inscríbete Ahora
             </a>
           </div>
         </div>

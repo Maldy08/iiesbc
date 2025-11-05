@@ -227,7 +227,7 @@ export default function MaestriaAdministracionCompetitiva() {
             {/* Columna Derecha - Imagen */}
             <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/maestrias/administracion-competitiva-main.jpg"
+                src="/images/estudiantes-3.jpg"
                 alt="Estudiantes de Maestría en Administración Competitiva"
                 fill
                 className="object-cover"
@@ -385,17 +385,13 @@ export default function MaestriaAdministracionCompetitiva() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contacto"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfSsj4lfLF9akHmCPjL5pTK8PaebMFQ2__qE-wJZpShmka01A/viewform?usp=publish-editor"
+              target="_blank"
               className="px-8 py-4 bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700 text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
             >
-              Solicitar Información
+              Inscríbete Ahora
             </Link>
-            <Link
-              href="/oferta-academica"
-              className="px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-full transition-all"
-            >
-              Ver Más Programas
-            </Link>
+
           </div>
         </div>
       </section>

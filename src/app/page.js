@@ -321,10 +321,7 @@ export default function Home() {
                           <span>Diplomados</span>
                         </div>
                       </div>
-                      
-                      <button className="w-full bg-gradient-to-r from-green-600 to-orange-500 text-white py-3 rounded-lg font-bold text-lg hover:from-green-700 hover:to-orange-600 transition-all duration-300 shadow-lg">
-                        Más Información
-                      </button>
+
                     </div>
                   </div>
                 </div>
@@ -443,11 +440,7 @@ export default function Home() {
                     que confían en nosotros para la preparación continua de su fuerza laboral.
                   </p>
                   
-                  <div className="mt-6">
-                    <button className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-full font-semibold hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                      Más información
-                    </button>
-                  </div>
+
                 </div>
               </div>
 
@@ -480,11 +473,7 @@ export default function Home() {
                     para que nuestros estudiantes realicen en ellos sus prácticas y servicios.
                   </p>
                   
-                  <div className="mt-6">
-                    <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                      Más información
-                    </button>
-                  </div>
+
                 </div>
               </div>
 
@@ -518,12 +507,7 @@ export default function Home() {
                     la posibilidad de ser recipiente de una beca y de obtener facilidades 
                     de pago de colegiaturas.
                   </p>
-                  
-                  <div className="mt-6">
-                    <button className="bg-gradient-to-r from-green-600 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-green-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                      Más información
-                    </button>
-                  </div>
+
                 </div>
               </div>
 
@@ -557,11 +541,7 @@ export default function Home() {
                     el mejor horario para su preparación.
                   </p>
                   
-                  <div className="mt-6">
-                    <button className="bg-gradient-to-r from-orange-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                      Más información
-                    </button>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -720,14 +700,7 @@ export default function Home() {
                       </p>
                     </div>
                     
-                    <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                      <button className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-3 rounded-full font-semibold hover:from-green-700 hover:to-green-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Seguir leyendo
-                      </button>
-                      <button className="border-2 border-orange-500 text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-orange-500 hover:text-white transform hover:scale-105 transition-all duration-300">
-                        Conoce más sobre nosotros
-                      </button>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -886,15 +859,7 @@ export default function Home() {
                         <span className="font-semibold text-gray-700">Vinculación internacional</span>
                       </div>
                     </div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                      <button className="bg-gradient-to-r from-orange-600 to-orange-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-700 hover:to-orange-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Más Información
-                      </button>
-                      <button className="border-2 border-green-500 text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-500 hover:text-white transform hover:scale-105 transition-all duration-300">
-                        Solicitar Beca
-                      </button>
-                    </div>
+
                   </div>
                 </div>
               </div>

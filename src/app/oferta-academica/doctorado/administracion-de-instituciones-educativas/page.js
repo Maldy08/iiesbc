@@ -158,7 +158,7 @@ export default function DoctoradoAdministracionEducativa() {
       {/* Estadísticas */}
       <section className="bg-white py-12 shadow-lg -mt-8 relative z-20 mx-4 md:mx-8 lg:mx-16 rounded-2xl">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             <div className="text-center p-4 rounded-xl hover:bg-amber-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
               <div className="text-4xl mb-2">📅</div>
               <div className="text-4xl font-bold text-amber-700 mb-2">6</div>
@@ -169,11 +169,7 @@ export default function DoctoradoAdministracionEducativa() {
               <div className="text-4xl font-bold text-red-700 mb-2">12</div>
               <div className="text-gray-600 font-semibold">Materias</div>
             </div>
-            <div className="text-center p-4 rounded-xl hover:bg-amber-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
-              <div className="text-4xl mb-2">🎓</div>
-              <div className="text-4xl font-bold text-amber-700 mb-2">Ph.D</div>
-              <div className="text-gray-600 font-semibold">Nivel Doctoral</div>
-            </div>
+
             <div className="text-center p-4 rounded-xl hover:bg-amber-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
               <div className="text-4xl mb-2">🏆</div>
               <div className="text-4xl font-bold text-red-700 mb-2">RVOE</div>
@@ -331,7 +327,7 @@ export default function DoctoradoAdministracionEducativa() {
             {/* Columna Derecha - Imagen */}
             <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/doctorados/administracion-instituciones-educativas.jpg"
+                src="/images/estudiantes-4.jpg"
                 alt="Doctorado en Administración de Instituciones Educativas"
                 fill
                 className="object-cover"
@@ -387,53 +383,7 @@ export default function DoctoradoAdministracionEducativa() {
         </div>
       </section>
 
-      {/* Sección de Inscripciones y Becas */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-          }}></div>
-        </div>
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white/20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              ¡Inscripciones Abiertas!
-            </h2>
-            <p className="text-xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto">
-              Alcanza el más alto nivel académico en administración educativa. 
-              Ten la oportunidad de vincular tus estudios con Universidades Internacionales.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="font-semibold">✓ Becas Disponibles</span>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="font-semibold">✓ Financiamiento</span>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="font-semibold">✓ RVOE Oficial</span>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contacto"
-                className="px-12 py-5 bg-white text-orange-600 hover:bg-gray-100 font-bold rounded-full transition-all transform hover:scale-105 shadow-2xl text-xl"
-              >
-                Solicita Información Ahora
-              </Link>
-              <a
-                href="tel:+526861819889"
-                className="px-12 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-full transition-all border-2 border-white flex items-center justify-center gap-2 text-xl"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                (686) 181-9889
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Call to Action Final */}
       <section className="py-20 bg-white">
@@ -446,17 +396,13 @@ export default function DoctoradoAdministracionEducativa() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contacto"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfSsj4lfLF9akHmCPjL5pTK8PaebMFQ2__qE-wJZpShmka01A/viewform?usp=publish-editor"
+              target="_blank"
               className="px-8 py-4 bg-gradient-to-r from-amber-600 to-red-600 hover:from-amber-700 hover:to-red-700 text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
             >
-              Solicitar Información
+              Inscríbete Ahora
             </Link>
-            <Link
-              href="/oferta-academica"
-              className="px-8 py-4 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-full transition-all"
-            >
-              Ver Más Programas
-            </Link>
+
           </div>
         </div>
       </section>
