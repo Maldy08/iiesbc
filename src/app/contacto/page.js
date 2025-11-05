@@ -1,13 +1,18 @@
+import Image from "next/image";
+
 export default function Contacto() {
   return (
     <main className="pt-0">
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[500px] flex items-center">
+      <section className="relative overflow-hidden min-h-[420px] flex items-center">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/contacto/contacto.jpg"
             alt="Contacto IIESBC"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-green-800/60 via-green-700/50 to-orange-800/60"></div>
         </div>
@@ -18,7 +23,7 @@ export default function Contacto() {
           <div className="absolute bottom-20 left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 py-32 text-center w-full">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 py-24 text-center w-full">
           <div className="inline-block p-6 bg-white/10 backdrop-blur-md rounded-full mb-8 shadow-2xl border border-white/20">
             <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -43,6 +48,8 @@ export default function Contacto() {
         </div>
       </section>
 
+      
+
       {/* Información de Contacto Section */}
       <section className="py-24 bg-gradient-to-br from-white via-gray-50 to-green-50 relative overflow-hidden">
         <div className="absolute inset-0">
@@ -52,8 +59,8 @@ export default function Contacto() {
 
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Información de Contacto */}
-            <div className="space-y-8">
+            {/* Información de Contacto (ahora arriba, ancho completo) */}
+            <div className="space-y-8 lg:col-span-2">
               <div>
                 <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-4">
                   <span className="text-green-700">Información</span> de Contacto
@@ -68,7 +75,7 @@ export default function Contacto() {
               </div>
 
               {/* Tarjetas de Contacto */}
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Teléfono */}
                 <div className="group relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-green-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300"></div>
@@ -167,21 +174,43 @@ export default function Contacto() {
               </div>
             </div>
 
-            {/* Mapa */}
-            <div className="relative group">
+            {/* Mapa (ancho completo) */}
+            <div className="relative group lg:col-span-2">
+              {/* Encabezado y acciones */}
+              <div className="mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 relative z-10">
+                <h3 className="text-2xl font-bold text-gray-800">Mapa y cómo llegar</h3>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=R%C3%ADo%20Fuerte%201692%2C%20Independencia%20Magisterial%2C%20Mexicali%2C%20B.C."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-green-600 px-4 py-2 font-semibold text-white shadow hover:bg-green-700 transition-colors"
+                  >
+                    <span>Cómo llegar</span>
+                  </a>
+                  <a
+                    href="https://www.google.com/maps?q=32.635013%2C-115.438566"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 font-semibold text-gray-800 shadow ring-1 ring-gray-200 hover:bg-gray-50 transition-colors"
+                  >
+                    Abrir en Google Maps
+                  </a>
+                </div>
+              </div>
               {/* Marco decorativo */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-green-600 via-orange-500 to-green-600 rounded-3xl opacity-20 group-hover:opacity-30 blur-xl transition-all duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-green-600 via-orange-500 to-green-600 rounded-3xl opacity-20 group-hover:opacity-30 blur-xl transition-all duration-500 pointer-events-none z-0"></div>
               
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-[6px] border-white">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d503.0740792684633!2d-115.43856581383808!3d32.63501311725772!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDM4JzA1LjciTiAxMTXCsDI2JzE4LjIiVw!5e0!3m2!1ses!2sus!4v1537078115223"
                   width="100%"
-                  height="600"
+                  height="720"
                   style={{border: 0}}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full min-h-[600px] transform group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[420px] md:h-[560px] lg:h-[720px] transform group-hover:scale-105 transition-transform duration-700"
                 ></iframe>
                 
                 {/* Badge sobre el mapa */}
@@ -203,10 +232,12 @@ export default function Contacto() {
       <section className="py-24 relative overflow-hidden">
         {/* Imagen de fondo */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/contacto/redes-sociales.jpg"
             alt="Redes Sociales IIESBC"
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-green-700/70 via-green-800/60 to-orange-800/70"></div>
         </div>
