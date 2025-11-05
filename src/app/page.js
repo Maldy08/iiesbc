@@ -212,53 +212,80 @@ export default function Home() {
 
         {/* Hero Section - Presentación Principal */}
         <section className="relative overflow-hidden">
-          {/* Imagen de fondo con overlay */}
+          {/* Imagen de fondo con overlay mejorado */}
           <div className="absolute inset-0">
             <Image
               src="/images/slid-IIESBC-Inscrip.jpg"
               alt="Instituto Interamericano de Estudios Superiores"
               fill
-              className="object-cover"
+              className="object-cover scale-105 animate-slow-zoom"
               priority
             />
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+          </div>
+          
+          {/* Partículas flotantes animadas */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/40 rounded-full animate-float-slow"></div>
+            <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-green-400/30 rounded-full animate-float-medium"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-orange-400/30 rounded-full animate-float-fast"></div>
+            <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-white/30 rounded-full animate-float-slow" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-green-300/20 rounded-full animate-float-medium" style={{animationDelay: '2s'}}></div>
           </div>
           
           {/* Contenido sobre la imagen */}
           <div className="relative z-10 min-h-screen flex items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Lado izquierdo - Contenido principal */}
-                <div className="text-center lg:text-left">
-                  <div className="mb-8">
-                    <h1 className="text-6xl lg:text-8xl font-black mb-6 leading-tight text-white">
-                      <span className="text-green-400">IIES</span>
-                      <span className="text-orange-400">BC</span>
-                    </h1>
-                    <div className="w-64 h-2 bg-gradient-to-r from-green-400 to-orange-400 mx-auto lg:mx-0 rounded-full mb-6"></div>
-                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                      Instituto Interamericano de<br />
-                      Estudios Superiores de<br />
-                      <span className="text-orange-400">Baja California</span>
-                    </h2>
-                  </div>
-                  
-                  <p className="text-xl text-gray-200 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                    Transformamos vidas a través de la educación superior de calidad, 
-                    formando profesionales competitivos para un mundo en constante cambio.
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                      Conoce Nuestros Programas
-                    </button>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                      Inscríbete Ahora
-                    </button>
-                  </div>
-                </div>
-                
-                {/* Lado derecho - Tarjeta de inscripciones */}
+    
+                        <div className="text-center lg:text-left animate-fade-in-up">
+                          <div className="mb-8">
+                          {/* Badge animado de inscripciones */}
+                          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6 animate-pulse-slow">
+                            <span className="w-2 h-2 bg-green-400 rounded-full animate-ping"></span>
+                            <span className="text-white text-sm font-semibold">Inscripciones Abiertas 2025</span>
+                          </div>
+                          
+                          <h1 className="text-6xl lg:text-8xl font-black mb-6 leading-tight text-white transform hover:scale-105 transition-transform duration-300 inline-block">
+                            <span className="text-green-400 drop-shadow-lg">IIES</span>
+                            <span className="text-orange-400 drop-shadow-lg">BC</span>
+                          </h1>
+                          
+                          {/* Línea animada con gradiente */}
+                          <div className="relative w-64 h-2 bg-gradient-to-r from-green-400 via-orange-400 to-green-400 mx-auto lg:mx-0 rounded-full mb-6 overflow-hidden">
+                            <div className="absolute inset-0 bg-white/50 animate-shimmer"></div>
+                          </div>
+                          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                            Instituto Interamericano de<br />
+                            Estudios Superiores de<br />
+                            <span className="text-orange-400">Baja California</span>
+                          </h2>
+                          </div>
+                          
+                          <p className="text-xl text-gray-200 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                          Transformamos vidas a través de la educación superior de calidad, 
+                          formando profesionales competitivos para un mundo en constante cambio.
+                          </p>
+                          
+                          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                          <Link
+                            href="/oferta-academica"
+                            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
+                          >
+                            Conoce Nuestros Programas
+                          </Link>
+                          <Link
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSfSsj4lfLF9akHmCPjL5pTK8PaebMFQ2__qE-wJZpShmka01A/viewform?usp=publish-editor"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
+                          >
+                            Inscríbete Ahora
+                          </Link>
+                          </div>
+                        </div>
+                        
+            
                 <div className="flex justify-center lg:justify-end">
                   <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 max-w-md shadow-2xl border border-gray-200 transform hover:scale-105 transition-transform duration-300">
                     <div className="text-center">
@@ -354,18 +381,20 @@ export default function Home() {
                 Fundada con la misión de desarrollar la competitividad y la preparación 
                 de nuestros alumnos para un entorno profesional demandante.
               </p>
-              
-              {/* Botón de acción mejorado */}
-              <div className="mt-12">
-                <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-2 hover:scale-105 backdrop-blur-sm border border-white/20">
-                  Conoce Nuestra Historia
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+  
+                      <div className="mt-12">
+                      <Link
+                        href="/sobre-nosotros"
+                        className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-2 hover:scale-105 backdrop-blur-sm border border-white/20"
+                      >
+                        Conoce Nuestra Historia
+                      </Link>
+                      </div>
+                    </div>
+                    </div>
+                  </section>
 
-        {/* Features Section - Servicios institucionales mejorados */}
+                  {/* Features Section - Servicios institucionales mejorados */}
         <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
           {/* Elementos decorativos de fondo */}
           <div className="absolute inset-0">
@@ -873,372 +902,54 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sección de Programas con Filtros - VERSIÓN PROFESIONAL */}
-        <section className="py-32 bg-gradient-to-br from-slate-50 via-white to-gray-50 relative overflow-hidden">
-          {/* Elementos decorativos de fondo sutiles */}
+        {/* Mención a la Oferta Educativa con botón */}
+        <section className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-gray-50 overflow-hidden">
+          {/* Fondo decorativo sutil */}
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-full h-full opacity-5">
-              <div className="absolute top-20 left-20 w-64 h-64 bg-green-600 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-20 right-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
-              <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-gray-600 rounded-full blur-3xl"></div>
-            </div>
+            {/* Patrón suave */}
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 2px 2px, #0f172a 1px, transparent 0)',
+                backgroundSize: '24px 24px'
+              }}
+            />
+            {/* Blobs */}
+            <div className="absolute -top-10 -left-10 w-72 h-72 bg-green-500 rounded-full blur-3xl opacity-20" />
+            <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl opacity-20" />
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-4">
-            {/* Encabezado Profesional */}
-            <div className="text-center mb-20">
-              <div className="inline-block mb-6">
-                <span className="text-sm font-bold text-green-600 uppercase tracking-widest bg-green-50 px-6 py-2 rounded-full">
-                  Programas Académicos
-                </span>
-              </div>
-              <h2 className="text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                Excelencia en <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600">Educación Superior</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Programas académicos con reconocimiento oficial diseñados para formar 
-                profesionales de alto nivel en un entorno de aprendizaje excepcional
-              </p>
-              <div className="flex items-center justify-center gap-2 mt-8">
-                <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-green-600 to-green-600"></div>
-                <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-green-600 via-orange-500 to-orange-500"></div>
-                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                <div className="w-20 h-0.5 bg-gradient-to-l from-transparent via-orange-500 to-orange-500"></div>
-              </div>
-            </div>
-
-            {/* Sistema de Filtros Refinado */}
-            <div className="mb-16">
-              <div className="bg-white rounded-2xl shadow-xl p-3 max-w-4xl mx-auto border border-gray-100">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                  <button
-                    onClick={() => setActiveFilter("todos")}
-                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
-                      activeFilter === "todos"
-                        ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-lg"
-                        : "bg-gray-50 text-gray-600 hover:bg-gray-100"
-                    }`}
-                  >
-                    {activeFilter === "todos" && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-orange-600/20 animate-pulse"></div>
-                    )}
-                    <div className="relative flex items-center justify-center gap-2">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                      </svg>
-                      <span>Todos</span>
-                    </div>
-                  </button>
-                  
-                  <button
-                    onClick={() => setActiveFilter("licenciatura")}
-                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
-                      activeFilter === "licenciatura"
-                        ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30"
-                        : "bg-gray-50 text-gray-600 hover:bg-orange-50"
-                    }`}
-                  >
-                    <div className="relative flex items-center justify-center gap-2">
-                      <span className="text-lg">🎓</span>
-                      <span>Licenciaturas</span>
-                    </div>
-                  </button>
-                  
-                  <button
-                    onClick={() => setActiveFilter("maestria")}
-                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
-                      activeFilter === "maestria"
-                        ? "bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg shadow-green-600/30"
-                        : "bg-gray-50 text-gray-600 hover:bg-green-50"
-                    }`}
-                  >
-                    <div className="relative flex items-center justify-center gap-2">
-                      <span className="text-lg">🎯</span>
-                      <span>Maestrías</span>
-                    </div>
-                  </button>
-                  
-                  <button
-                    onClick={() => setActiveFilter("doctorado")}
-                    className={`group relative px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${
-                      activeFilter === "doctorado"
-                        ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg shadow-purple-600/30"
-                        : "bg-gray-50 text-gray-600 hover:bg-purple-50"
-                    }`}
-                  >
-                    <div className="relative flex items-center justify-center gap-2">
-                      <span className="text-lg">🏆</span>
-                      <span>Doctorados</span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-              
-              {/* Contador de resultados */}
-              <div className="text-center mt-6">
-                <p className="text-sm text-gray-500">
-                  Mostrando <span className="font-bold text-gray-700">{filteredProgramas.length}</span> programa{filteredProgramas.length !== 1 ? 's' : ''}
-                </p>
-              </div>
-            </div>
-
-            {/* Grid de Programas Premium */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProgramas.map((programa, index) => (
-                <div
-                  key={programa.id}
-                  className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-green-200"
-                  style={{
-                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-                  }}
-                >
-                  {/* Badge de categoría */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${
-                      programa.tipo === 'licenciatura' 
-                        ? 'bg-orange-100 text-orange-700' 
-                        : programa.tipo === 'maestria' 
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-purple-100 text-purple-700'
-                    }`}>
-                      {programa.tipo}
-                    </span>
-                  </div>
-
-                  {/* Header con imagen o gradiente */}
-                  <div className="relative h-48 overflow-hidden">
-                    {programa.imagen ? (
-                      <>
-                        {/* Imagen de fondo */}
-                        <Image
-                          src={programa.imagen}
-                          alt={programa.nombre}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover transform group-hover:scale-110 transition-transform duration-700"
-                        />
-                        {/* Overlay con gradiente */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
-                        
-                        {/* Efecto de brillo en hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-30 transition-opacity duration-500 ${
-                          programa.tipo === 'licenciatura' 
-                            ? 'from-orange-500 to-orange-600' 
-                            : programa.tipo === 'maestria' 
-                            ? 'from-green-500 to-green-600'
-                            : 'from-purple-500 to-purple-600'
-                        }`}></div>
-
-                        <div className="relative h-full flex flex-col justify-between p-8 z-10">
-                          {/* Ícono */}
-                          <div className="text-6xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 drop-shadow-lg">
-                            {programa.icono}
-                          </div>
-                          
-                          {/* Línea decorativa */}
-                          <div className={`w-16 h-1 rounded-full ${
-                            programa.tipo === 'licenciatura' 
-                              ? 'bg-orange-500' 
-                              : programa.tipo === 'maestria' 
-                              ? 'bg-green-500'
-                              : 'bg-purple-500'
-                          }`}></div>
-                        </div>
-                      </>
-                    ) : (
-                      // Fallback: gradiente si no hay imagen
-                      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8">
-                        <div className="absolute inset-0 opacity-10">
-                          <div className="absolute inset-0" style={{
-                            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-                            backgroundSize: '24px 24px'
-                          }}></div>
-                        </div>
-                        
-                        <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${
-                          programa.tipo === 'licenciatura' 
-                            ? 'from-orange-500 to-orange-600' 
-                            : programa.tipo === 'maestria' 
-                            ? 'from-green-500 to-green-600'
-                            : 'from-purple-500 to-purple-600'
-                        }`}></div>
-
-                        <div className="relative h-full flex flex-col justify-between">
-                          <div className="text-6xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                            {programa.icono}
-                          </div>
-                          
-                          <div className={`w-16 h-1 rounded-full ${
-                            programa.tipo === 'licenciatura' 
-                              ? 'bg-orange-500' 
-                              : programa.tipo === 'maestria' 
-                              ? 'bg-green-500'
-                              : 'bg-purple-500'
-                          }`}></div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Contenido */}
-                  <div className="p-8">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-green-700 transition-colors duration-300">
-                      {programa.nombre}
-                    </h3>
-                    
-                    {/* Metadatos */}
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center text-sm text-gray-600">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
-                          programa.tipo === 'licenciatura' 
-                            ? 'bg-orange-50' 
-                            : programa.tipo === 'maestria' 
-                            ? 'bg-green-50'
-                            : 'bg-purple-50'
-                        }`}>
-                          <svg className={`w-4 h-4 ${
-                            programa.tipo === 'licenciatura' 
-                              ? 'text-orange-600' 
-                              : programa.tipo === 'maestria' 
-                              ? 'text-green-600'
-                              : 'text-purple-600'
-                          }`} fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <span className="font-medium">{programa.duracion}</span>
-                      </div>
-                      
-                      <div className="flex items-center text-sm text-gray-600">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
-                          programa.tipo === 'licenciatura' 
-                            ? 'bg-orange-50' 
-                            : programa.tipo === 'maestria' 
-                            ? 'bg-green-50'
-                            : 'bg-purple-50'
-                        }`}>
-                          <svg className={`w-4 h-4 ${
-                            programa.tipo === 'licenciatura' 
-                              ? 'text-orange-600' 
-                              : programa.tipo === 'maestria' 
-                              ? 'text-green-600'
-                              : 'text-purple-600'
-                          }`} fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                          </svg>
-                        </div>
-                        <span className="font-medium">{programa.modalidad}</span>
-                      </div>
-                    </div>
-                    
-                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                      {programa.descripcion}
-                    </p>
-
-                    {/* Divisor */}
-                    <div className="border-t border-gray-100 mb-6"></div>
-
-                    {/* Botón de acción */}
-                    <button
-                      onClick={() => setSelectedProgram(programa)}
-                      className={`group/btn w-full relative px-6 py-4 rounded-xl font-semibold text-white overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ${
-                        programa.tipo === 'licenciatura' 
-                          ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700' 
-                          : programa.tipo === 'maestria' 
-                          ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800'
-                          : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800'
-                      }`}
-                    >
-                      <span className="relative flex items-center justify-center gap-2">
-                        <span>Conocer programa</span>
-                        <svg className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </span>
-                      
-                      {/* Efecto de brillo en hover */}
-                      <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    </button>
-                  </div>
-
-                  {/* Línea de acento inferior */}
-                  <div className={`h-1.5 w-full ${
-                    programa.tipo === 'licenciatura' 
-                      ? 'bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600' 
-                      : programa.tipo === 'maestria' 
-                      ? 'bg-gradient-to-r from-green-500 via-green-600 to-green-700'
-                      : 'bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700'
-                  }`}></div>
-                </div>
-              ))}
-            </div>
-
-            {/* Call to Action Final */}
-            <div className="mt-20 text-center">
-              <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-12 relative overflow-hidden">
-                {/* Elementos decorativos */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-0 left-0 w-64 h-64 bg-green-500 rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-0 right-0 w-64 h-64 bg-orange-500 rounded-full blur-3xl"></div>
-                </div>
-
-                <div className="relative">
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                    ¿No encuentras el programa que buscas?
-                  </h3>
-                  <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                    Nuestro equipo de asesores académicos está listo para ayudarte 
-                    a encontrar la opción educativa perfecta para ti
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link
-                      href="/contacto"
-                      className="bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl inline-flex items-center justify-center gap-2"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      Contactar a un asesor
-                    </Link>
-                    <a
-                      href="https://wa.me/526464470066?text=Hola,%20necesito%20información%20sobre%20los%20programas"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-xl inline-flex items-center justify-center gap-2"
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                      </svg>
-                      WhatsApp directo
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="relative max-w-4xl mx-auto px-4 text-center">
+            <span className="inline-block text-sm font-bold text-green-700 uppercase tracking-widest bg-green-50 px-6 py-2 rounded-full mb-4">
+              Oferta Educativa
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              Conoce toda nuestra oferta educativa
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Licenciaturas, Maestrías y Doctorado con reconocimiento oficial. Explora todos nuestros programas en un solo lugar.
+            </p>
+            <Link
+              href="/oferta-academica"
+              className="inline-block px-10 py-4 bg-gradient-to-r from-green-600 to-orange-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:from-green-700 hover:to-orange-700 transform hover:-translate-y-0.5 transition-all"
+            >
+              Ver Oferta Académica
+            </Link>
           </div>
-
-          {/* Animación CSS */}
-          <style jsx>{`
-            @keyframes fadeInUp {
-              from {
-                opacity: 0;
-                transform: translateY(30px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-          `}</style>
         </section>
 
-        {/* Estadísticas con Contadores Animados */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-green-800 via-green-700 to-green-900">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+        {/* Estadísticas con Contadores Animados - Mejorado */}
+        <section className="relative py-24 overflow-hidden">
+          {/* Fondo con efecto glassmorphism */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900 via-green-800 to-green-900">
+            <div className="absolute inset-0 backdrop-blur-3xl bg-white/5"></div>
+          </div>
+          
+          {/* Efectos de luz mejorados */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-green-400/20 rounded-full blur-3xl"></div>
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4">
@@ -1252,35 +963,104 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
-                <div className="text-5xl lg:text-6xl font-black text-white mb-2">
-                  <AnimatedCounter end={15} suffix="+" />
+              {/* Stat 1 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-orange-400/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                
+                <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:border-white/40 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                  {/* Ícono animado */}
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-400 to-orange-400 rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  
+                  <div className="text-5xl lg:text-6xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                    <AnimatedCounter end={15} suffix="+" />
+                  </div>
+                  
+                  <p className="text-green-100 text-lg font-semibold mb-4">Años de Experiencia</p>
+                  
+                  {/* Barra de progreso animada */}
+                  <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-green-400 to-orange-400 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000"></div>
+                  </div>
                 </div>
-                <p className="text-green-100 text-lg font-semibold">Años de Experiencia</p>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
-                <div className="text-5xl lg:text-6xl font-black text-orange-400 mb-2">
-                  <AnimatedCounter end={2500} suffix="+" />
+
+              {/* Stat 2 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-green-400/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                
+                <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:border-white/40 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-400 to-green-400 rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                    </svg>
+                  </div>
+                  
+                  <div className="text-5xl lg:text-6xl font-black text-orange-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+                    <AnimatedCounter end={2500} suffix="+" />
+                  </div>
+                  
+                  <p className="text-green-100 text-lg font-semibold mb-4">Estudiantes</p>
+                  
+                  <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-orange-400 to-green-400 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000"></div>
+                  </div>
                 </div>
-                <p className="text-green-100 text-lg font-semibold">Estudiantes</p>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
-                <div className="text-5xl lg:text-6xl font-black text-white mb-2">
-                  <AnimatedCounter end={98} suffix="%" />
+
+              {/* Stat 3 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-orange-400/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                
+                <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:border-white/40 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-400 to-orange-400 rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  </div>
+                  
+                  <div className="text-5xl lg:text-6xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                    <AnimatedCounter end={98} suffix="%" />
+                  </div>
+                  
+                  <p className="text-green-100 text-lg font-semibold mb-4">Satisfacción</p>
+                  
+                  <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-green-400 to-orange-400 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000"></div>
+                  </div>
                 </div>
-                <p className="text-green-100 text-lg font-semibold">Satisfacción</p>
               </div>
-              <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:scale-105 transition-transform duration-300">
-                <div className="text-5xl lg:text-6xl font-black text-orange-400 mb-2">
-                  <AnimatedCounter end={7} suffix="+" />
+
+              {/* Stat 4 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-green-400/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                
+                <div className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:border-white/40 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-400 to-green-400 rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                    </svg>
+                  </div>
+                  
+                  <div className="text-5xl lg:text-6xl font-black text-orange-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+                    <AnimatedCounter end={7} suffix="+" />
+                  </div>
+                  
+                  <p className="text-green-100 text-lg font-semibold mb-4">Programas</p>
+                  
+                  <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-orange-400 to-green-400 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000"></div>
+                  </div>
                 </div>
-                <p className="text-green-100 text-lg font-semibold">Programas</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Testimonios */}
+        {/* Testimonios - Mejorado */}
         <section className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
@@ -1293,42 +1073,98 @@ export default function Home() {
             </div>
 
             <div className="relative max-w-4xl mx-auto">
-              <div className="bg-white rounded-3xl shadow-2xl p-12 relative overflow-hidden">
-                <div className="absolute top-0 left-0 text-9xl text-green-100 font-serif leading-none">"</div>
-                <div className="absolute bottom-0 right-0 text-9xl text-green-100 font-serif leading-none">"</div>
-                
-                <div className="relative text-center">
-                  <div className="text-7xl mb-6">{testimonios[currentTestimonial].foto}</div>
-                  <p className="text-2xl text-gray-700 mb-6 italic leading-relaxed">
-                    {testimonios[currentTestimonial].comentario}
-                  </p>
-                  
-                  <div className="flex justify-center mb-4">
-                    {[...Array(testimonios[currentTestimonial].estrellas)].map((_, i) => (
-                      <svg key={i} className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              {/* Contenedor con transición */}
+              <div className="relative overflow-hidden">
+                {testimonios.map((testimonio, index) => (
+                  <div
+                    key={index}
+                    className={`transition-all duration-700 ${
+                      index === currentTestimonial
+                        ? 'opacity-100 transform translate-x-0 relative'
+                        : 'opacity-0 transform translate-x-full absolute inset-0 pointer-events-none'
+                    }`}
+                  >
+                    <div className="bg-white rounded-3xl shadow-2xl p-12 relative overflow-hidden">
+                      {/* Citas decorativas */}
+                      <svg className="absolute -top-4 -left-4 w-16 h-16 text-green-200" fill="currentColor" viewBox="0 0 32 32">
+                        <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"/>
                       </svg>
-                    ))}
-                  </div>
+                      
+                      <div className="relative text-center">
+                        {/* Avatar con efecto de brillo */}
+                        <div className="relative w-24 h-24 mx-auto mb-6">
+                          <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-orange-400 rounded-full animate-pulse-slow"></div>
+                          <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center text-5xl shadow-lg">
+                            {testimonio.foto}
+                          </div>
+                        </div>
+                        
+                        {/* Cita */}
+                        <p className="text-2xl text-gray-700 italic leading-relaxed mb-6 relative z-10">
+                          {testimonio.comentario}
+                        </p>
+                        
+                        {/* Estrellas con animación */}
+                        <div className="flex justify-center gap-1 mb-6">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className={`w-6 h-6 transition-all duration-200 hover:scale-125 ${
+                                i < testimonio.estrellas ? 'text-yellow-400' : 'text-gray-300'
+                              }`}
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                          ))}
+                        </div>
 
-                  <h4 className="text-xl font-bold text-gray-900">{testimonios[currentTestimonial].nombre}</h4>
-                  <p className="text-green-600 font-semibold">{testimonios[currentTestimonial].programa}</p>
-                </div>
+                        <h4 className="text-xl font-bold text-gray-900">{testimonio.nombre}</h4>
+                        <p className="text-green-600 font-semibold">{testimonio.programa}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {/* Indicadores */}
-              <div className="flex justify-center gap-3 mt-8">
-                {testimonios.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentTestimonial === index
-                        ? "bg-green-600 w-12"
-                        : "bg-gray-300 hover:bg-gray-400"
-                    }`}
-                  />
-                ))}
+              {/* Controles de navegación mejorados */}
+              <div className="flex justify-center items-center gap-4 mt-8">
+                <button
+                  onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonios.length) % testimonios.length)}
+                  className="w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+                  aria-label="Testimonio anterior"
+                >
+                  <svg className="w-6 h-6 text-gray-600 group-hover:text-green-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                {/* Indicadores mejorados */}
+                <div className="flex gap-2">
+                  {testimonios.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        currentTestimonial === index
+                          ? 'w-8 bg-green-600'
+                          : 'w-2 bg-gray-300 hover:bg-gray-400'
+                      }`}
+                      aria-label={`Ver testimonio ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                
+                <button
+                  onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonios.length)}
+                  className="w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+                  aria-label="Siguiente testimonio"
+                >
+                  <svg className="w-6 h-6 text-gray-600 group-hover:text-green-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -1426,6 +1262,100 @@ export default function Home() {
             </div>
           </div>
         )}
+
+        {/* Estilos CSS personalizados para animaciones */}
+        <style jsx>{`
+          @keyframes slow-zoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+          }
+
+          @keyframes float-slow {
+            0%, 100% { 
+              transform: translateY(0px) translateX(0px); 
+              opacity: 0.4;
+            }
+            33% { 
+              transform: translateY(-20px) translateX(10px); 
+              opacity: 0.6;
+            }
+            66% { 
+              transform: translateY(-10px) translateX(-10px); 
+              opacity: 0.5;
+            }
+          }
+
+          @keyframes float-medium {
+            0%, 100% { 
+              transform: translateY(0px) translateX(0px); 
+              opacity: 0.3;
+            }
+            50% { 
+              transform: translateY(-30px) translateX(15px); 
+              opacity: 0.5;
+            }
+          }
+
+          @keyframes float-fast {
+            0%, 100% { 
+              transform: translateY(0px); 
+              opacity: 0.3;
+            }
+            50% { 
+              transform: translateY(-40px); 
+              opacity: 0.6;
+            }
+          }
+
+          @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+
+          @keyframes fade-in-up {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+          }
+
+          .animate-slow-zoom {
+            animation: slow-zoom 20s ease-in-out infinite;
+          }
+
+          .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+          }
+
+          .animate-float-medium {
+            animation: float-medium 4s ease-in-out infinite;
+          }
+
+          .animate-float-fast {
+            animation: float-fast 3s ease-in-out infinite;
+          }
+
+          .animate-shimmer {
+            animation: shimmer 2s ease-in-out infinite;
+          }
+
+          .animate-fade-in-up {
+            animation: fade-in-up 0.6s ease-out;
+          }
+
+          .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+          }
+        `}</style>
       </main>
   );
 }

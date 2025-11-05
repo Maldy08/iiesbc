@@ -118,50 +118,48 @@ export default function MaestriaEducacion() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-purple-900/90 z-10"></div>
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/maestrias/maestria-educacion-iiesbc.jpg"
-            alt="Maestría en Educación"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        
-        <div className="relative z-20 max-w-7xl mx-auto px-4 text-center text-white">
-          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
-            <span className="text-blue-100 font-semibold">RVOE-BC (229 a la 235) M1/13</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            Maestría en
-            <span className="block text-blue-300 mt-2">
-              Educación
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Transforma la educación con propuestas innovadoras y soluciones efectivas
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contacto"
-              className="px-8 py-4 bg-white text-blue-900 hover:bg-blue-50 font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
-            >
-              Solicitar Información
-            </Link>
-            <Link
-              href="#plan-estudios"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-full transition-all border-2 border-white"
-            >
-              Ver Plan de Estudios
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* Estadísticas */}
+        <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-blue-800/40 to-purple-900/50 z-10"></div>
+          <div className="absolute inset-0 z-0">
+            <Image
+          src="/images/meducacion.jpg"
+          alt="Maestría en Educación"
+          fill
+          className="object-cover"
+          priority
+            />
+          </div>
+          
+          <div className="relative z-20 max-w-7xl mx-auto px-4 text-center text-white">
+
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          Maestría en
+          <span className="block text-blue-300 mt-2">
+            Educación
+          </span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          Transforma la educación con propuestas innovadoras y soluciones efectivas
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/contacto"
+            className="px-8 py-4 bg-white text-blue-900 hover:bg-blue-50 font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
+          >
+            Solicitar Información
+          </Link>
+          <Link
+            href="#plan-estudios"
+            className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-full transition-all border-2 border-white"
+          >
+            Ver Plan de Estudios
+          </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Estadísticas */}
       <section className="bg-white py-12 shadow-lg -mt-8 relative z-20 mx-4 md:mx-8 lg:mx-16 rounded-2xl">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

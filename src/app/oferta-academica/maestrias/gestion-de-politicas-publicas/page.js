@@ -108,50 +108,48 @@ export default function MaestriaPoliticasPublicas() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 to-indigo-900/90 z-10"></div>
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/maestrias/politicas-publicas-iiesbc.jpg"
-            alt="Maestría en Gestión de Políticas Públicas"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        
-        <div className="relative z-20 max-w-7xl mx-auto px-4 text-center text-white">
-          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
-            <span className="text-teal-100 font-semibold">RVOE Oficial</span>
+    
+        <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/60 to-indigo-900/60 z-10"></div>
+          <div className="absolute inset-0 z-0">
+            <Image
+          src="/images/mpublicas.jpg"
+          alt="Maestría en Gestión de Políticas Públicas"
+          fill
+          className="object-cover"
+          priority
+            />
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            Maestría en
-            <span className="block text-teal-300 mt-2">
-              Gestión de Políticas Públicas
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Lidera el cambio social y transforma el sector público
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contacto"
-              className="px-8 py-4 bg-white text-teal-900 hover:bg-teal-50 font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
-            >
-              Solicitar Información
-            </Link>
-            <Link
-              href="#plan-estudios"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-full transition-all border-2 border-white"
-            >
-              Ver Plan de Estudios
-            </Link>
-          </div>
-        </div>
-      </section>
+          
+          <div className="relative z-20 max-w-7xl mx-auto px-4 text-center text-white">
 
-      {/* Estadísticas */}
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          Maestría en
+          <span className="block text-teal-300 mt-2">
+            Gestión de Políticas Públicas
+          </span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          Lidera el cambio social y transforma el sector público
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/contacto"
+            className="px-8 py-4 bg-white text-teal-900 hover:bg-teal-50 font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
+          >
+            Solicitar Información
+          </Link>
+          <Link
+            href="#plan-estudios"
+            className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-full transition-all border-2 border-white"
+          >
+            Ver Plan de Estudios
+          </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Estadísticas */}
       <section className="bg-white py-12 shadow-lg -mt-8 relative z-20 mx-4 md:mx-8 lg:mx-16 rounded-2xl">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
