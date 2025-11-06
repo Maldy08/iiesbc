@@ -282,6 +282,14 @@ export default function Home() {
                           >
                             Inscríbete Ahora
                           </Link>
+                          <Link
+                            href="https://www.canva.com/design/DAG38pVRiqw/96Z1wuHznTSSzWeZrGt8Gg/view?utm_content=DAG38pVRiqw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8906bd033e"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
+                          >
+                            Biblioteca Virtual
+                          </Link>
                           </div>
                         </div>
                         
