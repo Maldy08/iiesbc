@@ -7,11 +7,11 @@ export default function CongresoGallery() {
   const [imageIndex, setImageIndex] = useState(0);
 
   const congresoImages = [
-    '/images/congreso/congreso-1.jpg',
-    '/images/congreso/congreso-2.jpg',
-    '/images/congreso/congreso-3.jpg',
-    '/images/congreso/congreso-4.jpg',
-    '/images/congreso/congreso-5.jpg',
+    '/images/congreso/congreso-1.png',
+    '/images/congreso/congreso-2.png',
+    '/images/congreso/congreso-3.png',
+    '/images/congreso/congreso-4.png',
+    '/images/congreso/congreso-5.png',
   ];
 
   const openModal = (index) => {
