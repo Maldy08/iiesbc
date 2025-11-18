@@ -1,5 +1,6 @@
-import { supabase, supabaseAdmin } from './client';
 
+import { supabase } from './client';
+import { supabaseAdmin } from './server';
 /**
  * Crear o actualizar un usuario
  */
