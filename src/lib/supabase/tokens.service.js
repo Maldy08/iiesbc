@@ -1,4 +1,5 @@
-import { supabase, supabaseAdmin } from './client';
+import { supabase } from './client';
+import { supabaseAdmin } from './server';
 
 /**
  * Generar un token único de 8 caracteres

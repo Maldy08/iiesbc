@@ -185,35 +185,7 @@ export default function Home() {
 
   return (
     <main className="pt-0">
-      <CongresoGallery />
 
-      
-        <section className="relative py-12 bg-gradient-to-br from-green-900/95 via-green-800/90 to-orange-900/95">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <Link
-          href="https://forms.gle/Vj5kYjGVVPAUkY4v7"
-          className="group relative inline-flex items-center gap-3 px-12 py-5 text-xl font-bold text-white rounded-2xl border border-white/20 bg-white/10 backdrop-blur-2xl overflow-hidden shadow-[0_30px_60px_-20px_rgba(249,115,22,0.65)] transition-all duration-300 hover:scale-105 hover:shadow-[0_40px_80px_-20px_rgba(16,185,129,0.7)]"
-            >
-          <span className="absolute inset-0 bg-gradient-to-r from-orange-500/40 via-white/10 to-green-400/40 opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-          <span className="absolute -inset-12 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-40 blur-3xl group-hover:opacity-60 transition-opacity duration-700" />
-          <span className="absolute left-1/2 -top-6 h-16 w-40 -translate-x-1/2 rounded-full bg-white/60 blur-2xl opacity-70 group-hover:translate-y-2 transition-all duration-700" />
-          <span className="relative z-10">Regístrate Aquí</span>
-          <span className="relative z-10">
-            <svg
-              className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </span>
-            </Link>
-            <p className="text-green-100 mt-4 text-lg">
-          ¡No te pierdas esta gran oportunidad de participar!
-            </p>
-          </div>
-        </section>
 
           <section className="relative overflow-hidden">
             <div className="absolute inset-0">
