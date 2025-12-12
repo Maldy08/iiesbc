@@ -6,6 +6,19 @@ import Image from 'next/image';
 export default function EventosAcademicos() {
   const [selectedImage, setSelectedImage] = useState(null);
 
+  const getGridColsClass = (columns) => {
+    switch (columns) {
+      case 3:
+        return 'md:grid-cols-3';
+      case 4:
+        return 'md:grid-cols-4';
+      case 5:
+        return 'md:grid-cols-5';
+      default:
+        return 'md:grid-cols-4';
+    }
+  };
+
   // Datos de eventos y sus imágenes
   const eventos = [
     {
@@ -112,7 +125,7 @@ export default function EventosAcademicos() {
   const closeModal = () => setSelectedImage(null);
 
   return (
-    <main className="pt-0">
+    <main className="pt-0 bg-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[500px] flex items-center">
         <div className="absolute inset-0">
@@ -123,29 +136,30 @@ export default function EventosAcademicos() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-800/60 via-green-700/50 to-orange-800/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/70 via-green-800/55 to-orange-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
         </div>
 
         {/* Efectos de luz */}
         <div className="absolute inset-0 z-10">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-20 right-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 py-32 text-center w-full">
-          <div className="inline-block p-6 bg-white/10 backdrop-blur-md rounded-full mb-8 shadow-2xl border border-white/20">
+          <div className="inline-block p-6 bg-white/10 backdrop-blur-md rounded-full mb-8 shadow-2xl border border-white/20 ring-1 ring-white/20">
             <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
           </div>
           
-          <h1 className="text-6xl lg:text-8xl font-black text-white mb-6 leading-tight drop-shadow-2xl">
-            <span className="inline-block hover:scale-110 transition-transform duration-300">Eventos</span>{" "}
-            <span className="text-orange-300 inline-block hover:scale-110 transition-transform duration-300">Académicos</span>
+          <h1 className="text-6xl lg:text-8xl font-black text-white mb-6 leading-tight drop-shadow-2xl tracking-tight">
+            <span className="inline-block">Eventos</span>{" "}
+            <span className="text-orange-300 inline-block">Académicos</span>
           </h1>
           
           <div className="max-w-3xl mx-auto">
-            <p className="text-2xl lg:text-3xl text-green-100 leading-relaxed font-light">
+            <p className="text-2xl lg:text-3xl text-green-100/90 leading-relaxed font-light">
               Momentos memorables que marcan nuestra historia institucional
             </p>
           </div>
@@ -170,8 +184,8 @@ export default function EventosAcademicos() {
         >
           {/* Efectos de luz de fondo */}
           <div className="absolute inset-0">
-            <div className={`absolute top-20 ${index % 2 === 0 ? 'right-20' : 'left-20'} w-96 h-96 ${index % 2 === 0 ? 'bg-green-200/10' : 'bg-orange-200/10'} rounded-full blur-3xl`}></div>
-            <div className={`absolute bottom-20 ${index % 2 === 0 ? 'left-20' : 'right-20'} w-96 h-96 ${index % 2 === 0 ? 'bg-orange-200/10' : 'bg-green-200/10'} rounded-full blur-3xl`}></div>
+            <div className={`absolute top-20 ${index % 2 === 0 ? 'right-20' : 'left-20'} w-96 h-96 ${index % 2 === 0 ? 'bg-green-200/10' : 'bg-orange-200/10'} rounded-full blur-3xl`} />
+            <div className={`absolute bottom-20 ${index % 2 === 0 ? 'left-20' : 'right-20'} w-96 h-96 ${index % 2 === 0 ? 'bg-orange-200/10' : 'bg-green-200/10'} rounded-full blur-3xl`} />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4">
@@ -188,7 +202,7 @@ export default function EventosAcademicos() {
                     {evento.fecha}
                   </span>
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-4">
+                <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-4 tracking-tight">
                   {evento.titulo}
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -203,11 +217,11 @@ export default function EventosAcademicos() {
             </div>
 
             {/* Galería de imágenes */}
-            <div className={`grid grid-cols-2 md:grid-cols-${evento.columns} gap-4`}>
+            <div className={`grid grid-cols-2 ${getGridColsClass(evento.columns)} gap-4`}>
               {evento.imagenes.map((imagen, imgIndex) => (
                 <div 
                   key={imgIndex} 
-                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105"
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ring-1 ring-black/5"
                   onClick={() => setSelectedImage(`/images/eventos-academicos/${imagen}`)}
                 >
                   <div className="aspect-square relative">
@@ -220,7 +234,7 @@ export default function EventosAcademicos() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center ring-1 ring-white/25">
                         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                         </svg>
@@ -238,9 +252,13 @@ export default function EventosAcademicos() {
       {selectedImage && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          role="dialog"
+          aria-modal="true"
           onClick={closeModal}
         >
           <button
+            type="button"
+            aria-label="Cerrar"
             className="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
             onClick={closeModal}
           >
@@ -270,12 +288,13 @@ export default function EventosAcademicos() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-700/65 via-green-800/55 to-orange-800/65"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-800/70 via-green-900/55 to-orange-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
         </div>
         
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-20 left-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-400/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-5xl mx-auto px-4 text-center">

@@ -42,7 +42,7 @@ export default function SobreNosotros() {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
-            Sobre <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-500 inline-block hover:scale-110 transition-transform duration-300">Nosotros</span>
+            Sobre <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-500 inline-block hover:scale-[1.03] transition-transform duration-300">Nosotros</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed font-light">
@@ -311,7 +311,7 @@ export default function SobreNosotros() {
               title="Nuestra Misión"
               gradient="from-green-500 via-green-600 to-green-700"
               hoverGradient="from-green-600 to-green-400"
-              lineColor="green-500"
+              tone="green"
             >
               El Instituto Interamericano de Estudios Superiores de Baja California tiene como esencia de su misión, filosofía y responsabilidad social, la formación de seres morales, virtuosos e íntegros en el pensar y en el hacer.
             </MisionVisionCard>
@@ -327,7 +327,7 @@ export default function SobreNosotros() {
               title="Nuestra Visión"
               gradient="from-orange-500 via-orange-600 to-orange-700"
               hoverGradient="from-orange-600 to-orange-400"
-              lineColor="orange-500"
+              tone="orange"
             >
               El Instituto orienta sus acciones hacia la combinación de conocimientos teóricos y prácticos de nivel licenciatura y Posgrado; a partir de un desarrollo de ideas que se presentan en forma ordenada y disciplinada, consolidando propuestas que se suscitan de un proceso de investigación que de acuerdo a los requerimientos invita a trabajar en forma colaborativa a diversas disciplinas y tiende redes con enfoque al impacto de crecimiento social y económico; tanto en los ámbitos locales, nacionales como internacionales.
             </MisionVisionCard>
@@ -378,7 +378,7 @@ export default function SobreNosotros() {
               }
               title="Horarios Flexibles"
               gradient="from-green-500 to-green-700"
-              hoverGlow="green-600"
+              tone="green"
             >
               Por qué sabemos que tu formación es muy importante, tenemos horarios flexibles para que elijas el que más te convenga.
             </BenefitCard>
@@ -389,7 +389,7 @@ export default function SobreNosotros() {
               }
               title="Equivalencia de Materias"
               gradient="from-orange-500 to-orange-700"
-              hoverGlow="orange-600"
+              tone="orange"
             >
               Si deseas continuar tus estudios con nosotros y ya tienes materias cursadas hacemos una equivalencia o revalidación en el programa que elijas.
             </BenefitCard>
@@ -400,7 +400,7 @@ export default function SobreNosotros() {
               }
               title="Plan de Becas"
               gradient="from-green-500 via-green-600 to-orange-600"
-              hoverGlow="green-600"
+              tone="green"
             >
               Tanto para licenciatura como para los cursos de posgrado existe la posibilidad de ser recipiente de una beca y de obtener facilidades de pago de colegiaturas.
             </BenefitCard>
@@ -411,7 +411,7 @@ export default function SobreNosotros() {
               }
               title="Vinculación"
               gradient="from-orange-500 via-orange-600 to-green-600"
-              hoverGlow="orange-600"
+              tone="orange"
             >
               Contamos con Convenios con dependencias de Gobierno, empresas privadas instituciones educativas del sector público y privado, con fines de vincular proyectos de investigación, así como realizar intercambios, prácticas profesionales y estancias de aprendizaje.
             </BenefitCard>
@@ -521,7 +521,7 @@ export default function SobreNosotros() {
 function StatCard({ number, label, gradient, delay }) {
   return (
     <div
-      className={`group bg-gradient-to-br ${gradient} rounded-xl p-6 text-center shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300`}
+      className={`group bg-gradient-to-br ${gradient} rounded-2xl p-6 text-center shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-all duration-300 ring-1 ring-black/5`}
       style={{ animationDelay: `${delay}ms` }}
     >
       <p className="text-3xl md:text-4xl font-black text-white mb-1">{number}</p>
@@ -531,13 +531,32 @@ function StatCard({ number, label, gradient, delay }) {
 }
 
 // Componente para Misión/Visión
-function MisionVisionCard({ icon, title, gradient, hoverGradient, lineColor, children }) {
+function MisionVisionCard({ icon, title, gradient, hoverGradient, tone = 'green', children }) {
+  const toneClasses = {
+    green: {
+      bar: 'via-green-500',
+      headingHover: 'group-hover:text-green-700',
+      lineLeft: 'to-green-500',
+      lineMid: 'from-green-500',
+      lineRight: 'from-green-500',
+    },
+    orange: {
+      bar: 'via-orange-500',
+      headingHover: 'group-hover:text-orange-700',
+      lineLeft: 'to-orange-500',
+      lineMid: 'from-orange-500',
+      lineRight: 'from-orange-500',
+    },
+  };
+
+  const t = toneClasses[tone] ?? toneClasses.green;
+
   return (
     <div className="group relative">
       <div className={`absolute -inset-2 bg-gradient-to-br ${hoverGradient} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500`} />
       
       <div className="relative bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl hover:shadow-3xl transform transition-all duration-500 hover:scale-[1.02] p-8 md:p-10 overflow-hidden border border-gray-200/50">
-        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-${lineColor} to-transparent`} />
+        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent ${t.bar} to-transparent`} />
         
         <div className="relative">
           <div className={`w-20 h-20 mx-auto mb-8 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500 shadow-xl`}>
@@ -546,13 +565,13 @@ function MisionVisionCard({ icon, title, gradient, hoverGradient, lineColor, chi
             </svg>
           </div>
 
-          <h3 className={`text-3xl md:text-4xl font-black text-gray-800 mb-6 text-center group-hover:text-${lineColor.split('-')[0]}-700 transition-colors duration-300`}>
+          <h3 className={`text-3xl md:text-4xl font-black text-gray-800 mb-6 text-center ${t.headingHover} transition-colors duration-300`}>
             {title}
           </h3>
 
           <div className="flex items-center justify-center gap-2 mb-8">
-            <div className={`w-8 h-1 bg-gradient-to-r from-transparent to-${lineColor} rounded-full`} />
-            <div className={`w-16 h-1 bg-gradient-to-r from-${lineColor} to-orange-500 rounded-full`} />
+            <div className={`w-8 h-1 bg-gradient-to-r from-transparent ${t.lineLeft} rounded-full`} />
+            <div className={`w-16 h-1 bg-gradient-to-r ${t.lineMid} to-orange-500 rounded-full`} />
             <div className={`w-8 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full`} />
           </div>
 
@@ -566,10 +585,23 @@ function MisionVisionCard({ icon, title, gradient, hoverGradient, lineColor, chi
 }
 
 // Componente para Beneficios
-function BenefitCard({ icon, title, gradient, hoverGlow, children }) {
+function BenefitCard({ icon, title, gradient, tone = 'green', children }) {
+  const toneClasses = {
+    green: {
+      glow: 'from-green-600 to-green-400',
+      titleHover: 'group-hover:text-green-700',
+    },
+    orange: {
+      glow: 'from-orange-600 to-orange-400',
+      titleHover: 'group-hover:text-orange-700',
+    },
+  };
+
+  const t = toneClasses[tone] ?? toneClasses.green;
+
   return (
     <div className="group relative">
-      <div className={`absolute -inset-1 bg-gradient-to-r ${hoverGlow ? `from-${hoverGlow} to-${hoverGlow.replace(/\d+/, (n) => parseInt(n) + 100)}` : 'from-green-600 to-green-400'} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300`} />
+      <div className={`absolute -inset-1 bg-gradient-to-r ${t.glow} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300`} />
       <div className="relative bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 border border-gray-200/50">
         <div className="flex items-start space-x-6">
           <div className="flex-shrink-0">
@@ -580,7 +612,7 @@ function BenefitCard({ icon, title, gradient, hoverGlow, children }) {
             </div>
           </div>
           <div className="flex-1">
-            <h3 className={`text-2xl font-bold text-gray-800 mb-3 group-hover:text-${hoverGlow?.split('-')[0] || 'green'}-700 transition-colors duration-300`}>
+            <h3 className={`text-2xl font-bold text-gray-800 mb-3 ${t.titleHover} transition-colors duration-300`}>
               {title}
             </h3>
             <p className="text-gray-600 leading-relaxed">

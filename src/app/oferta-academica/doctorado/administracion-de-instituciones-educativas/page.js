@@ -108,10 +108,11 @@ export default function DoctoradoAdministracionEducativa() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-white">
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/95 to-red-900/95 z-10"></div>
+      <section className="relative h-[70vh] min-h-[620px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/95 to-red-900/95 z-10" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/doctorados/administracion-instituciones-educativas.jpg"
@@ -121,12 +122,13 @@ export default function DoctoradoAdministracionEducativa() {
             priority
           />
         </div>
+        <div className="absolute -bottom-24 left-0 right-0 z-10 h-48 bg-gradient-to-t from-gray-50 to-transparent" />
         
         <div className="relative z-20 max-w-7xl mx-auto px-4 text-center text-white">
-          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-2 rounded-full mb-6 ring-1 ring-white/25">
             <span className="text-amber-100 font-semibold">RVOE Oficial • Nivel Doctoral</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
             Doctorado en
             <span className="block text-amber-300 mt-2">
               Administración de
@@ -135,19 +137,19 @@ export default function DoctoradoAdministracionEducativa() {
               Instituciones Educativas
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
             Forma investigadores de alto nivel y lidera la transformación educativa
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contacto"
-              className="px-8 py-4 bg-white text-amber-900 hover:bg-amber-50 font-bold rounded-full transition-all transform hover:scale-105 shadow-lg"
+              className="px-8 py-4 bg-white text-amber-900 hover:bg-amber-50 font-bold rounded-full transition-all transform hover:scale-[1.02] shadow-lg"
             >
               Solicitar Información
             </Link>
             <Link
               href="#plan-estudios"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-full transition-all border-2 border-white"
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-bold rounded-full transition-all border border-white/60"
             >
               Ver Plan de Estudios
             </Link>
@@ -156,24 +158,32 @@ export default function DoctoradoAdministracionEducativa() {
       </section>
 
       {/* Estadísticas */}
-      <section className="bg-white py-12 shadow-lg -mt-8 relative z-20 mx-4 md:mx-8 lg:mx-16 rounded-2xl">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            <div className="text-center p-4 rounded-xl hover:bg-amber-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
-              <div className="text-4xl mb-2">📅</div>
-              <div className="text-4xl font-bold text-amber-700 mb-2">6</div>
-              <div className="text-gray-600 font-semibold">Cuatrimestres</div>
-            </div>
-            <div className="text-center p-4 rounded-xl hover:bg-amber-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
-              <div className="text-4xl mb-2">📚</div>
-              <div className="text-4xl font-bold text-red-700 mb-2">12</div>
-              <div className="text-gray-600 font-semibold">Materias</div>
-            </div>
+      <section className="relative z-20 -mt-10">
+        <div className="mx-4 md:mx-8 lg:mx-16 rounded-2xl bg-white shadow-lg ring-1 ring-black/5">
+          <div className="max-w-6xl mx-auto px-4 py-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="group text-center p-5 rounded-2xl hover:bg-amber-50/70 transition-all duration-300">
+                <div className="mx-auto mb-3 h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-600 to-red-600 flex items-center justify-center text-2xl shadow-md">
+                  <span aria-hidden>📅</span>
+                </div>
+                <div className="text-4xl font-bold text-amber-700 mb-1">6</div>
+                <div className="text-gray-600 font-semibold">Cuatrimestres</div>
+              </div>
+              <div className="group text-center p-5 rounded-2xl hover:bg-amber-50/70 transition-all duration-300">
+                <div className="mx-auto mb-3 h-12 w-12 rounded-2xl bg-gradient-to-br from-red-600 to-amber-600 flex items-center justify-center text-2xl shadow-md">
+                  <span aria-hidden>📚</span>
+                </div>
+                <div className="text-4xl font-bold text-red-700 mb-1">12</div>
+                <div className="text-gray-600 font-semibold">Materias</div>
+              </div>
 
-            <div className="text-center p-4 rounded-xl hover:bg-amber-50 transition-all duration-300 cursor-pointer transform hover:scale-105">
-              <div className="text-4xl mb-2">🏆</div>
-              <div className="text-4xl font-bold text-red-700 mb-2">RVOE</div>
-              <div className="text-gray-600 font-semibold">Oficial</div>
+              <div className="group text-center p-5 rounded-2xl hover:bg-amber-50/70 transition-all duration-300">
+                <div className="mx-auto mb-3 h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-600 to-red-600 flex items-center justify-center text-2xl shadow-md">
+                  <span aria-hidden>🏆</span>
+                </div>
+                <div className="text-4xl font-bold text-red-700 mb-1">RVOE</div>
+                <div className="text-gray-600 font-semibold">Oficial</div>
+              </div>
             </div>
           </div>
         </div>
@@ -182,7 +192,7 @@ export default function DoctoradoAdministracionEducativa() {
       {/* Ventajas Competitivas */}
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900 tracking-tight">
             ¿Por qué estudiar este Doctorado?
           </h2>
           <p className="text-xl text-center text-gray-600 mb-12">
@@ -192,9 +202,11 @@ export default function DoctoradoAdministracionEducativa() {
             {ventajas.map((ventaja, idx) => (
               <div
                 key={idx}
-                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-amber-500"
+                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 ring-1 ring-black/5"
               >
-                <div className="text-5xl mb-4">{ventaja.icon}</div>
+                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-50 to-red-50 ring-1 ring-amber-200/60">
+                  <span className="text-4xl" aria-hidden>{ventaja.icon}</span>
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800">{ventaja.titulo}</h3>
                 <p className="text-gray-600">{ventaja.descripcion}</p>
               </div>
@@ -206,11 +218,11 @@ export default function DoctoradoAdministracionEducativa() {
       {/* Sección de Tabs con Información */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Columna Izquierda - Tabs de Información */}
             <div>
               <div className="mb-8">
-                <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
                   Información del Programa
                 </h2>
                 <p className="text-lg text-gray-600">
@@ -221,7 +233,7 @@ export default function DoctoradoAdministracionEducativa() {
               {/* Tabs Accordion Style */}
               <div className="space-y-4">
                 {/* Objetivo */}
-                <details className="group bg-gradient-to-r from-amber-50 to-red-50 rounded-xl overflow-hidden shadow-lg">
+                <details className="group rounded-2xl overflow-hidden bg-gradient-to-r from-amber-50 to-red-50 shadow-lg ring-1 ring-black/5">
                   <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-r from-amber-600 to-red-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -245,7 +257,7 @@ export default function DoctoradoAdministracionEducativa() {
                 </details>
 
                 {/* Perfil del Egresado */}
-                <details className="group bg-gradient-to-r from-red-50 to-amber-50 rounded-xl overflow-hidden shadow-lg">
+                <details className="group rounded-2xl overflow-hidden bg-gradient-to-r from-red-50 to-amber-50 shadow-lg ring-1 ring-black/5">
                   <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -272,7 +284,7 @@ export default function DoctoradoAdministracionEducativa() {
                 </details>
 
                 {/* Campo Laboral */}
-                <details className="group bg-gradient-to-r from-amber-50 to-red-50 rounded-xl overflow-hidden shadow-lg">
+                <details className="group rounded-2xl overflow-hidden bg-gradient-to-r from-amber-50 to-red-50 shadow-lg ring-1 ring-black/5">
                   <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-r from-amber-600 to-red-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -296,7 +308,7 @@ export default function DoctoradoAdministracionEducativa() {
                 </details>
 
                 {/* Requisitos de Ingreso */}
-                <details className="group bg-gradient-to-r from-red-50 to-amber-50 rounded-xl overflow-hidden shadow-lg">
+                <details className="group rounded-2xl overflow-hidden bg-gradient-to-r from-red-50 to-amber-50 shadow-lg ring-1 ring-black/5">
                   <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-amber-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -325,7 +337,7 @@ export default function DoctoradoAdministracionEducativa() {
             </div>
 
             {/* Columna Derecha - Imagen */}
-            <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
               <Image
                 src="/images/estudiantes-4.jpg"
                 alt="Doctorado en Administración de Instituciones Educativas"
@@ -333,6 +345,7 @@ export default function DoctoradoAdministracionEducativa() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-bold mb-2">
                   Lidera la Transformación
@@ -347,10 +360,10 @@ export default function DoctoradoAdministracionEducativa() {
       </section>
 
       {/* Plan de Estudios */}
-      <section id="plan-estudios" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section id="plan-estudios" className="py-20 bg-gradient-to-br from-gray-50 to-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 text-gray-900">
+            <h2 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 tracking-tight">
               Plan de Estudios
             </h2>
             <p className="text-xl text-gray-600">
@@ -360,7 +373,7 @@ export default function DoctoradoAdministracionEducativa() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {planEstudios.map((periodo) => (
-              <div key={periodo.cuatrimestre} className="bg-gradient-to-br from-amber-50 to-red-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+              <div key={periodo.cuatrimestre} className="bg-gradient-to-br from-amber-50 to-red-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow ring-1 ring-black/5">
                 <div className="text-center mb-6">
                   <div className="inline-block bg-gradient-to-r from-amber-600 to-red-600 text-white px-6 py-2 rounded-full font-bold mb-2">
                     {periodo.cuatrimestre}º Cuatrimestre
@@ -371,7 +384,7 @@ export default function DoctoradoAdministracionEducativa() {
                   {periodo.materias.map((materia, index) => (
                     <li
                       key={index}
-                      className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                      className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow ring-1 ring-black/5"
                     >
                       <p className="font-semibold text-gray-800 text-center">{materia}</p>
                     </li>
