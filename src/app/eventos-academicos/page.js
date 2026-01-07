@@ -22,6 +22,38 @@ export default function EventosAcademicos() {
   // Datos de eventos y sus imágenes
   const eventos = [
     {
+      id: 5,
+      titulo: "CONGRESO MULTIDISCIPLINARIO 2025",
+      fecha: "2025",
+      descripcion: "Fotografías destacadas de nuestro Congreso.",
+      basePath: "/images/congreso-2025",
+      imagenes: [
+        "052189bc-3043-40c0-b739-c860091cb514.jpg",
+        "1a6d7c6f-8da2-4d76-9c7c-49d51cbf2b58.jpg",
+        "224b872a-1fe0-4655-88fb-2f2b2c1772a5.jpg",
+        "2ac49dd5-ab98-4f7f-b64a-8971ef2a1608.jpg",
+        "2cb94d76-6d1b-4462-9188-5b515187331e.jpg",
+        "2de064e8-12f3-4ab4-be9c-175c39ca16cb.jpg",
+        "3176b57d-3f72-440b-8f51-6ded7524c917.jpg",
+        "3bc97a6a-de1d-4168-aa4e-282b34fc39e4.jpg",
+        "3e1ea3dd-a32b-464e-8054-377ab4b38857.jpg",
+        "488d68df-21c8-4c44-8d9e-3edce5d5aea7.jpg",
+        "4ba53be6-87df-495a-bfbc-942a04bc7104.jpg",
+        "4baab798-d2ba-419b-b326-c2ec9e6e2f17.jpg",
+        "6a63a469-5b73-432b-9b28-974827321236.jpg",
+        "6fc0a283-9454-4b63-82e6-ae6e20b0e27c.jpg",
+        "7de1ee53-dbae-4cfb-ac0f-db2f39b0829a.jpg",
+        "8f8c5b42-b983-456f-a5cf-5865dc45d1b5.jpg",
+        "90d52c0b-5d25-4c4f-871e-4e437ea06cbd.jpg",
+        "9cb45544-a31f-456e-86f0-1eb309d6f21e.jpg",
+        "b566e8cb-7bea-47f4-8abf-a01335aac1e2.jpg",
+        "b7d9e5c9-faa3-46a0-b069-640512d5afdd.jpg",
+        "f425537d-206b-4b9c-806f-228449e21783.jpg",
+        "ffad7f09-57a3-47ae-a796-52a4e0f11584.jpg"
+      ],
+      columns: 4
+    },
+    {
       id: 1,
       titulo: "GRADUACIÓN II GENERACIÓN 2017-2019",
       fecha: "09.11.2019",
@@ -222,11 +254,11 @@ export default function EventosAcademicos() {
                 <div 
                   key={imgIndex} 
                   className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ring-1 ring-black/5"
-                  onClick={() => setSelectedImage(`/images/eventos-academicos/${imagen}`)}
+                  onClick={() => setSelectedImage(evento.basePath ? `${evento.basePath}/${imagen}` : `/images/eventos-academicos/${imagen}`)}
                 >
                   <div className="aspect-square relative">
                     <Image
-                      src={`/images/eventos-academicos/${imagen}`}
+                      src={evento.basePath ? `${evento.basePath}/${imagen}` : `/images/eventos-academicos/${imagen}`}
                       alt={`${evento.titulo} - Foto ${imgIndex + 1}`}
                       fill
                       className="object-cover"
