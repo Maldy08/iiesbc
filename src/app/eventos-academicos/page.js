@@ -22,8 +22,30 @@ export default function EventosAcademicos() {
   // Datos de eventos y sus imágenes
   const eventos = [
     {
+      id: 6,
+      titulo: "GRADUACIÓN IV GENERACIÓN DOCTORADO EN ADMINISTRACIÓN DE INSTITUCIONES EDUCATIVAS 2023-2025",
+      fecha: "2025",
+      descripcion: "Ceremonia de graduación de la Quinta Generación 2023-2025 del Doctorado en Administración de Instituciones Educativas.",
+      basePath: "/images/eventos-academicos/grad-23-25-d",
+      imagenes: [
+        "04a12873-f59e-4e8b-ba1f-1167e3c659f3.jpg",
+        "49a55ec7-5e84-4a7a-b52f-b48bb4e934d8.jpg",
+        "4f0f6185-1f67-4d99-8232-8571df53f41c.jpg",
+        "5c2a1a3c-3ddf-42bc-9b4d-835d94f757d5.jpg",
+        "7a443493-62aa-4c43-9e55-64078091124a.jpg",
+        "7e23c770-fd61-4dbc-9526-5595196f0644.jpg",
+        "7e9a6ead-41c8-45fd-87fd-d454692049f9.jpg",
+        "7fdbc538-95b2-479f-bdb3-54dd3048cd18.jpg",
+        "85a2e63d-4890-437a-a6eb-726444aaf190.jpg",
+        "a5e573ff-e19e-4b8a-97e1-e590025fd346.jpg",
+        "b835d6ec-ace8-462f-a58a-4c7f30336ab9.jpg",
+        "e56378af-a005-431c-89a6-02fac4cec101.jpg"
+      ],
+      columns: 4
+    },
+    {
       id: 5,
-      titulo: "CONGRESO MULTIDISCIPLINARIO 2025",
+      titulo: "CONGRESO MULTIDISCIPLINARIO DE GESTIÓN DIRECTIVA: \"IMPACTO, COMPROMISOS Y ACCIONES COLABORATIVAS EN UN CONTEXTO EDUCATIVO GLOBAL\"",
       fecha: "2025",
       descripcion: "Fotografías destacadas de nuestro Congreso.",
       basePath: "/images/congreso-2025",
@@ -234,7 +256,7 @@ export default function EventosAcademicos() {
                     {evento.fecha}
                   </span>
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-4 tracking-tight">
+                <h2 className="text-3xl lg:text-4xl font-black text-gray-800 mb-4 tracking-tight">
                   {evento.titulo}
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
