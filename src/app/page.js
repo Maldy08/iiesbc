@@ -185,47 +185,6 @@ export default function Home() {
 
   return (
     <main className="pt-0">
-
-
-      <section className="relative overflow-hidden bg-black">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Image
-            src="/images/biblioteca-virtual.jpg"
-            alt="Instituto Interamericano de Estudios Superiores"
-            fill
-            className="object-contain scale-105 animate-slow-zoom"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        </div>
-
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/40 rounded-full animate-float-slow" />
-          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-green-400/30 rounded-full animate-float-medium" />
-          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-orange-400/30 rounded-full animate-float-fast" />
-          <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-white/30 rounded-full animate-float-slow" style={{ animationDelay: "1s" }} />
-          <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-green-300/20 rounded-full animate-float-medium" style={{ animationDelay: "2s" }} />
-        </div>
-
-        <div className="relative z-10 min-h-screen flex items-center">
-          <div className="max-w-7xl mx-auto px-4 w-full">
-            <div className="flex justify-center">
-              <Link
-                href="https://www.canva.com/design/DAG38pVRiqw/96Z1wuHznTSSzWeZrGt8Gg/view?utm_content=DAG38pVRiqw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8906bd033e"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex justify-center rounded-2xl px-10 py-4 text-lg font-semibold text-white border border-white/20 bg-white/10 backdrop-blur-2xl overflow-hidden shadow-[0_25px_60px_-25px_rgba(249,115,22,0.7)] transition-all duration-300 hover:scale-105 hover:shadow-[0_35px_80px_-25px_rgba(16,185,129,0.7)]"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-orange-500/40 via-white/10 to-green-400/40 opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-                <span className="absolute -inset-10 bg-gradient-to-t from-white/50 via-transparent to-transparent opacity-40 blur-3xl group-hover:opacity-60 transition-opacity duration-700" />
-                <span className="absolute left-1/2 -top-8 h-16 w-32 -translate-x-1/2 rounded-full bg-white/70 blur-3xl opacity-80 group-hover:translate-y-3 transition-all duration-700" />
-                <span className="relative z-10">Acceder al contenido</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Hero Section - Presentación Principal */}
       <section className="relative overflow-hidden">
         {/* Imagen de fondo con overlay mejorado */}
@@ -341,6 +300,45 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-black">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/images/biblioteca-virtual.jpg"
+            alt="Instituto Interamericano de Estudios Superiores"
+            fill
+            className="object-contain scale-105 animate-slow-zoom"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        </div>
+
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/40 rounded-full animate-float-slow" />
+          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-green-400/30 rounded-full animate-float-medium" />
+          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-orange-400/30 rounded-full animate-float-fast" />
+          <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-white/30 rounded-full animate-float-slow" style={{ animationDelay: "1s" }} />
+          <div className="absolute bottom-1/3 left-1/2 w-3 h-3 bg-green-300/20 rounded-full animate-float-medium" style={{ animationDelay: "2s" }} />
+        </div>
+
+        <div className="relative z-10 min-h-screen flex items-center">
+          <div className="max-w-7xl mx-auto px-4 w-full">
+            <div className="flex justify-center">
+              <Link
+                href="https://www.canva.com/design/DAG38pVRiqw/96Z1wuHznTSSzWeZrGt8Gg/view?utm_content=DAG38pVRiqw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8906bd033e"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex justify-center rounded-2xl px-10 py-4 text-lg font-semibold text-white border border-white/20 bg-white/10 backdrop-blur-2xl overflow-hidden shadow-[0_25px_60px_-25px_rgba(249,115,22,0.7)] transition-all duration-300 hover:scale-105 hover:shadow-[0_35px_80px_-25px_rgba(16,185,129,0.7)]"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-orange-500/40 via-white/10 to-green-400/40 opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                <span className="absolute -inset-10 bg-gradient-to-t from-white/50 via-transparent to-transparent opacity-40 blur-3xl group-hover:opacity-60 transition-opacity duration-700" />
+                <span className="absolute left-1/2 -top-8 h-16 w-32 -translate-x-1/2 rounded-full bg-white/70 blur-3xl opacity-80 group-hover:translate-y-3 transition-all duration-700" />
+                <span className="relative z-10">Acceder al contenido</span>
+              </Link>
             </div>
           </div>
         </div>
