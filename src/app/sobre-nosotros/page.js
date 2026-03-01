@@ -387,7 +387,7 @@ export default function SobreNosotros() {
               icon={
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               }
-              title="Equivalencia de Materias"
+              title="Equivalencia y Revalidación de Materias"
               gradient="from-orange-500 to-orange-700"
               tone="orange"
             >
