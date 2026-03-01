@@ -371,7 +371,7 @@ export default function SobreNosotros() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <BenefitCard
               icon={
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -405,16 +405,114 @@ export default function SobreNosotros() {
               Tanto para licenciatura como para los cursos de posgrado existe la posibilidad de ser recipiente de una beca y de obtener facilidades de pago de colegiaturas.
             </BenefitCard>
 
-            <BenefitCard
-              icon={
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              }
-              title="Vinculación"
-              gradient="from-orange-500 via-orange-600 to-green-600"
-              tone="orange"
-            >
-              Contamos con Convenios con dependencias de Gobierno, empresas privadas instituciones educativas del sector público y privado, con fines de vincular proyectos de investigación, así como realizar intercambios, prácticas profesionales y estancias de aprendizaje.
-            </BenefitCard>
+          </div>
+        </div>
+      </section>
+
+      {/* Vinculación */}
+      <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-white via-green-50/20 to-orange-50/20">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-green-200/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-orange-200/15 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-orange-100 to-green-100 mb-4">
+              <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Vinculación</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
+              <span className="text-gray-900">Nuestros</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-700">Convenios</span>
+            </h2>
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="w-12 h-1 bg-gradient-to-r from-transparent to-green-600 rounded-full" />
+              <div className="w-32 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full" />
+              <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
+            </div>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+              Contamos con convenios con dependencias de Gobierno, empresas privadas e instituciones educativas del sector público y privado, con fines de vincular proyectos de investigación, así como realizar intercambios, prácticas profesionales y estancias de aprendizaje.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* Convenios Nacionales */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-green-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl transition-all duration-300">
+                {/* Encabezado del bloque */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-800 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-black text-gray-800">Convenios Nacionales</h3>
+                    <div className="w-16 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full mt-1" />
+                  </div>
+                </div>
+
+                {/* Logos nacionales */}
+                <div className="grid grid-cols-3 gap-6">
+                  {[
+                    { src: "/images/vinculacion/cobash.png", alt: "COBACH" },
+                    { src: "/images/vinculacion/cecyte.png", alt: "CECYTEBC" },
+                    { src: "/images/vinculacion/gobbc.png", alt: "Gobierno del Estado de Baja California" },
+                  ].map((logo) => (
+                    <div
+                      key={logo.alt}
+                      className="flex flex-col items-center gap-2 p-4 rounded-xl bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 transition-all duration-300 hover:shadow-md"
+                    >
+                      <div className="relative w-full h-16">
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <span className="text-xs font-semibold text-gray-500 text-center leading-tight">{logo.alt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Convenios Internacionales */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-orange-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
+              <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl transition-all duration-300">
+                {/* Encabezado del bloque */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-black text-gray-800">Convenios Internacionales</h3>
+                    <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-green-600 rounded-full mt-1" />
+                  </div>
+                </div>
+
+                {/* Logo internacional */}
+                <div className="flex justify-center">
+                  <div className="flex flex-col items-center gap-2 p-6 rounded-xl bg-gray-50 hover:bg-orange-50 border border-gray-100 hover:border-orange-200 transition-all duration-300 hover:shadow-md w-48">
+                    <div className="relative w-full h-24">
+                      <Image
+                        src="/images/vinculacion/salamanca.jpg"
+                        alt="Universidad de Salamanca"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-xs font-semibold text-gray-500 text-center leading-tight">Universidad de Salamanca</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

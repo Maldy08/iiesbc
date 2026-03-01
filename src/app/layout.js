@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './globals.css'; // Asegúrate de tener un archivo de estilos globales
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'IIESBC - Instituto Interamericano de Estudios Superiores de Baja California',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
           {children}
         </div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
