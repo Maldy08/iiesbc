@@ -1,5 +1,10 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: 'Contacto',
+  description: 'Ponte en contacto con IIESBC. Información sobre ubicaciones, teléfonos y atención para resolver tus dudas.',
+};
+
 export default function Contacto() {
   return (
     <main className="pt-0">

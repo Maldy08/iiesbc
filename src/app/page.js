@@ -185,6 +185,39 @@ export default function Home() {
 
   return (
     <main className="pt-0">
+      {/* Schema.org JSON-LD para Universidad */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollegeOrUniversity",
+            "name": "Instituto Interamericano de Estudios Superiores de Baja California (IIESBC)",
+            "url": "https://www.iiesbc.mx",
+            "logo": "https://www.iiesbc.mx/images/logo.png",
+            "sameAs": [
+              "https://www.facebook.com/share/1D6PU7xWbP/",
+              "https://www.instagram.com/iiesbc"
+            ],
+            "description": "Transformamos vidas a través de la educación superior de calidad, formando profesionales competitivos en licenciaturas, maestrías y doctorados en Mexicali.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Río Fuerte #1692, Col. Independencia Magisterial",
+              "addressLocality": "Mexicali",
+              "addressRegion": "B.C.",
+              "postalCode": "21290",
+              "addressCountry": "MX"
+            },
+            "telephone": "+526865649010",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+52-686-564-9010",
+              "contactType": "Admissions",
+              "email": "im.iiesbc@gmail.com"
+            }
+          })
+        }}
+      />
       {/* Hero Section - Presentación Principal */}
       <section className="relative overflow-hidden">
         {/* Imagen de fondo con overlay mejorado */}
@@ -221,20 +254,20 @@ export default function Home() {
                     <span className="text-white text-sm font-semibold">Inscripciones Abiertas 2025</span>
                   </div>
 
-                  <h1 className="text-6xl lg:text-8xl font-black mb-6 leading-tight text-white transform hover:scale-105 transition-transform duration-300 inline-block">
+                  <div className="text-6xl lg:text-8xl font-black mb-6 leading-tight text-white transform hover:scale-105 transition-transform duration-300 inline-block">
                     <span className="text-green-400 drop-shadow-lg">IIES</span>
                     <span className="text-orange-400 drop-shadow-lg">BC</span>
-                  </h1>
+                  </div>
 
                   {/* Línea animada con gradiente */}
                   <div className="relative w-64 h-2 bg-gradient-to-r from-green-400 via-orange-400 to-green-400 mx-auto lg:mx-0 rounded-full mb-6 overflow-hidden">
                     <div className="absolute inset-0 bg-white/50 animate-shimmer"></div>
                   </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                  <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     Instituto Interamericano de<br />
                     Estudios Superiores de<br />
                     <span className="text-orange-400">Baja California</span>
-                  </h2>
+                  </h1>
                 </div>
 
                 <p className="text-xl text-gray-200 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -265,9 +298,9 @@ export default function Home() {
                 <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 max-w-md shadow-2xl border border-gray-200 transform hover:scale-105 transition-transform duration-300">
                   <div className="text-center">
                     <div className="mb-6">
-                      <h3 className="text-2xl font-black text-orange-500 mb-2">¡Tu futuro comienza aquí!</h3>
-                      <h4 className="text-4xl font-black text-green-600 mb-4">INSCRIPCIONES</h4>
-                      <h4 className="text-4xl font-black text-yellow-500">ABIERTAS</h4>
+                      <p className="text-2xl font-black text-orange-500 mb-2">¡Tu futuro comienza aquí!</p>
+                      <p className="text-4xl font-black text-green-600 mb-4 block">INSCRIPCIONES</p>
+                      <p className="text-4xl font-black text-yellow-500 block">ABIERTAS</p>
                     </div>
 
                     <div className="space-y-4 mb-6">
@@ -443,9 +476,9 @@ export default function Home() {
                   </svg>
                 </div>
 
-                <h5 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-green-700 transition-colors duration-300">
+                <h3 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-green-700 transition-colors duration-300">
                   📚 CLASES INSTITUCIONALES
-                </h5>
+                </h3>
 
                 <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-orange-500 mx-auto mb-6 rounded-full"></div>
 
@@ -476,9 +509,9 @@ export default function Home() {
                   </svg>
                 </div>
 
-                <h5 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-orange-700 transition-colors duration-300">
+                <h3 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-orange-700 transition-colors duration-300">
                   🤝 VINCULACIÓN
-                </h5>
+                </h3>
 
                 <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mb-6 rounded-full"></div>
 
@@ -510,9 +543,9 @@ export default function Home() {
                   </svg>
                 </div>
 
-                <h5 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-green-700 transition-colors duration-300">
+                <h3 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-green-700 transition-colors duration-300">
                   🎓 BECAS
-                </h5>
+                </h3>
 
                 <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-orange-500 mx-auto mb-6 rounded-full"></div>
 
@@ -543,9 +576,9 @@ export default function Home() {
                   </svg>
                 </div>
 
-                <h5 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-orange-700 transition-colors duration-300">
+                <h3 className="text-2xl font-black text-gray-800 mb-4 group-hover:text-orange-700 transition-colors duration-300">
                   ⏰ HORARIOS FLEXIBLES
-                </h5>
+                </h3>
 
                 <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-green-500 mx-auto mb-6 rounded-full"></div>
 
@@ -596,12 +629,12 @@ export default function Home() {
 
           {/* Mensaje principal */}
           <div className="space-y-8 mb-16">
-            <h1 className="text-6xl lg:text-8xl font-black text-white mb-6 leading-tight">
+            <h2 className="text-6xl lg:text-8xl font-black text-white mb-6 leading-tight">
               <span className="inline-block transform hover:scale-105 transition-transform duration-300">¡Ponemos</span>{" "}
               <span className="text-orange-300 inline-block transform hover:scale-105 transition-transform duration-300">el éxito</span>{" "}
               <span className="inline-block transform hover:scale-105 transition-transform duration-300">a tu</span>{" "}
               <span className="text-yellow-300 inline-block transform hover:scale-105 transition-transform duration-300 font-extrabold">alcance!</span>
-            </h1>
+            </h2>
 
             <p className="text-2xl lg:text-3xl text-green-100 max-w-4xl mx-auto leading-relaxed font-light">
               Más que una institución educativa, somos tu puerta hacia un futuro lleno de oportunidades
