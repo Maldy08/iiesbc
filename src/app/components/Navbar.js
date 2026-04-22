@@ -5,17 +5,58 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+const NAV_OFERTA = [
+  {
+    label: "Licenciaturas",
+    items: [
+      { href: "/oferta-academica/licenciaturas/derecho", name: "Derecho" },
+      { href: "/oferta-academica/licenciaturas/criminologia", name: "Criminología" },
+      { href: "/oferta-academica/licenciaturas/ciencias-de-la-educacion", name: "Ciencias de la Educación" },
+    ],
+  },
+  {
+    label: "Maestrías",
+    items: [
+      { href: "/oferta-academica/maestrias/educacion", name: "Educación" },
+      { href: "/oferta-academica/maestrias/administracion-competitiva", name: "Administración Competitiva" },
+      { href: "/oferta-academica/maestrias/gestion-de-politicas-publicas", name: "Gestión de Políticas Públicas" },
+    ],
+  },
+  {
+    label: "Doctorado",
+    items: [
+      {
+        href: "/oferta-academica/doctorado/administracion-de-instituciones-educativas",
+        name: "Administración de Instituciones Educativas",
+      },
+    ],
+  },
+  {
+    label: "Diplomados",
+    items: [
+      { href: "/oferta-academica/diplomados/desarrollo-del-lenguaje", name: "Desarrollo del Lenguaje" },
+      { href: "/oferta-academica/diplomados/transtornos-del-neurodesarrollo", name: "Trastornos del Neurodesarrollo" },
+    ],
+  },
+];
+
+const NAV_LINKS = [
+  { href: "/", label: "Inicio" },
+  { href: "/sobre-nosotros", label: "Sobre Nosotros" },
+  { href: "/eventos-academicos", label: "Eventos Académicos" },
+  { href: "/contacto", label: "Contacto" },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOfertaOpen, setMobileOfertaOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState(null);
   const dropdownRef = useRef(null);
 
-  // Helpers
   const isActive = useCallback(
-    (href) => pathname === href || pathname.startsWith(href + "/"),
+    (href) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/")),
     [pathname]
   );
 
@@ -55,15 +96,13 @@ export default function Navbar() {
   useEffect(() => {
     const onDown = (e) => {
       if (!dropdownRef.current) return;
-      if (!dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false);
-      }
+      if (!dropdownRef.current.contains(e.target)) setDropdownOpen(false);
     };
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
   }, []);
 
-  // Close with Escape + on route change
+  // Close with Escape
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") {
@@ -74,146 +113,114 @@ export default function Navbar() {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
+
+  // Close on route change
   useEffect(() => {
     setDropdownOpen(false);
     setMobileMenuOpen(false);
+    setMobileOfertaOpen(false);
   }, [pathname]);
 
-  const navLink = (href) =>
-    `group relative flex items-center transition-all duration-300 px-5 py-2 font-medium tracking-wide rounded-lg ${
-      isActive(href)
-        ? "text-green-700"
-        : "text-gray-700 hover:text-green-700"
-    }`;
+  const ofertaActive = pathname.startsWith("/oferta-academica");
+
+  const desktopLinkClass = (active) =>
+    [
+      "relative inline-flex items-center px-1 py-1 font-display text-[0.9rem] font-medium tracking-[0.01em] transition-colors duration-300",
+      active
+        ? "text-[var(--color-primary-green)]"
+        : "text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]",
+    ].join(" ");
 
   return (
     <nav
       className={[
-        "sticky top-0 z-50 border-b border-white/20 transition-all duration-300",
-        "bg-white/90 supports-[backdrop-filter]:backdrop-blur-md",
-        scrolled ? "py-2 bg-white/95 shadow-xl" : "py-4 shadow-lg",
+        "sticky top-0 z-50 transition-all duration-300",
+        "border-b backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md",
+        scrolled
+          ? "border-[var(--color-line)] bg-white/95 py-2 shadow-[var(--shadow-card)]"
+          : "border-[var(--color-line)]/60 bg-white/80 py-3",
       ].join(" ")}
       aria-label="Navegación principal"
     >
-      {/* Skip link */}
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 rounded bg-white/95 px-3 py-2 shadow"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 rounded-md bg-white px-3 py-2 text-sm font-medium text-[var(--color-ink)] shadow-[var(--shadow-card)]"
       >
         Saltar al contenido
       </a>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
         <Link
           href="/"
-          className="group/logo flex items-center gap-3 transition-transform duration-300 hover:scale-[1.03]"
+          className="group/logo flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02]"
           aria-label="Ir al inicio"
         >
-          <div className="relative">
-            {/* Animated halo on hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-orange-400 rounded-full blur-lg opacity-0 group-hover/logo:opacity-30 transition-opacity duration-500" />
-            <Image
-              src="/images/ICO.png"
-              alt="Ícono IIESBC"
-              width={scrolled ? 60 : 80}
-              height={scrolled ? 60 : 80}
-              priority
-              sizes="(max-width: 1024px) 48px, 80px"
-              className="relative flex-shrink-0 transition-all duration-300 group-hover/logo:rotate-6"
-            />
-          </div>
+          <Image
+            src="/images/ICO.png"
+            alt="Ícono IIESBC"
+            width={scrolled ? 52 : 68}
+            height={scrolled ? 52 : 68}
+            priority
+            sizes="(max-width: 1024px) 48px, 68px"
+            className="flex-shrink-0 transition-all duration-300"
+          />
           <Image
             src="/images/iiesbc.png"
             alt="Nombre IIESBC"
-            width={scrolled ? 150 : 200}
-            height={40}
-            sizes="(max-width: 1024px) 120px, 200px"
-            className="h-10 w-auto object-contain transition-all duration-300"
+            width={scrolled ? 140 : 180}
+            height={36}
+            sizes="(max-width: 1024px) 120px, 180px"
+            className="hidden h-9 w-auto object-contain transition-all duration-300 sm:block"
           />
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden h-full items-stretch space-x-2 lg:flex">
-          <li className="flex items-stretch">
-            <Link 
-              href="/" 
-              className={navLink("/")} 
-              aria-current={isActive("/") ? "page" : undefined}
-              onMouseEnter={() => setHoveredLink("/")}
-              onMouseLeave={() => setHoveredLink(null)}
-            >
-              <span className="relative z-10">Inicio</span>
-              {/* Gradient background on hover/active */}
-              {(hoveredLink === "/" || isActive("/")) && (
-                <span className="absolute inset-0 bg-gradient-to-r from-green-50 to-orange-50 rounded-lg -z-0 animate-fadeIn" />
-              )}
-              {/* Indicador de página activa */}
-              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
-                isActive("/") 
-                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-orange-600" 
-                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
-              }`} />
-            </Link>
+        <ul className="hidden items-center gap-7 lg:flex">
+          <li>
+            <DesktopLink href="/" active={isActive("/")} className={desktopLinkClass(isActive("/"))}>
+              Inicio
+            </DesktopLink>
           </li>
-          <li className="flex items-stretch">
-            <Link
+          <li>
+            <DesktopLink
               href="/sobre-nosotros"
-              className={navLink("/sobre-nosotros")}
-              aria-current={isActive("/sobre-nosotros") ? "page" : undefined}
-              onMouseEnter={() => setHoveredLink("/sobre-nosotros")}
-              onMouseLeave={() => setHoveredLink(null)}
+              active={isActive("/sobre-nosotros")}
+              className={desktopLinkClass(isActive("/sobre-nosotros"))}
             >
-              <span className="relative z-10">Sobre Nosotros</span>
-              {/* Gradient background on hover/active */}
-              {(hoveredLink === "/sobre-nosotros" || isActive("/sobre-nosotros")) && (
-                <span className="absolute inset-0 bg-gradient-to-r from-green-50 to-orange-50 rounded-lg -z-0 animate-fadeIn" />
-              )}
-              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
-                isActive("/sobre-nosotros") 
-                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-orange-600" 
-                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
-              }`} />
-            </Link>
+              Sobre Nosotros
+            </DesktopLink>
           </li>
 
-          {/* Dropdown */}
-          <li className="relative flex items-stretch" ref={dropdownRef}>
+          {/* Oferta Académica dropdown */}
+          <li className="relative" ref={dropdownRef}>
             <button
               type="button"
               aria-haspopup="menu"
               aria-expanded={dropdownOpen}
               aria-controls="menu-oferta"
-              onClick={() => {
-                setDropdownOpen((v) => !v);
-                setMobileMenuOpen(false);
-              }}
-              onMouseEnter={() => setHoveredLink("/oferta-academica")}
-              onMouseLeave={() => setHoveredLink(null)}
-              className={navLink("/oferta-academica")}
+              onClick={() => setDropdownOpen((v) => !v)}
+              className={[
+                desktopLinkClass(ofertaActive),
+                "group gap-1.5",
+              ].join(" ")}
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative">
                 Oferta Académica
-                <svg
-                  className={`ml-1 h-4 w-4 transform transition-transform duration-300 ${
-                    dropdownOpen ? "rotate-180" : ""
-                  }`}
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth="2" fill="none" />
-                </svg>
+                <span
+                  className={[
+                    "absolute -bottom-1 left-0 h-[1.5px] bg-[var(--color-primary-green)] transition-all duration-300",
+                    ofertaActive || dropdownOpen ? "w-full" : "w-0 group-hover:w-full",
+                  ].join(" ")}
+                />
               </span>
-              {/* Gradient background on hover/active */}
-              {(hoveredLink === "/oferta-academica" || isActive("/oferta-academica") || dropdownOpen) && (
-                <span className="absolute inset-0 bg-gradient-to-r from-green-50 to-orange-50 rounded-lg -z-0 animate-fadeIn" />
-              )}
-              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
-                isActive("/oferta-academica") 
-                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-orange-600" 
-                  : dropdownOpen
-                  ? "scale-x-100 bg-orange-500"
-                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
-              }`} />
+              <svg
+                className={`h-3.5 w-3.5 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""}`}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </button>
 
             <div
@@ -221,198 +228,261 @@ export default function Navbar() {
               role="menu"
               aria-label="Oferta Académica"
               className={[
-                "absolute left-0 mt-2 w-80 rounded-xl border border-gray-200/50 bg-white/95 backdrop-blur-md shadow-2xl overflow-hidden",
-                "transform transition-all duration-300 ease-out",
+                "absolute left-1/2 top-[calc(100%+0.75rem)] w-[min(760px,90vw)] -translate-x-1/2",
+                "rounded-2xl border border-[var(--color-line)] bg-white",
+                "shadow-[var(--shadow-ring)] overflow-hidden",
+                "transition-all duration-300 ease-out",
                 dropdownOpen
-                  ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-                  : "pointer-events-none -translate-y-2 scale-95 opacity-0",
+                  ? "pointer-events-auto translate-y-0 opacity-100"
+                  : "pointer-events-none -translate-y-1 opacity-0",
               ].join(" ")}
             >
-              {/* Arrow decoration */}
-              <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-l border-t border-gray-200/50 transform rotate-45" />
-              
-              <div className="py-3 relative">
-                <div className="border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-transparent px-4 py-2 text-xs font-bold uppercase tracking-wider text-green-700">
-                  🎓 Licenciaturas
-                </div>
-                <MenuItem href="/oferta-academica/licenciaturas/derecho">Lic. en Derecho</MenuItem>
-                <MenuItem href="/oferta-academica/licenciaturas/criminologia">Lic. en Criminología</MenuItem>
-                <MenuItem href="/oferta-academica/licenciaturas/ciencias-de-la-educacion">
-                  Lic. en Ciencias de la Educación
-                </MenuItem>
+              <div className="grid grid-cols-2 gap-x-8 gap-y-6 p-8 md:grid-cols-4">
+                {NAV_OFERTA.map((col) => (
+                  <div key={col.label} className="min-w-0">
+                    <div className="mb-3 flex items-center gap-2">
+                      <span className="text-eyebrow text-[var(--color-ink-muted)]">{col.label}</span>
+                    </div>
+                    <div className="mb-3 h-px bg-[var(--color-line)]" />
+                    <ul className="space-y-1.5">
+                      {col.items.map((it) => (
+                        <li key={it.href}>
+                          <Link
+                            href={it.href}
+                            role="menuitem"
+                            className="group/item flex items-start gap-2 rounded-md py-1.5 font-display text-[0.875rem] font-medium leading-snug text-[var(--color-ink)] transition-colors duration-300 hover:text-[var(--color-primary-green)]"
+                          >
+                            <span className="mt-[0.5em] inline-block h-1.5 w-1.5 flex-shrink-0 scale-0 rounded-full bg-[var(--color-primary-green)] transition-transform duration-300 group-hover/item:scale-100" />
+                            <span className="link-underline">{it.name}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
 
-                <div className="my-2 border-t border-gray-100" />
-
-                <div className="border-l-4 border-orange-500 bg-gradient-to-r from-orange-50 to-transparent px-4 py-2 text-xs font-bold uppercase tracking-wider text-orange-700">
-                  🎯 Maestrías
-                </div>
-                <MenuItem href="/oferta-academica/maestrias/educacion">Maestría en Educación</MenuItem>
-                <MenuItem href="/oferta-academica/maestrias/administracion-competitiva">
-                  Maestría en Administración Competitiva
-                </MenuItem>
-                <MenuItem href="/oferta-academica/maestrias/gestion-de-politicas-publicas">
-                  Maestría en Gestión de Políticas Públicas
-                </MenuItem>
-
-                <div className="my-2 border-t border-gray-100" />
-
-                <div className="border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-transparent px-4 py-2 text-xs font-bold uppercase tracking-wider text-purple-700">
-                  🏆 Doctorados
-                </div>
-                <MenuItem href="/oferta-academica/doctorado/administracion-de-instituciones-educativas">
-                  Doctorado en Administración de Instituciones Educativas
-                </MenuItem>
-
-                <div className="rounded-b-lg bg-gray-50 px-4 py-3">
-                  <Link
-                    href="/oferta-academica"
-                    className="text-sm font-semibold text-green-700 underline-offset-2 hover:text-orange-500 hover:underline"
-                    role="menuitem"
-                  >
-                    Ver toda la oferta académica →
-                  </Link>
-                </div>
+              <div className="flex items-center justify-between border-t border-[var(--color-line)] bg-[var(--color-surface)] px-8 py-4">
+                <Link
+                  href="/oferta-academica"
+                  role="menuitem"
+                  className="font-display text-sm font-semibold text-[var(--color-primary-green)]"
+                >
+                  <span className="link-underline">Ver toda la oferta académica →</span>
+                </Link>
+                <Link
+                  href="/eventos-academicos"
+                  role="menuitem"
+                  className="hidden font-display text-sm font-medium text-[var(--color-ink-soft)] transition-colors duration-300 hover:text-[var(--color-ink)] sm:inline"
+                >
+                  <span className="link-underline">Próximos eventos →</span>
+                </Link>
               </div>
             </div>
           </li>
 
-          <li className="flex items-stretch">
-            <Link
+          <li>
+            <DesktopLink
               href="/eventos-academicos"
-              className={navLink("/eventos-academicos")}
-              aria-current={isActive("/eventos-academicos") ? "page" : undefined}
-              onMouseEnter={() => setHoveredLink("/eventos-academicos")}
-              onMouseLeave={() => setHoveredLink(null)}
+              active={isActive("/eventos-academicos")}
+              className={desktopLinkClass(isActive("/eventos-academicos"))}
             >
-              <span className="relative z-10">Eventos Académicos</span>
-              {/* Gradient background on hover/active */}
-              {(hoveredLink === "/eventos-academicos" || isActive("/eventos-academicos")) && (
-                <span className="absolute inset-0 bg-gradient-to-r from-green-50 to-orange-50 rounded-lg -z-0 animate-fadeIn" />
-              )}
-              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
-                isActive("/eventos-academicos") 
-                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-orange-600" 
-                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
-              }`} />
-            </Link>
+              Eventos Académicos
+            </DesktopLink>
           </li>
-          <li className="flex items-stretch">
-            <Link
+          <li>
+            <DesktopLink
               href="/contacto"
-              className={navLink("/contacto")}
-              aria-current={isActive("/contacto") ? "page" : undefined}
-              onMouseEnter={() => setHoveredLink("/contacto")}
-              onMouseLeave={() => setHoveredLink(null)}
+              active={isActive("/contacto")}
+              className={desktopLinkClass(isActive("/contacto"))}
             >
-              <span className="relative z-10">Contacto</span>
-              {/* Gradient background on hover/active */}
-              {(hoveredLink === "/contacto" || isActive("/contacto")) && (
-                <span className="absolute inset-0 bg-gradient-to-r from-green-50 to-orange-50 rounded-lg -z-0 animate-fadeIn" />
-              )}
-              <span className={`absolute bottom-0 left-0 h-1 w-full origin-left transform transition-all duration-300 ${
-                isActive("/contacto") 
-                  ? "scale-x-100 bg-gradient-to-r from-green-600 to-orange-600" 
-                  : "scale-x-0 bg-green-600 group-hover:scale-x-100"
-              }`} />
-            </Link>
+              Contacto
+            </DesktopLink>
           </li>
         </ul>
 
-        {/* Botón hamburguesa */}
-        <button
-          onClick={() => {
-            setMobileMenuOpen((v) => !v);
-            setDropdownOpen(false);
-          }}
-          className="group relative rounded-lg p-2 transition-all duration-200 hover:bg-gradient-to-r hover:from-green-50 hover:to-orange-50 lg:hidden"
-          aria-label="Abrir menú móvil"
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-menu"
-        >
-          <span className="sr-only">Abrir menú</span>
-          <div className="space-y-1.5">
-            <span
-              className={`block h-0.5 w-6 bg-gradient-to-r from-green-600 to-orange-600 transition-all duration-300 ${
-                mobileMenuOpen ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span className={`block h-0.5 w-6 bg-gradient-to-r from-green-600 to-orange-600 transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
-            <span
-              className={`block h-0.5 w-6 bg-gradient-to-r from-green-600 to-orange-600 transition-all duration-300 ${
-                mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
-          </div>
-        </button>
-      </div>
+        {/* Right side: CTA + hamburger */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/oferta-academica"
+            className={[
+              "hidden items-center gap-2 rounded-full bg-[var(--color-primary-green)] px-5 py-2.5",
+              "font-display text-sm font-semibold text-white",
+              "shadow-[var(--shadow-card)] transition-all duration-300",
+              "hover:-translate-y-0.5 hover:bg-[#556e23] hover:shadow-[var(--shadow-card-hover)]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-green)]/40 focus-visible:ring-offset-2",
+              "lg:inline-flex",
+            ].join(" ")}
+          >
+            Inscríbete
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
 
-      {/* Menú móvil */}
-      <div
-        id="mobile-menu"
-        className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-          mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="border-t border-gray-200/50 bg-white/95 px-4 py-3 supports-[backdrop-filter]:backdrop-blur-md">
-          <div className="space-y-2">
-            <MobileItem href="/" active={isActive("/")} icon="🏠">Inicio</MobileItem>
-            <MobileItem href="/sobre-nosotros" active={isActive("/sobre-nosotros")} icon="👥">Sobre Nosotros</MobileItem>
-            <MobileItem href="/oferta-academica" active={isActive("/oferta-academica")} icon="📚">Oferta Académica</MobileItem>
-            <MobileItem href="/eventos-academicos" active={isActive("/eventos-academicos")} icon="🎓">Eventos Académicos</MobileItem>
-            <MobileItem href="/contacto" active={isActive("/contacto")} icon="📞">Contacto</MobileItem>
-          </div>
+          <button
+            onClick={() => {
+              setMobileMenuOpen((v) => !v);
+              setDropdownOpen(false);
+            }}
+            className="group relative rounded-lg p-2 text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-surface-alt)] lg:hidden"
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            <div className="space-y-[5px]">
+              <span
+                className={`block h-[1.5px] w-6 bg-current transition-all duration-300 ${
+                  mobileMenuOpen ? "translate-y-[6.5px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] w-6 bg-current transition-all duration-300 ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] w-6 bg-current transition-all duration-300 ${
+                  mobileMenuOpen ? "-translate-y-[6.5px] -rotate-45" : ""
+                }`}
+              />
+            </div>
+          </button>
         </div>
       </div>
 
-      {/* Custom CSS Animations */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-      `}</style>
+      {/* Mobile menu */}
+      <div
+        id="mobile-menu"
+        className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
+          mobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="max-h-[80vh] overflow-y-auto border-t border-[var(--color-line)] bg-white/98 px-4 py-4 supports-[backdrop-filter]:backdrop-blur-md sm:px-6">
+          <ul className="divide-y divide-[var(--color-line)]">
+            {NAV_LINKS.slice(0, 2).map((l) => (
+              <li key={l.href}>
+                <MobileLink href={l.href} active={isActive(l.href)}>
+                  {l.label}
+                </MobileLink>
+              </li>
+            ))}
+
+            {/* Oferta Académica accordion */}
+            <li>
+              <button
+                type="button"
+                onClick={() => setMobileOfertaOpen((v) => !v)}
+                aria-expanded={mobileOfertaOpen}
+                className={[
+                  "relative flex w-full items-center justify-between py-3 pl-4 pr-2 text-left font-display text-[0.95rem] font-medium transition-colors duration-300",
+                  ofertaActive ? "text-[var(--color-primary-green)]" : "text-[var(--color-ink)]",
+                ].join(" ")}
+              >
+                {ofertaActive && (
+                  <span className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full bg-[var(--color-primary-green)]" />
+                )}
+                <span>Oferta Académica</span>
+                <svg
+                  className={`h-4 w-4 text-[var(--color-ink-muted)] transition-transform duration-300 ${
+                    mobileOfertaOpen ? "rotate-180" : ""
+                  }`}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <div
+                className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
+                  mobileOfertaOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="min-h-0">
+                  <div className="space-y-4 pb-4 pl-4 pr-2 pt-1">
+                    {NAV_OFERTA.map((col) => (
+                      <div key={col.label}>
+                        <div className="text-eyebrow mb-2 text-[var(--color-ink-muted)]">{col.label}</div>
+                        <ul className="space-y-1 border-l border-[var(--color-line)] pl-3">
+                          {col.items.map((it) => (
+                            <li key={it.href}>
+                              <Link
+                                href={it.href}
+                                className="block py-1.5 font-display text-[0.875rem] font-medium leading-snug text-[var(--color-ink)] transition-colors duration-300 hover:text-[var(--color-primary-green)]"
+                              >
+                                {it.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                    <Link
+                      href="/oferta-academica"
+                      className="inline-block pt-1 font-display text-sm font-semibold text-[var(--color-primary-green)]"
+                    >
+                      <span className="link-underline">Ver toda la oferta académica →</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            {NAV_LINKS.slice(2).map((l) => (
+              <li key={l.href}>
+                <MobileLink href={l.href} active={isActive(l.href)}>
+                  {l.label}
+                </MobileLink>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            href="/oferta-academica"
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-primary-green)] px-5 py-3 font-display text-sm font-semibold text-white shadow-[var(--shadow-card)] transition-colors duration-300 hover:bg-[#556e23]"
+          >
+            Inscríbete
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }
 
-function MenuItem({ href, children }) {
+function DesktopLink({ href, active, className, children }) {
   return (
-    <Link
-      href={href}
-      role="menuitem"
-      className="group relative flex items-center px-4 py-3 text-sm text-gray-700 transition-all duration-300 hover:bg-gradient-to-r hover:from-green-600 hover:to-orange-600 hover:text-white rounded-md overflow-hidden"
-    >
-      {/* Sliding indicator bar */}
-      <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-green-500 to-orange-500 transform -translate-x-full transition-transform duration-300 group-hover:translate-x-0" />
-      <span className="mr-3 h-2 w-2 rounded-full bg-orange-500 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-125" />
-      {children}
+    <Link href={href} className={className + " group"} aria-current={active ? "page" : undefined}>
+      <span className="relative">
+        {children}
+        <span
+          className={[
+            "absolute -bottom-1 left-0 h-[1.5px] bg-[var(--color-primary-green)] transition-all duration-300",
+            active ? "w-full" : "w-0 group-hover:w-full",
+          ].join(" ")}
+        />
+      </span>
     </Link>
   );
 }
 
-function MobileItem({ href, active, icon, children }) {
+function MobileLink({ href, active, children }) {
   return (
     <Link
       href={href}
-      className={`group relative flex items-center gap-3 rounded-lg px-4 py-3 transition-all duration-300 overflow-hidden ${
-        active 
-          ? "bg-gradient-to-r from-green-100 to-orange-50 font-semibold text-green-700 shadow-md" 
-          : "text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-orange-50 hover:text-green-700"
-      }`}
+      className={[
+        "relative flex items-center py-3 pl-4 pr-2 font-display text-[0.95rem] font-medium transition-colors duration-300",
+        active
+          ? "text-[var(--color-primary-green)]"
+          : "text-[var(--color-ink)] hover:text-[var(--color-primary-green)]",
+      ].join(" ")}
+      aria-current={active ? "page" : undefined}
     >
-      {/* Active indicator */}
       {active && (
-        <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-green-600 to-orange-600 rounded-r" />
+        <span className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full bg-[var(--color-primary-green)]" />
       )}
-      <span className="text-xl">{icon}</span>
       {children}
     </Link>
   );
