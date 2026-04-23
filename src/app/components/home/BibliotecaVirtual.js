@@ -43,23 +43,6 @@ export default function BibliotecaVirtual() {
             </Link>
           </div>
 
-          <div className="lg:col-span-5 hidden lg:block">
-            <div className="relative rounded-3xl overflow-hidden ring-1 ring-white/10 aspect-[4/5] bg-black">
-              <Image
-                src="/images/biblioteca-virtual.jpg"
-                alt="Biblioteca virtual IIESBC"
-                fill
-                className="object-cover opacity-85"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <p className="text-eyebrow text-white/60 mb-2">Acervo digital</p>
-                <p className="font-display text-white text-2xl font-semibold leading-tight">
-                  Colecciones, revistas y bases de datos académicas
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

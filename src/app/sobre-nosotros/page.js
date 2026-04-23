@@ -5,720 +5,560 @@ import Link from "next/link";
 
 export default function SobreNosotros() {
   return (
-    <main id="main" className="relative isolate">
-      {/* Hero Section Mejorado */}
-      <section className="relative overflow-hidden min-h-[70vh] flex items-center">
-        {/* Background con parallax effect */}
+    <main id="main" className="relative isolate bg-[var(--color-surface)]">
+      {/* ─────────────────────────── Hero ─────────────────────────── */}
+      <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
             src="/images/sobre-nosotros/hero-sobre-nosotros.jpg"
             alt="Campus IIESBC"
             fill
-            className="object-cover"
             priority
+            className="object-cover scale-105 animate-slow-zoom"
           />
-          {/* Overlay gradiente mejorado */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/90 via-green-800/80 to-orange-900/70" />
-          
-          {/* Efectos de luz animados */}
-          <div className="absolute inset-0">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-green-500/20 rounded-full blur-3xl animate-float-medium" />
-          </div>
-
-          {/* Patrón decorativo */}
-          <div className="absolute inset-0 opacity-10" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '48px 48px'
-          }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1208]/85 via-[#0c1208]/60 to-[#0c1208]/92" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(246,140,36,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(102,130,44,0.22),transparent_55%)]" />
         </div>
 
-        {/* Contenido del hero */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 text-center w-full">
-          {/* Badge animado */}
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl mb-8">
-            <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping" />
-            <span className="text-sm font-semibold text-white uppercase tracking-wider">Nuestra Historia</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
-            Sobre <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-500 inline-block hover:scale-[1.03] transition-transform duration-300">Nosotros</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed font-light">
-            Conoce nuestra historia, misión y el compromiso que nos impulsa cada día
-          </p>
-          
-          {/* Decorador inferior */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-orange-400 rounded-full" />
-            <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            <div className="w-40 h-0.5 bg-gradient-to-r from-orange-400 to-green-400 rounded-full" />
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <div className="w-20 h-0.5 bg-gradient-to-r from-green-400 via-green-400 to-transparent rounded-full" />
-          </div>
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[24%] left-[18%] w-1.5 h-1.5 rounded-full bg-white/50 animate-float-slow" />
+          <span className="absolute top-[42%] right-[22%] w-2 h-2 rounded-full bg-[#f68c24]/45 animate-float-medium" style={{ animationDelay: "1.2s" }} />
+          <span className="absolute bottom-[30%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#a5c94c]/60 animate-float-fast" style={{ animationDelay: "0.6s" }} />
+        </div>
 
-          {/* Botón de scroll */}
-          <div className="mt-16 animate-bounce">
-            <svg className="w-8 h-8 mx-auto text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
+        <div className="relative min-h-[78vh] flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+            <div className="max-w-3xl animate-fade-in-up">
+              <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-xl border border-white/15 px-4 py-1.5 rounded-full mb-10">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 rounded-full bg-[#a5c94c] opacity-75 animate-ping" />
+                  <span className="relative rounded-full h-2 w-2 bg-[#a5c94c]" />
+                </span>
+                <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
+                  Nuestra Historia
+                </span>
+              </div>
+
+              <h1 className="font-display font-extrabold text-white text-display-xl tracking-display-tight text-balance mb-8">
+                Sobre <span className="text-[#f68c24]">Nosotros</span>
+              </h1>
+
+              <div className="relative w-40 h-px bg-gradient-to-r from-[#66822c] via-[#f68c24] to-transparent mb-10 overflow-hidden">
+                <span className="absolute inset-0 bg-white/60 animate-shimmer" />
+              </div>
+
+              <p className="text-white/85 text-lg lg:text-xl leading-relaxed max-w-2xl text-pretty">
+                Conoce nuestra historia, misión y el compromiso que nos impulsa cada día a
+                formar profesionales íntegros y competitivos.
+              </p>
+            </div>
           </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-white/60">
+          <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+          <span className="w-px h-10 bg-gradient-to-b from-white/70 to-transparent" />
         </div>
       </section>
 
-      {/* ¿Quiénes Somos? - Diseño mejorado */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background mejorado */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-green-50/30 to-orange-50/20">
-          <div className="absolute top-40 right-20 w-[600px] h-[600px] bg-green-200/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-40 left-20 w-[500px] h-[500px] bg-orange-200/20 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Header de sección mejorado */}
-          <div className="text-center mb-16">
-            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-orange-100 to-green-100 mb-4">
-              <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Conócenos</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-              <span className="text-gray-900">¿Quiénes</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">Somos?</span>
-            </h2>
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-12 h-1 bg-gradient-to-r from-transparent to-green-600 rounded-full" />
-              <div className="w-32 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full" />
-              <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Imagen mejorada */}
-            <div className="relative group order-2 lg:order-1">
-              {/* Efectos decorativos */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-green-600 to-orange-600 rounded-3xl opacity-20 group-hover:opacity-30 blur-2xl transition-all duration-500" />
-              <div className="absolute -inset-2 bg-gradient-to-br from-green-600/30 to-orange-600/30 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-all duration-500" />
-              
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+      {/* ───────────────────── ¿Quiénes Somos? ──────────────────── */}
+      <section className="relative py-24 lg:py-32 bg-[var(--color-surface)] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Imagen */}
+            <div className="lg:col-span-6 relative order-2 lg:order-1">
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
                 <Image
                   src="/images/sobre-nosotros/quienes-somos.jpg"
                   alt="Estudiantes IIESBC"
-                  width={600}
-                  height={500}
-                  className="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                
-                {/* Overlay con gradiente */}
-                <div className="absolute inset-0 bg-gradient-to-t from-green-900/80 via-transparent to-transparent" />
-                
-                {/* Badge flotante */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl transform group-hover:scale-105 transition-transform duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-orange-600 flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900">Excelencia Académica</p>
-                        <p className="text-sm text-gray-600">Certificada y Reconocida</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1f14]/35 via-transparent to-transparent" />
+              </div>
+
+              <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 bg-white rounded-2xl px-6 py-4 shadow-[var(--shadow-ring)] ring-1 ring-black/5">
+                <p className="text-eyebrow text-[#f68c24] mb-1">Excelencia</p>
+                <p className="font-display font-semibold text-[#1a1f14] text-sm">Certificada y reconocida</p>
+              </div>
+
+              <div className="absolute -bottom-6 -left-4 lg:-bottom-8 lg:-left-8 bg-[#66822c] text-white rounded-2xl px-6 py-5 shadow-[0_20px_50px_-20px_rgba(102,130,44,0.7)] hidden sm:block">
+                <p className="font-display text-3xl font-extrabold leading-none">25+</p>
+                <p className="text-xs font-medium text-white/80 mt-1 uppercase tracking-widest">Años de historia</p>
               </div>
             </div>
 
-            {/* Contenido mejorado */}
-            <div className="space-y-6 order-1 lg:order-2">
-              {/* Tarjeta principal */}
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-orange-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
-                
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl transition-all duration-300">
-                  {/* Barra lateral decorativa */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-600 via-orange-500 to-green-600 rounded-full" />
-                  
-                  <p className="text-2xl md:text-3xl text-gray-800 leading-relaxed mb-6">
-                    Somos una{" "}
-                    <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-700 relative">
-                      universidad comprometida
-                      <span className="absolute bottom-0 left-0 right-0 h-2 bg-green-100 -z-10" />
-                    </span>{" "}
-                    con la comunidad estudiantil.
-                  </p>
-                  
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    Fundada con la misión de desarrollar la competitividad y la preparación de sus alumnos para un entorno profesional demandante.
-                  </p>
-                </div>
+            {/* Contenido */}
+            <div className="lg:col-span-6 order-1 lg:order-2">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="h-px w-10 bg-[#66822c]" />
+                <span className="text-eyebrow text-[#66822c]">Conócenos</span>
               </div>
 
-              {/* Stats mejorados */}
-              <div className="grid grid-cols-3 gap-4">
-                <StatCard
-                  number="25+"
-                  label="Años"
-                  gradient="from-green-600 to-green-700"
-                  delay="0"
-                />
-                <StatCard
-                  number="1000+"
-                  label="Egresados"
-                  gradient="from-orange-500 to-orange-600"
-                  delay="100"
-                />
-                <StatCard
-                  number="98%"
-                  label="Empleabilidad"
-                  gradient="from-green-700 to-orange-600"
-                  delay="200"
-                />
+              <h2 className="font-display text-display-lg font-bold text-[#1a1f14] text-balance mb-8">
+                ¿Quiénes <span className="text-[#f68c24]">Somos?</span>
+              </h2>
+
+              <p className="text-xl text-[#4a5240] leading-relaxed mb-6 text-pretty">
+                Somos una{" "}
+                <span className="text-[#66822c] font-semibold">universidad comprometida</span>{" "}
+                con la comunidad estudiantil.
+              </p>
+
+              <p className="text-base text-[#4a5240] leading-relaxed mb-10 text-pretty">
+                Fundada con la misión de desarrollar la competitividad y la preparación de
+                sus alumnos para un entorno profesional demandante.
+              </p>
+
+              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[var(--color-line)]">
+                <StatCell number="25+" label="Años" />
+                <StatCell number="1000+" label="Egresados" />
+                <StatCell number="98%" label="Empleabilidad" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Bienvenida del Director - Rediseñado */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background con imagen */}
-        <div className="absolute inset-0 -z-10">
+      {/* ────────────── Bienvenida del Director ─────────────── */}
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="absolute inset-0 -z-10 pointer-events-none">
           <Image
             src="/images/sobre-nosotros/bienvenida-director.jpg"
-            alt="Biblioteca IIESBC"
+            alt=""
             fill
-            className="object-cover"
+            className="object-cover opacity-[0.06]"
           />
-          <div className="absolute inset-0 bg-white/90 backdrop-blur-sm" />
-          
-          {/* Efectos de luz */}
-          <div className="absolute top-40 left-40 w-[500px] h-[500px] bg-green-300/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-40 right-40 w-[500px] h-[500px] bg-orange-300/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-orange-100 to-green-100 mb-4">
-              <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Mensaje del Director</span>
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#f68c24]" />
+              <span className="text-eyebrow text-[#f68c24]">Mensaje del Director</span>
+              <span className="h-px w-10 bg-[#f68c24]" />
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">Bienvenida</span>
+            <h2 className="font-display text-display-lg font-bold text-[#1a1f14] text-balance">
+              Bienvenida
             </h2>
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <div className="w-12 h-1 bg-gradient-to-r from-transparent to-orange-500 rounded-full" />
-              <div className="w-32 h-1 bg-gradient-to-r from-orange-500 to-green-500 rounded-full" />
-              <div className="w-12 h-1 bg-gradient-to-r from-green-500 to-transparent rounded-full" />
-            </div>
           </div>
 
-          {/* Contenido de bienvenida */}
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-orange-600 via-green-600 to-orange-600 rounded-3xl opacity-20 blur-2xl" />
-            
-            <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl border border-gray-200/50">
-              {/* Quote decorativa */}
-              <svg className="w-16 h-16 text-orange-200 absolute top-8 left-8 opacity-50" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-              </svg>
+          <article className="relative bg-[var(--color-surface)] rounded-[2rem] p-8 md:p-12 lg:p-16 ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
+            <svg className="w-14 h-14 text-[#f68c24]/20 absolute top-8 left-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
 
-              <div className="space-y-6 text-gray-700 leading-relaxed text-lg relative z-10">
-                <p className="text-xl md:text-2xl font-light text-gray-800 first-letter:text-7xl first-letter:font-bold first-letter:text-green-700 first-letter:float-left first-letter:mr-3 first-letter:leading-none">
-                  A través de este medio deseo dar la bienvenida al <strong className="text-green-700 font-semibold">Instituto Interamericano de Estudios Superiores de Baja California</strong>, a aquellas personas quienes han tomado una de las decisiones más importantes de su vida, iniciar una carrera universitaria, felicidades.
+            <div className="relative space-y-6 text-[#4a5240] leading-relaxed text-lg">
+              <p className="font-display text-xl md:text-2xl text-[#1a1f14] leading-relaxed text-pretty first-letter:font-display first-letter:text-6xl first-letter:font-bold first-letter:text-[#66822c] first-letter:float-left first-letter:mr-3 first-letter:leading-none">
+                A través de este medio deseo dar la bienvenida al{" "}
+                <strong className="text-[#66822c] font-semibold">Instituto Interamericano de Estudios Superiores de Baja California</strong>,
+                a aquellas personas quienes han tomado una de las decisiones más importantes
+                de su vida, iniciar una carrera universitaria, felicidades.
+              </p>
+
+              <p className="text-pretty">
+                Quiero que sepas que es un honor para mi pertenecer y estar al frente de esta
+                joven institución que al igual que yo, tiene el compromiso ético y social de
+                formar seres humanos íntegros, responsables, con liderazgo, con valores y
+                conocimientos profesionales que sean para el servicio y ejemplo de nuestra
+                sociedad.
+              </p>
+
+              <p className="text-pretty">
+                Debo decirte que en el{" "}
+                <strong className="text-[#66822c] font-semibold">IIESBC</strong> te ayudaremos
+                a forjar un buen futuro, por lo tanto te encontrarás con retos, conocerás tu
+                potencial, tus debilidades, y desarrollarás tus habilidades, lograrás crecer
+                como persona y apreciar a los demás, nuestra excelente planta docente exigirá
+                lo mejor de ti, pero siempre estará contigo siendo tu guía en el proceso.
+              </p>
+
+              <blockquote className="relative pl-6 lg:pl-8 border-l-2 border-[#f68c24] my-10">
+                <p className="font-display text-xl lg:text-2xl text-[#1a1f14] font-medium leading-relaxed text-pretty">
+                  Te ofrecemos una educación de alta calidad, tus docentes tienen la
+                  experiencia y aptitudes para guiarte y mostrarte lo que necesitas para
+                  llegar a tu meta. Ten la certeza que en el{" "}
+                  <strong className="text-[#66822c] font-semibold">IIESBC</strong> tu ahora
+                  casa, confiamos en tus capacidades y por ello hoy, nuestra prioridad es
+                  lograr tu grandeza personal y profesional.
                 </p>
-                
-                <p>
-                  Quiero que sepas que es un honor para mi pertenecer y estar al frente de esta joven institución que al igual que yo, tiene el compromiso ético y social de formar seres humanos íntegros, responsables, con liderazgo, con valores y conocimientos profesionales que sean para el servicio y ejemplo de nuestra sociedad.
+              </blockquote>
+
+              <p className="text-pretty">
+                Te invito a que adoptes hoy la actitud y el compromiso de un estudiante
+                universitario que aprovecha las oportunidades para aprender y crecer en
+                respeto y armonía.
+              </p>
+
+              <div className="pt-10 mt-4 border-t border-[var(--color-line)]">
+                <p className="font-display text-xl md:text-2xl font-semibold text-[#66822c] mb-8 text-pretty">
+                  En el IIESBC <span className="text-[#f68c24]">&ldquo;Tu éxito es el nuestro&rdquo;</span>.<br />
+                  Caminemos juntos.
                 </p>
-                
-                <p>
-                  Debo decirte que en el <strong className="text-green-700 font-semibold">IIESBC</strong> te ayudaremos a forjar un buen futuro, por lo tanto te encontrarás con retos, conocerás tu potencial, tus debilidades, y desarrollarás tus habilidades, lograrás crecer como persona y apreciar a los demás, nuestra excelente planta docente exigirá lo mejor de ti, pero siempre estará contigo siendo tu guía en el proceso.
-                </p>
-                
-                {/* Destacado especial */}
-                <div className="relative my-8">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-green-100 via-orange-50 to-green-100 rounded-2xl" />
-                  <div className="relative bg-gradient-to-r from-green-50/80 via-white to-orange-50/80 border-l-4 border-orange-500 p-6 md:p-8 rounded-xl shadow-lg">
-                    <p className="text-lg md:text-xl italic text-gray-700">
-                      Te ofrecemos una educación de alta calidad, tus docentes tienen la experiencia y aptitudes para guiarte y mostrarte lo que necesitas para llegar a tu meta. Ten la certeza que en el <strong className="text-green-700 font-semibold">IIESBC</strong> tu ahora casa, confiamos en tus capacidades y por ello hoy, nuestra prioridad es lograr tu grandeza personal y profesional.
-                    </p>
+
+                <div className="flex items-center justify-end gap-4">
+                  <div className="text-right">
+                    <p className="font-display font-bold text-[#1a1f14] text-lg md:text-xl">Dr. Rafael López Oñate</p>
+                    <p className="text-sm text-[#8a9180] uppercase tracking-widest mt-1">Director General IIESBC</p>
                   </div>
-                </div>
-                
-                <p>
-                  Te invito a que adoptes hoy la actitud y el compromiso de un estudiante universitario que aprovecha las oportunidades para aprender y crecer en respeto y armonía.
-                </p>
-                
-                {/* Firma */}
-                <div className="pt-8 border-t border-gray-200 mt-8">
-                  <p className="text-2xl md:text-3xl font-semibold text-green-700 mb-6">
-                    En el IIESBC <span className="text-orange-600">"Tu éxito es el nuestro"</span>.<br />
-                    Caminemos juntos.
-                  </p>
-                  
-                  <div className="flex items-center justify-end gap-4">
-                    <div className="text-right">
-                      <p className="font-bold text-gray-900 text-xl md:text-2xl">Dr. Rafael López Oñate</p>
-                      <p className="text-sm md:text-base text-gray-600">Director General IIESBC</p>
-                    </div>
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-green-600 to-orange-600 rounded-full flex items-center justify-center shadow-xl">
-                      <span className="text-2xl md:text-3xl font-bold text-white">RL</span>
-                    </div>
+                  <div className="w-16 h-16 md:w-18 md:h-18 bg-[#66822c] rounded-full flex items-center justify-center ring-4 ring-white shadow-[0_20px_50px_-20px_rgba(102,130,44,0.7)]">
+                    <span className="font-display text-xl md:text-2xl font-bold text-white">RL</span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
-      {/* Misión y Visión - Rediseñado */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/sobre-nosotros/mision-vision.jpg"
-            alt="Graduación IIESBC"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-50/90 via-white/85 to-green-50/90 backdrop-blur-sm" />
-          
-          <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-green-300/15 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-orange-300/15 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-green-100 to-orange-100 mb-4">
-              <span className="text-sm font-bold text-green-700 uppercase tracking-wider">Nuestros Pilares</span>
+      {/* ───────────────────── Misión & Visión ──────────────────── */}
+      <section className="relative py-24 lg:py-32 bg-[var(--color-surface)] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="max-w-2xl mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#66822c]" />
+              <span className="text-eyebrow text-[#66822c]">Nuestros pilares</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-              <span className="text-gray-900">Misión &</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600">Visión</span>
+            <h2 className="font-display text-display-lg font-bold text-[#1a1f14] text-balance">
+              Misión &amp; <span className="text-[#66822c]">Visión</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Misión */}
-            <MisionVisionCard
-              icon={
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              }
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <PillarCard
+              eyebrow="01 — Misión"
               title="Nuestra Misión"
-              gradient="from-green-500 via-green-600 to-green-700"
-              hoverGradient="from-green-600 to-green-400"
-              tone="green"
+              accent="#66822c"
+              icon={
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              }
             >
-              El Instituto Interamericano de Estudios Superiores de Baja California tiene como esencia de su misión, filosofía y responsabilidad social, la formación de seres morales, virtuosos e íntegros en el pensar y en el hacer.
-            </MisionVisionCard>
+              El Instituto Interamericano de Estudios Superiores de Baja California tiene como
+              esencia de su misión, filosofía y responsabilidad social, la formación de seres
+              morales, virtuosos e íntegros en el pensar y en el hacer.
+            </PillarCard>
 
-            {/* Visión */}
-            <MisionVisionCard
+            <PillarCard
+              eyebrow="02 — Visión"
+              title="Nuestra Visión"
+              accent="#f68c24"
               icon={
                 <>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </>
               }
-              title="Nuestra Visión"
-              gradient="from-orange-500 via-orange-600 to-orange-700"
-              hoverGradient="from-orange-600 to-orange-400"
-              tone="orange"
             >
-              El Instituto orienta sus acciones hacia la combinación de conocimientos teóricos y prácticos de nivel licenciatura y Posgrado; a partir de un desarrollo de ideas que se presentan en forma ordenada y disciplinada, consolidando propuestas que se suscitan de un proceso de investigación que de acuerdo a los requerimientos invita a trabajar en forma colaborativa a diversas disciplinas y tiende redes con enfoque al impacto de crecimiento social y económico; tanto en los ámbitos locales, nacionales como internacionales.
-            </MisionVisionCard>
+              El Instituto orienta sus acciones hacia la combinación de conocimientos teóricos
+              y prácticos de nivel licenciatura y Posgrado; a partir de un desarrollo de ideas
+              que se presentan en forma ordenada y disciplinada, consolidando propuestas que
+              se suscitan de un proceso de investigación que de acuerdo a los requerimientos
+              invita a trabajar en forma colaborativa a diversas disciplinas y tiende redes
+              con enfoque al impacto de crecimiento social y económico; tanto en los ámbitos
+              locales, nacionales como internacionales.
+            </PillarCard>
           </div>
         </div>
       </section>
 
-      {/* Beneficios - Rediseñado */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/sobre-nosotros/beneficios-estudiantes.jpg"
-            alt="Estudiantes IIESBC"
-            fill
-            className="object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-gray-50/90 to-white/95 backdrop-blur-sm" />
-          
-          <div className="absolute top-40 right-40 w-[500px] h-[500px] bg-green-200/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-40 left-40 w-[500px] h-[500px] bg-orange-200/20 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-green-100 to-orange-100 mb-4">
-              <span className="text-sm font-bold text-green-700 uppercase tracking-wider">Por qué elegirnos</span>
+      {/* ───────────────────── Beneficios ──────────────────── */}
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#f68c24]" />
+              <span className="text-eyebrow text-[#f68c24]">Por qué elegirnos</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-              Beneficios{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">IIESBC</span>
+            <h2 className="font-display text-display-lg font-bold text-[#1a1f14] text-balance mb-6">
+              Beneficios <span className="text-[#f68c24]">IIESBC</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Descubre las ventajas que te ofrecemos para tu desarrollo académico y profesional
+            <p className="text-lg text-[#4a5240] leading-relaxed text-pretty">
+              Descubre las ventajas que te ofrecemos para tu desarrollo académico y profesional.
             </p>
-            <div className="flex items-center justify-center gap-2 mt-6">
-              <div className="w-12 h-1 bg-gradient-to-r from-transparent to-green-600 rounded-full" />
-              <div className="w-32 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full" />
-              <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
-            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             <BenefitCard
+              number="01"
+              title="Horarios Flexibles"
+              accent="#66822c"
               icon={
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               }
-              title="Horarios Flexibles"
-              gradient="from-green-500 to-green-700"
-              tone="green"
             >
-              Por qué sabemos que tu formación es muy importante, tenemos horarios flexibles para que elijas el que más te convenga.
+              Por qué sabemos que tu formación es muy importante, tenemos horarios flexibles
+              para que elijas el que más te convenga.
             </BenefitCard>
 
             <BenefitCard
+              number="02"
+              title="Equivalencia y Revalidación"
+              accent="#f68c24"
               icon={
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               }
-              title="Equivalencia y Revalidación de Materias"
-              gradient="from-orange-500 to-orange-700"
-              tone="orange"
             >
-              Si deseas continuar tus estudios con nosotros y ya tienes materias cursadas hacemos una equivalencia o revalidación en el programa que elijas.
+              Si deseas continuar tus estudios con nosotros y ya tienes materias cursadas
+              hacemos una equivalencia o revalidación en el programa que elijas.
             </BenefitCard>
 
             <BenefitCard
+              number="03"
+              title="Plan de Becas"
+              accent="#66822c"
               icon={
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               }
-              title="Plan de Becas"
-              gradient="from-green-500 via-green-600 to-orange-600"
-              tone="green"
             >
-              Tanto para licenciatura como para los cursos de posgrado existe la posibilidad de ser recipiente de una beca y de obtener facilidades de pago de colegiaturas.
+              Tanto para licenciatura como para los cursos de posgrado existe la posibilidad
+              de ser recipiente de una beca y de obtener facilidades de pago de colegiaturas.
             </BenefitCard>
-
           </div>
         </div>
       </section>
 
-      {/* Vinculación */}
-      <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-white via-green-50/20 to-orange-50/20">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-green-200/15 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-orange-200/15 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-orange-100 to-green-100 mb-4">
-              <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Vinculación</span>
+      {/* ───────────────────── Vinculación ──────────────────── */}
+      <section className="relative py-24 lg:py-32 bg-[var(--color-surface)] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#66822c]" />
+              <span className="text-eyebrow text-[#66822c]">Vinculación</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black mb-4">
-              <span className="text-gray-900">Nuestros</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-700">Convenios</span>
+            <h2 className="font-display text-display-lg font-bold text-[#1a1f14] text-balance mb-6">
+              Nuestros <span className="text-[#66822c]">Convenios</span>
             </h2>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="w-12 h-1 bg-gradient-to-r from-transparent to-green-600 rounded-full" />
-              <div className="w-32 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full" />
-              <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
-            </div>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-              Contamos con convenios con dependencias de Gobierno, empresas privadas e instituciones educativas del sector público y privado, con fines de vincular proyectos de investigación, así como realizar intercambios, prácticas profesionales y estancias de aprendizaje.
+            <p className="text-lg text-[#4a5240] leading-relaxed text-pretty">
+              Contamos con convenios con dependencias de Gobierno, empresas privadas e
+              instituciones educativas del sector público y privado, con fines de vincular
+              proyectos de investigación, así como realizar intercambios, prácticas
+              profesionales y estancias de aprendizaje.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {/* Convenios Nacionales */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-green-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
-              <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl transition-all duration-300">
-                {/* Encabezado del bloque */}
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-800 rounded-xl flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-800">Convenios Nacionales</h3>
-                    <div className="w-16 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full mt-1" />
-                  </div>
+            <div className="relative bg-white rounded-[1.75rem] p-8 lg:p-10 ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
+              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-[var(--color-line)]">
+                <div className="w-12 h-12 rounded-2xl bg-[#66822c]/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#66822c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                  </svg>
                 </div>
+                <div>
+                  <p className="text-eyebrow text-[#66822c] mb-1">Nacionales</p>
+                  <h3 className="font-display text-xl font-bold text-[#1a1f14]">Convenios Nacionales</h3>
+                </div>
+              </div>
 
-                {/* Logos nacionales */}
-                <div className="grid grid-cols-3 gap-6">
-                  {[
-                    { src: "/images/vinculacion/cobash.png", alt: "COBACH" },
-                    { src: "/images/vinculacion/cecyte.png", alt: "CECYTEBC" },
-                    { src: "/images/vinculacion/gobbc.png", alt: "Gobierno del Estado de Baja California" },
-                  ].map((logo) => (
-                    <div
-                      key={logo.alt}
-                      className="flex flex-col items-center gap-2 p-4 rounded-xl bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 transition-all duration-300 hover:shadow-md"
-                    >
-                      <div className="relative w-full h-16">
-                        <Image
-                          src={logo.src}
-                          alt={logo.alt}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <span className="text-xs font-semibold text-gray-500 text-center leading-tight">{logo.alt}</span>
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { src: "/images/vinculacion/cobash.png", alt: "COBACH" },
+                  { src: "/images/vinculacion/cecyte.png", alt: "CECYTEBC" },
+                  { src: "/images/vinculacion/gobbc.png", alt: "Gobierno del Estado de Baja California" },
+                ].map((logo) => (
+                  <div
+                    key={logo.alt}
+                    className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-[var(--color-surface)] ring-1 ring-[var(--color-line)] hover:ring-[#66822c]/40 transition-all duration-300"
+                  >
+                    <div className="relative w-full h-16">
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        fill
+                        className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <span className="text-[11px] font-semibold text-[#8a9180] text-center leading-tight uppercase tracking-wider">
+                      {logo.alt}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Convenios Internacionales */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-orange-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
-              <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-200/50 hover:shadow-2xl transition-all duration-300">
-                {/* Encabezado del bloque */}
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                    </svg>
+            <div className="relative bg-white rounded-[1.75rem] p-8 lg:p-10 ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow duration-300">
+              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-[var(--color-line)]">
+                <div className="w-12 h-12 rounded-2xl bg-[#f68c24]/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#f68c24]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-eyebrow text-[#f68c24] mb-1">Internacionales</p>
+                  <h3 className="font-display text-xl font-bold text-[#1a1f14]">Convenios Internacionales</h3>
+                </div>
+              </div>
+
+              <div className="flex justify-center">
+                <div className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-[var(--color-surface)] ring-1 ring-[var(--color-line)] hover:ring-[#f68c24]/40 transition-all duration-300 w-56">
+                  <div className="relative w-full h-24">
+                    <Image
+                      src="/images/vinculacion/salamanca.jpg"
+                      alt="Universidad de Salamanca"
+                      fill
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-black text-gray-800">Convenios Internacionales</h3>
-                    <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-green-600 rounded-full mt-1" />
-                  </div>
-                </div>
-
-                {/* Logo internacional */}
-                <div className="flex justify-center">
-                  <div className="flex flex-col items-center gap-2 p-6 rounded-xl bg-gray-50 hover:bg-orange-50 border border-gray-100 hover:border-orange-200 transition-all duration-300 hover:shadow-md w-48">
-                    <div className="relative w-full h-24">
-                      <Image
-                        src="/images/vinculacion/salamanca.jpg"
-                        alt="Universidad de Salamanca"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                    <span className="text-xs font-semibold text-gray-500 text-center leading-tight">Universidad de Salamanca</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Información Institucional - CTA Final */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-gray-50 via-white to-orange-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-green-200/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-orange-200/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
-        </div>
-
-        <div className="relative max-w-5xl mx-auto px-4">
-          <div className="relative">
-            {/* Glow effect */}
-            <div className="absolute -inset-6 bg-gradient-to-r from-green-600 via-orange-500 to-green-600 rounded-3xl opacity-20 blur-2xl" />
-            
-            <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-12 md:p-16 shadow-2xl border border-gray-200/50">
-              {/* Badge superior */}
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gradient-to-r from-green-600 to-orange-600 px-8 py-3 rounded-full shadow-xl">
-                  <p className="text-white font-bold text-sm uppercase tracking-wider">Institución Certificada</p>
-                </div>
-              </div>
-
-              {/* Ícono central */}
-              <div className="w-24 h-24 md:w-28 md:h-28 mx-auto mb-8 bg-gradient-to-br from-green-600 via-green-700 to-orange-600 rounded-full flex items-center justify-center shadow-2xl relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-orange-600 rounded-full animate-ping opacity-20" />
-                <svg className="w-12 h-12 md:w-14 md:h-14 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-              </div>
-
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-800 mb-8 text-center">
-                Información <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-500">Institucional</span>
-              </h2>
-
-              <div className="flex items-center justify-center gap-2 mb-10">
-                <div className="w-12 h-1 bg-gradient-to-r from-transparent to-green-600 rounded-full" />
-                <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-orange-500 rounded-full" />
-                <div className="w-12 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
-              </div>
-
-              <div className="space-y-6 mb-10">
-                <div className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-2xl p-6 border-l-4 border-green-600 hover:shadow-lg transition-all duration-300">
-                  <p className="text-lg text-gray-700">
-                    <span className="font-bold text-green-700">Clave institucional:</span>{" "}
-                    <span className="text-2xl md:text-3xl font-black text-gray-800">02PSU0128P</span>
-                  </p>
-                </div>
-                
-                <div className="group bg-gradient-to-r from-orange-50 to-green-50 rounded-2xl p-6 border-l-4 border-orange-600 hover:shadow-lg transition-all duration-300">
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    Reconocimiento de Validez Oficial de Estudios<br />
-                    por Baja California. <span className="font-black text-gray-800">RVOE-BC (229 a la 235) M1/13</span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-8 border-t border-gray-200">
-                <Link
-                  href="/contacto"
-                  className="group relative w-full sm:w-auto mx-auto flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 via-green-700 to-orange-600 text-white px-12 py-5 rounded-full font-bold text-lg hover:from-green-700 hover:via-green-800 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center gap-3">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Solicita Información
+                  <span className="text-[11px] font-semibold text-[#8a9180] text-center leading-tight uppercase tracking-wider">
+                    Universidad de Salamanca
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Animaciones CSS */}
-      <style jsx>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -30px) scale(1.05); }
-          66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-        
-        @keyframes float-medium {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(-40px, 30px) scale(1.08); }
-        }
-        
-        .animate-float-slow {
-          animation: float-slow 20s ease-in-out infinite;
-        }
-        
-        .animate-float-medium {
-          animation: float-medium 15s ease-in-out infinite;
-        }
-      `}</style>
+      {/* ───────────────── Información Institucional (CTA) ───────────────── */}
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-[#66822c]/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-[#f68c24]/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="relative bg-[var(--color-surface)] rounded-[2rem] p-10 md:p-14 lg:p-16 ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
+            <div className="flex items-center gap-3 mb-6 justify-center">
+              <span className="h-px w-10 bg-[#f68c24]" />
+              <span className="text-eyebrow text-[#f68c24]">Institución Certificada</span>
+              <span className="h-px w-10 bg-[#f68c24]" />
+            </div>
+
+            <h2 className="font-display text-display-md font-bold text-[#1a1f14] text-center text-balance mb-12">
+              Información <span className="text-[#f68c24]">Institucional</span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="bg-white rounded-2xl p-6 lg:p-8 ring-1 ring-black/5 shadow-[var(--shadow-card)]">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-8 rounded-lg bg-[#66822c]/10 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-[#66822c]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                    </svg>
+                  </span>
+                  <p className="text-eyebrow text-[#66822c]">Clave institucional</p>
+                </div>
+                <p className="font-display text-3xl lg:text-4xl font-extrabold text-[#1a1f14] tracking-display-tight">
+                  02PSU0128P
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 lg:p-8 ring-1 ring-black/5 shadow-[var(--shadow-card)]">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-8 rounded-lg bg-[#f68c24]/10 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-[#f68c24]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </span>
+                  <p className="text-eyebrow text-[#f68c24]">RVOE</p>
+                </div>
+                <p className="text-[#4a5240] leading-relaxed mb-2">
+                  Reconocimiento de Validez Oficial de Estudios por Baja California.
+                </p>
+                <p className="font-display text-lg lg:text-xl font-bold text-[#1a1f14]">
+                  RVOE-BC (229 a la 235) M1/13
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center pt-8 border-t border-[var(--color-line)]">
+              <Link
+                href="/contacto"
+                className="group inline-flex items-center justify-center gap-2 bg-[#66822c] hover:bg-[#556e23] text-white px-10 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_14px_36px_-12px_rgba(102,130,44,0.7)] hover:shadow-[0_16px_40px_-8px_rgba(102,130,44,0.9)] hover:-translate-y-0.5"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Solicita Información
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
 
-// Componente para estadísticas
-function StatCard({ number, label, gradient, delay }) {
+/* ────────────────────────── Subcomponentes ────────────────────────── */
+
+function StatCell({ number, label }) {
   return (
-    <div
-      className={`group bg-gradient-to-br ${gradient} rounded-2xl p-6 text-center shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-all duration-300 ring-1 ring-black/5`}
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <p className="text-3xl md:text-4xl font-black text-white mb-1">{number}</p>
-      <p className="text-sm text-white/90">{label}</p>
+    <div>
+      <p className="font-display text-3xl lg:text-4xl font-bold text-[#66822c] tracking-display-tight">{number}</p>
+      <p className="text-xs text-[#8a9180] uppercase tracking-widest mt-1">{label}</p>
     </div>
   );
 }
 
-// Componente para Misión/Visión
-function MisionVisionCard({ icon, title, gradient, hoverGradient, tone = 'green', children }) {
-  const toneClasses = {
-    green: {
-      bar: 'via-green-500',
-      headingHover: 'group-hover:text-green-700',
-      lineLeft: 'to-green-500',
-      lineMid: 'from-green-500',
-      lineRight: 'from-green-500',
-    },
-    orange: {
-      bar: 'via-orange-500',
-      headingHover: 'group-hover:text-orange-700',
-      lineLeft: 'to-orange-500',
-      lineMid: 'from-orange-500',
-      lineRight: 'from-orange-500',
-    },
-  };
-
-  const t = toneClasses[tone] ?? toneClasses.green;
-
+function PillarCard({ eyebrow, title, accent, icon, children }) {
   return (
-    <div className="group relative">
-      <div className={`absolute -inset-2 bg-gradient-to-br ${hoverGradient} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500`} />
-      
-      <div className="relative bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl hover:shadow-3xl transform transition-all duration-500 hover:scale-[1.02] p-8 md:p-10 overflow-hidden border border-gray-200/50">
-        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent ${t.bar} to-transparent`} />
-        
-        <div className="relative">
-          <div className={`w-20 h-20 mx-auto mb-8 bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500 shadow-xl`}>
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {icon}
-            </svg>
-          </div>
+    <article className="group relative bg-white rounded-[1.75rem] p-8 lg:p-10 ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+      <span
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ backgroundColor: accent }}
+      />
 
-          <h3 className={`text-3xl md:text-4xl font-black text-gray-800 mb-6 text-center ${t.headingHover} transition-colors duration-300`}>
-            {title}
-          </h3>
-
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <div className={`w-8 h-1 bg-gradient-to-r from-transparent ${t.lineLeft} rounded-full`} />
-            <div className={`w-16 h-1 bg-gradient-to-r ${t.lineMid} to-orange-500 rounded-full`} />
-            <div className={`w-8 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full`} />
-          </div>
-
-          <p className="text-gray-700 leading-relaxed text-center text-lg">
-            {children}
-          </p>
-        </div>
+      <div className="flex items-center justify-between mb-8">
+        <span
+          className="text-eyebrow"
+          style={{ color: accent }}
+        >
+          {eyebrow}
+        </span>
+        <span
+          className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-6"
+          style={{ backgroundColor: `${accent}15` }}
+        >
+          <svg className="w-7 h-7" fill="none" stroke={accent} viewBox="0 0 24 24">
+            {icon}
+          </svg>
+        </span>
       </div>
-    </div>
+
+      <h3 className="font-display text-2xl lg:text-3xl font-bold text-[#1a1f14] mb-6 tracking-display-tight">
+        {title}
+      </h3>
+
+      <p className="text-[#4a5240] leading-relaxed text-base lg:text-lg text-pretty">
+        {children}
+      </p>
+    </article>
   );
 }
 
-// Componente para Beneficios
-function BenefitCard({ icon, title, gradient, tone = 'green', children }) {
-  const toneClasses = {
-    green: {
-      glow: 'from-green-600 to-green-400',
-      titleHover: 'group-hover:text-green-700',
-    },
-    orange: {
-      glow: 'from-orange-600 to-orange-400',
-      titleHover: 'group-hover:text-orange-700',
-    },
-  };
-
-  const t = toneClasses[tone] ?? toneClasses.green;
-
+function BenefitCard({ number, title, accent, icon, children }) {
   return (
-    <div className="group relative">
-      <div className={`absolute -inset-1 bg-gradient-to-r ${t.glow} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300`} />
-      <div className="relative bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 border border-gray-200/50">
-        <div className="flex items-start space-x-6">
-          <div className="flex-shrink-0">
-            <div className={`w-16 h-16 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {icon}
-              </svg>
-            </div>
-          </div>
-          <div className="flex-1">
-            <h3 className={`text-2xl font-bold text-gray-800 mb-3 ${t.titleHover} transition-colors duration-300`}>
-              {title}
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {children}
-            </p>
-          </div>
-        </div>
+    <article className="group relative bg-[var(--color-surface)] rounded-[1.5rem] p-8 ring-1 ring-[var(--color-line)] hover:ring-black/10 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 hover:-translate-y-1">
+      <div className="flex items-start justify-between mb-8">
+        <span
+          className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
+          style={{ backgroundColor: `${accent}15` }}
+        >
+          <svg className="w-7 h-7" fill="none" stroke={accent} viewBox="0 0 24 24">
+            {icon}
+          </svg>
+        </span>
+        <span
+          className="font-display text-xl font-bold tabular-nums opacity-60"
+          style={{ color: accent }}
+        >
+          {number}
+        </span>
       </div>
-    </div>
+
+      <h3 className="font-display text-xl lg:text-2xl font-bold text-[#1a1f14] mb-4 tracking-display-tight">
+        {title}
+      </h3>
+
+      <p className="text-[#4a5240] leading-relaxed text-pretty">
+        {children}
+      </p>
+    </article>
   );
 }

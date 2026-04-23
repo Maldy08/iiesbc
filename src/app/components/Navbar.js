@@ -303,22 +303,7 @@ export default function Navbar() {
 
         {/* Right side: CTA + hamburger */}
         <div className="flex items-center gap-3">
-          <Link
-            href="/oferta-academica"
-            className={[
-              "hidden items-center gap-2 rounded-full bg-[var(--color-primary-green)] px-5 py-2.5",
-              "font-display text-sm font-semibold text-white",
-              "shadow-[var(--shadow-card)] transition-all duration-300",
-              "hover:-translate-y-0.5 hover:bg-[#556e23] hover:shadow-[var(--shadow-card-hover)]",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-green)]/40 focus-visible:ring-offset-2",
-              "lg:inline-flex",
-            ].join(" ")}
-          >
-            Inscríbete
-            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+
 
           <button
             onClick={() => {

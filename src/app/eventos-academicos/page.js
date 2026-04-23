@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function EventosAcademicos() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -221,133 +222,157 @@ export default function EventosAcademicos() {
   const closeModal = () => setSelectedImage(null);
 
   return (
-    <main className="pt-0 bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[500px] flex items-center">
-        <div className="absolute inset-0">
+    <main id="main" className="relative isolate bg-[var(--color-surface)]">
+      {/* ─────────────────────────── Hero ─────────────────────────── */}
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
           <Image
             src="/images/eventos-academicos/eventos-academicos.jpg"
             alt="Eventos Académicos IIESBC"
             fill
-            className="object-cover"
             priority
+            className="object-cover scale-105 animate-slow-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/70 via-green-800/55 to-orange-900/70" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1208]/85 via-[#0c1208]/60 to-[#0c1208]/92" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(246,140,36,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(102,130,44,0.22),transparent_55%)]" />
         </div>
 
-        {/* Efectos de luz */}
-        <div className="absolute inset-0 z-10">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[24%] left-[18%] w-1.5 h-1.5 rounded-full bg-white/50 animate-float-slow" />
+          <span className="absolute top-[42%] right-[22%] w-2 h-2 rounded-full bg-[#f68c24]/45 animate-float-medium" style={{ animationDelay: "1.2s" }} />
+          <span className="absolute bottom-[30%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#a5c94c]/60 animate-float-fast" style={{ animationDelay: "0.6s" }} />
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 py-32 text-center w-full">
-          <div className="inline-block p-6 bg-white/10 backdrop-blur-md rounded-full mb-8 shadow-2xl border border-white/20 ring-1 ring-white/20">
-            <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          
-          <h1 className="text-6xl lg:text-8xl font-black text-white mb-6 leading-tight drop-shadow-2xl tracking-tight">
-            <span className="inline-block">Eventos</span>{" "}
-            <span className="text-orange-300 inline-block">Académicos</span>
-          </h1>
-          
-          <div className="max-w-3xl mx-auto">
-            <p className="text-2xl lg:text-3xl text-green-100/90 leading-relaxed font-light">
-              Momentos memorables que marcan nuestra historia institucional
-            </p>
-          </div>
-          
-          <div className="flex items-center justify-center gap-2 mt-8">
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-orange-400 to-orange-400 rounded-full"></div>
-            <div className="w-32 h-1 bg-gradient-to-r from-orange-400 to-green-400 rounded-full"></div>
-            <div className="w-16 h-1 bg-gradient-to-r from-green-400 via-green-400 to-transparent rounded-full"></div>
+        <div className="relative min-h-[72vh] flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+            <div className="max-w-3xl animate-fade-in-up">
+              <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-xl border border-white/15 px-4 py-1.5 rounded-full mb-10">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 rounded-full bg-[#a5c94c] opacity-75 animate-ping" />
+                  <span className="relative rounded-full h-2 w-2 bg-[#a5c94c]" />
+                </span>
+                <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
+                  Galería institucional
+                </span>
+              </div>
+
+              <h1 className="font-display font-extrabold text-white text-display-xl tracking-display-tight text-balance mb-8">
+                Eventos <span className="text-[#f68c24]">Académicos</span>
+              </h1>
+
+              <div className="relative w-40 h-px bg-gradient-to-r from-[#66822c] via-[#f68c24] to-transparent mb-10 overflow-hidden">
+                <span className="absolute inset-0 bg-white/60 animate-shimmer" />
+              </div>
+
+              <p className="text-white/85 text-lg lg:text-xl leading-relaxed max-w-2xl text-pretty">
+                Momentos memorables que marcan nuestra historia institucional: graduaciones,
+                coloquios y congresos que dan vida a la comunidad IIESBC.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Eventos Section */}
-      {eventos.map((evento, index) => (
-        <section 
-          key={evento.id} 
-          className={`py-24 relative overflow-hidden ${
-            index % 2 === 0 
-              ? 'bg-gradient-to-br from-white via-gray-50 to-green-50' 
-              : 'bg-gradient-to-br from-gray-50 via-white to-orange-50'
-          }`}
-        >
-          {/* Efectos de luz de fondo */}
-          <div className="absolute inset-0">
-            <div className={`absolute top-20 ${index % 2 === 0 ? 'right-20' : 'left-20'} w-96 h-96 ${index % 2 === 0 ? 'bg-green-200/10' : 'bg-orange-200/10'} rounded-full blur-3xl`} />
-            <div className={`absolute bottom-20 ${index % 2 === 0 ? 'left-20' : 'right-20'} w-96 h-96 ${index % 2 === 0 ? 'bg-orange-200/10' : 'bg-green-200/10'} rounded-full blur-3xl`} />
-          </div>
+      {/* ─────────────────── Eventos ─────────────────── */}
+      {eventos.map((evento, index) => {
+        const isGreen = index % 2 === 0;
+        const accent = isGreen ? '#66822c' : '#f68c24';
+        const bg = isGreen ? 'bg-white' : 'bg-[var(--color-surface)]';
+        const orderNum = String(index + 1).padStart(2, '0');
 
-          <div className="relative max-w-7xl mx-auto px-4">
-            {/* Encabezado del evento */}
-            <div className="text-center mb-16">
-              <div className="inline-block mb-6">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${index % 2 === 0 ? 'from-green-500 to-green-700' : 'from-orange-500 to-orange-700'} rounded-full flex items-center justify-center shadow-lg`}>
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <span className={`text-sm font-bold ${index % 2 === 0 ? 'text-green-700' : 'text-orange-700'} uppercase tracking-wider`}>
+        return (
+          <section
+            key={evento.id}
+            className={`relative py-24 lg:py-32 overflow-hidden ${bg}`}
+          >
+            <div className="absolute inset-0 -z-10 pointer-events-none">
+              <div
+                className={`absolute ${isGreen ? 'top-20 right-20' : 'top-20 left-20'} w-[500px] h-[500px] rounded-full blur-3xl`}
+                style={{ backgroundColor: `${accent}0D` }}
+              />
+              <div
+                className={`absolute ${isGreen ? 'bottom-20 left-20' : 'bottom-20 right-20'} w-[400px] h-[400px] rounded-full blur-3xl`}
+                style={{ backgroundColor: isGreen ? '#f68c240D' : '#66822c0D' }}
+              />
+            </div>
+
+            <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+              {/* Encabezado editorial */}
+              <div className="max-w-4xl mb-14 lg:mb-16">
+                <div className="flex items-center gap-3 mb-6">
+                  <span
+                    className="font-display font-bold text-xs tabular-nums tracking-[0.2em]"
+                    style={{ color: accent }}
+                  >
+                    #{orderNum}
+                  </span>
+                  <span className="h-px w-10" style={{ backgroundColor: accent }} />
+                  <span className="text-eyebrow" style={{ color: accent }}>
                     {evento.fecha}
                   </span>
                 </div>
-                <h2 className="text-3xl lg:text-4xl font-black text-gray-800 mb-4 tracking-tight">
+
+                <h2 className="font-display text-display-md font-bold text-[#1a1f14] tracking-display-tight text-balance mb-6">
                   {evento.titulo}
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+
+                <p className="text-lg text-[#4a5240] leading-relaxed max-w-2xl text-pretty">
                   {evento.descripcion}
                 </p>
               </div>
-              <div className="flex items-center justify-center gap-2">
-                <div className={`w-8 h-1 bg-gradient-to-r from-transparent ${index % 2 === 0 ? 'to-green-600' : 'to-orange-600'} rounded-full`}></div>
-                <div className={`w-24 h-1 bg-gradient-to-r ${index % 2 === 0 ? 'from-green-600 to-orange-500' : 'from-orange-600 to-green-500'} rounded-full`}></div>
-                <div className={`w-8 h-1 bg-gradient-to-r ${index % 2 === 0 ? 'from-orange-500' : 'from-green-500'} to-transparent rounded-full`}></div>
+
+              {/* Galería */}
+              <div className={`grid grid-cols-2 ${getGridColsClass(evento.columns)} gap-3 lg:gap-4`}>
+                {evento.imagenes.map((imagen, imgIndex) => {
+                  const src = evento.basePath
+                    ? `${evento.basePath}/${imagen}`
+                    : `/images/eventos-academicos/${imagen}`;
+
+                  return (
+                    <button
+                      key={imgIndex}
+                      type="button"
+                      className="group relative overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 cursor-pointer focus:outline-none focus-visible:ring-2"
+                      style={{ '--tw-ring-color': `${accent}66` }}
+                      onClick={() => setSelectedImage(src)}
+                      aria-label={`Ampliar foto ${imgIndex + 1} de ${evento.titulo}`}
+                    >
+                      <div className="aspect-square relative bg-[var(--color-surface-alt)]">
+                        <Image
+                          src={src}
+                          alt={`${evento.titulo} - Foto ${imgIndex + 1}`}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1208]/80 via-[#0c1208]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <span
+                          className="absolute top-3 left-3 font-display text-[11px] font-semibold text-white tabular-nums tracking-[0.15em] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                          {String(imgIndex + 1).padStart(2, '0')}
+                        </span>
+
+                        <span className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/15 backdrop-blur-md ring-1 ring-white/25 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
+          </section>
+        );
+      })}
 
-            {/* Galería de imágenes */}
-            <div className={`grid grid-cols-2 ${getGridColsClass(evento.columns)} gap-4`}>
-              {evento.imagenes.map((imagen, imgIndex) => (
-                <div 
-                  key={imgIndex} 
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ring-1 ring-black/5"
-                  onClick={() => setSelectedImage(evento.basePath ? `${evento.basePath}/${imagen}` : `/images/eventos-academicos/${imagen}`)}
-                >
-                  <div className="aspect-square relative">
-                    <Image
-                      src={evento.basePath ? `${evento.basePath}/${imagen}` : `/images/eventos-academicos/${imagen}`}
-                      alt={`${evento.titulo} - Foto ${imgIndex + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center ring-1 ring-white/25">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* Modal para imagen ampliada */}
+      {/* ─────────────────── Modal de imagen ─────────────────── */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0c1208]/92 backdrop-blur-md p-4 animate-fade-in"
           role="dialog"
           aria-modal="true"
           onClick={closeModal}
@@ -355,19 +380,20 @@ export default function EventosAcademicos() {
           <button
             type="button"
             aria-label="Cerrar"
-            className="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+            className="absolute top-6 right-6 w-11 h-11 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white ring-1 ring-white/25 transition-all duration-300 hover:scale-110"
             onClick={closeModal}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
+
           <div className="max-w-6xl w-full h-[90vh] relative">
             <Image
               src={selectedImage}
               alt="Imagen ampliada"
               fill
-              className="object-contain rounded-lg shadow-2xl"
+              className="object-contain"
               onClick={(e) => e.stopPropagation()}
               sizes="100vw"
             />
@@ -375,44 +401,62 @@ export default function EventosAcademicos() {
         </div>
       )}
 
-      {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0">
+      {/* ─────────────────────────── CTA ─────────────────────────── */}
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
           <Image
             src="/images/eventos-academicos/eventos-academicos-2.jpg"
             alt="Únete a nuestros eventos"
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-800/70 via-green-900/55 to-orange-900/70" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
-        </div>
-        
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-green-400/10 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1208]/80 via-[#0c1208]/70 to-[#0c1208]/90" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(246,140,36,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(102,130,44,0.22),transparent_55%)]" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-            ¿Quieres ser parte de nuestros próximos <span className="text-orange-300">eventos</span>?
-          </h2>
-          <p className="text-xl text-green-100 max-w-2xl mx-auto mb-10">
-            Mantente informado sobre nuestras actividades académicas y culturales
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a
-              href="/contacto"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:-translate-y-2 hover:scale-105"
-            >
-              Contáctanos
-            </a>
-            <a
-              href="/sobre-nosotros"
-              className="border-2 border-white text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-green-700 transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
-            >
-              Conoce más sobre nosotros
-            </a>
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[30%] left-[20%] w-1.5 h-1.5 rounded-full bg-white/50 animate-float-slow" />
+          <span className="absolute bottom-[32%] right-[24%] w-2 h-2 rounded-full bg-[#f68c24]/45 animate-float-medium" style={{ animationDelay: "1.4s" }} />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-xl border border-white/15 px-4 py-1.5 rounded-full mb-10">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#f68c24]" />
+              <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
+                Próximos eventos
+              </span>
+            </div>
+
+            <h2 className="font-display font-extrabold text-white text-display-lg tracking-display-tight text-balance mb-8">
+              ¿Quieres ser parte de nuestros próximos{" "}
+              <span className="text-[#f68c24]">eventos</span>?
+            </h2>
+
+            <p className="text-white/80 text-lg lg:text-xl leading-relaxed max-w-2xl text-pretty mb-10">
+              Mantente informado sobre nuestras actividades académicas y culturales, y vive
+              de cerca la comunidad IIESBC.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/contacto"
+                className="group inline-flex items-center justify-center gap-2 bg-[#f68c24] hover:bg-[#cd751e] text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_14px_36px_-12px_rgba(246,140,36,0.7)] hover:shadow-[0_16px_40px_-8px_rgba(246,140,36,0.9)] hover:-translate-y-0.5"
+              >
+                Contáctanos
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+
+              <Link
+                href="/sobre-nosotros"
+                className="group inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/25 px-8 py-4 rounded-full font-semibold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Conoce más sobre nosotros
+                <span className="inline-flex w-1.5 h-1.5 rounded-full bg-[#a5c94c]" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

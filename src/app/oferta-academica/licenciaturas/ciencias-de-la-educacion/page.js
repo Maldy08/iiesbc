@@ -7,7 +7,6 @@ import Link from 'next/link';
 export default function LicenciaturaEducacion() {
   const [hoveredCard, setHoveredCard] = useState();
 
-  // Contenido organizado por secciones (similar a la maestría)
   const perfilEgresado = [
     "Aplicar las técnicas de investigación de tipo cualitativo y cuantitativo",
     "Desarrollar propuestas educativas innovadoras para responder a la demanda de la sociedad globalizada",
@@ -180,298 +179,445 @@ export default function LicenciaturaEducacion() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-  <section className="relative text-white py-24 overflow-hidden">
-        {/* Background image */}
-        <Image
-          src="/images/comunicacion.jpg"
-          alt="Comunicación - IIESBC"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-  {/* Gradient overlay for readability (alineado al estilo del sitio) */}
-  <div className="absolute inset-0 bg-gradient-to-br from-green-900/85 via-green-800/75 to-orange-800/65" />
+    <main id="main" className="relative isolate bg-[var(--color-surface)]">
+      {/* ─────────────────────────── Hero ─────────────────────────── */}
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/comunicacion.jpg"
+            alt="Comunicación - IIESBC"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-105 animate-slow-zoom"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1208]/85 via-[#0c1208]/60 to-[#0c1208]/92" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(246,140,36,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(102,130,44,0.22),transparent_55%)]" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[24%] left-[18%] w-1.5 h-1.5 rounded-full bg-white/50 animate-float-slow" />
+          <span className="absolute top-[42%] right-[22%] w-2 h-2 rounded-full bg-[#f68c24]/45 animate-float-medium" style={{ animationDelay: "1.2s" }} />
+          <span className="absolute bottom-[30%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#a5c94c]/60 animate-float-fast" style={{ animationDelay: "0.6s" }} />
+        </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-              Licenciatura en Ciencias de la Educación
-            </h1>
-            <p className="text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Transforma vidas a través de la educación. Conviértete en un líder educativo que innova y hace la diferencia
+        <div className="relative min-h-[72vh] flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+            <div className="max-w-3xl animate-fade-in-up">
+              <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-xl border border-white/15 px-4 py-1.5 rounded-full mb-10">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 rounded-full bg-[#a5c94c] opacity-75 animate-ping" />
+                  <span className="relative rounded-full h-2 w-2 bg-[#a5c94c]" />
+                </span>
+                <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
+                  Licenciatura
+                </span>
+              </div>
+
+              <h1 className="font-display font-extrabold text-white text-display-xl tracking-display-tight text-balance mb-8">
+                Licenciatura en Ciencias de la{" "}
+                <span className="text-[#f68c24]">Educación</span>
+              </h1>
+
+              <div className="relative w-40 h-px bg-gradient-to-r from-[#66822c] via-[#f68c24] to-transparent mb-10 overflow-hidden">
+                <span className="absolute inset-0 bg-white/60 animate-shimmer" />
+              </div>
+
+              <p className="text-white/85 text-lg lg:text-xl leading-relaxed max-w-2xl text-pretty mb-10">
+                Transforma vidas a través de la educación. Conviértete en un líder educativo
+                que innova y hace la diferencia.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#informacion"
+                  className="group inline-flex items-center justify-center gap-2 bg-[#66822c] hover:bg-[#556e23] text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_12px_32px_-10px_rgba(102,130,44,0.8)] hover:shadow-[0_16px_40px_-8px_rgba(102,130,44,0.9)] hover:-translate-y-0.5"
+                >
+                  Descubre el Programa
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+                <a
+                  href="#plan-estudios"
+                  className="group inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/25 px-8 py-4 rounded-full font-semibold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Ver Plan de Estudios
+                  <span className="inline-flex w-1.5 h-1.5 rounded-full bg-[#f68c24]" />
+                </a>
+                <Link
+                  href="/contacto"
+                  className="group inline-flex items-center justify-center gap-2 bg-[#f68c24] hover:bg-[#cd751e] text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_12px_32px_-10px_rgba(246,140,36,0.8)] hover:shadow-[0_16px_40px_-8px_rgba(246,140,36,0.9)] hover:-translate-y-0.5"
+                >
+                  Solicitar Información
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────── Datos Clave del Programa ─────────────── */}
+      <section className="relative py-24 lg:py-28 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="max-w-2xl mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#66822c]" />
+              <span className="text-eyebrow text-[#66822c]">Datos Clave</span>
+            </div>
+            <h2 className="font-display text-display-md font-bold text-[#1a1f14] tracking-display-tight text-balance mb-4">
+              Datos Clave del <span className="text-[#66822c]">Programa</span>
+            </h2>
+            <p className="text-base text-[#4a5240] leading-relaxed text-pretty">
+              Información general de la Licenciatura.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="#informacion" className="bg-white text-green-700 px-8 py-4 rounded-full font-bold hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                Descubre el Programa
-              </a>
-              <a href="#plan-estudios" className="bg-white/15 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold hover:bg-white/25 border-2 border-white transition-all">
-                Ver Plan de Estudios
-              </a>
-              <Link href="/contacto" className="bg-gradient-to-r from-green-600 to-orange-600 text-white px-8 py-4 rounded-full font-bold hover:from-green-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                Solicitar Información
-              </Link>
-            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Datos Clave del Programa */}
-      <section className="bg-white py-12 shadow-lg -mt-8 relative z-20 mx-4 md:mx-8 lg:mx-16 rounded-2xl">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">Datos Clave del Programa</h2>
-            <p className="text-gray-600">Información general de la Licenciatura</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {estadisticas.map((stat, idx) => (
-              <div
-                key={idx}
-                className="relative text-center p-5 rounded-2xl bg-white hover:bg-gradient-to-br hover:from-green-50 hover:to-orange-50 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] border border-gray-100 shadow-sm"
-              >
-                <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-500/60 to-transparent rounded-full" />
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600 mb-1">
-                  {stat.numero}
-                </div>
-                <div className="text-gray-600 font-semibold">{stat.texto}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ventajas Competitivas */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-            ¿Por qué estudiar Ciencias de la Educación?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ventajas.map((ventaja, idx) => (
-              <div
-                key={idx}
-                onMouseEnter={() => setHoveredCard(idx)}
-                onMouseLeave={() => setHoveredCard(null)}
-                className={`bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 ${
-                  hoveredCard === idx ? 'border-sky-500' : 'border-transparent'
-                }`}
-              >
-                <div className="text-5xl mb-4">{ventaja.icon}</div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{ventaja.titulo}</h3>
-                <p className="text-gray-600">{ventaja.descripcion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Información del Programa (estilo con detalles + imagen) */}
-      <section id="informacion" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Columna Izquierda - Accordions */}
-          <div>
-            <div className="mb-8">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Información del Programa</h2>
-              <p className="text-lg text-gray-600">Conoce los detalles de la Licenciatura en Ciencias de la Educación</p>
-            </div>
-
-            <div className="space-y-4">
-              {/* Perfil del Egresado */}
-              <details className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-xl overflow-hidden shadow-lg">
-                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-base">👨‍🏫</span>
-                    </div>
-                    <span>Perfil del Egresado</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5">
+            {estadisticas.map((stat, idx) => {
+              const accent = idx % 2 === 0 ? '#66822c' : '#f68c24';
+              return (
+                <div
+                  key={idx}
+                  className="group relative bg-[var(--color-surface)] rounded-[1.5rem] p-6 ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 hover:-translate-y-1"
+                >
+                  <span
+                    className="absolute top-0 left-6 right-6 h-px"
+                    style={{ backgroundColor: `${accent}40` }}
+                  />
+                  <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-5 transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundColor: `${accent}15` }}
+                  >
+                    {stat.icon}
                   </div>
-                  <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="p-6 pt-0 bg-white/70">
-                  <ul className="space-y-2">
+                  <p
+                    className="font-display text-4xl lg:text-5xl font-extrabold tracking-display-tight tabular-nums mb-1"
+                    style={{ color: accent }}
+                  >
+                    {stat.numero}
+                  </p>
+                  <p className="text-eyebrow text-[#8a9180]">{stat.texto}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────── Ventajas Competitivas ─────────────── */}
+      <section className="relative py-24 lg:py-32 bg-[var(--color-surface)] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mb-14">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#f68c24]" />
+              <span className="text-eyebrow text-[#f68c24]">Ventajas</span>
+            </div>
+            <h2 className="font-display text-display-lg font-bold text-[#1a1f14] tracking-display-tight text-balance mb-6">
+              ¿Por qué estudiar{" "}
+              <span className="text-[#f68c24]">Ciencias de la Educación?</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {ventajas.map((ventaja, idx) => {
+              const accent = idx % 2 === 0 ? '#66822c' : '#f68c24';
+              const isHovered = hoveredCard === idx;
+              return (
+                <div
+                  key={idx}
+                  onMouseEnter={() => setHoveredCard(idx)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  className="group relative bg-white rounded-[1.5rem] p-7 ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 hover:-translate-y-1"
+                  style={isHovered ? { boxShadow: `0 16px 40px -16px ${accent}55` } : undefined}
+                >
+                  <span
+                    className="absolute top-0 left-0 right-0 h-px"
+                    style={{ backgroundColor: accent }}
+                  />
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundColor: `${accent}15` }}
+                  >
+                    {ventaja.icon}
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-[#1a1f14] mb-3 tracking-display-tight">
+                    {ventaja.titulo}
+                  </h3>
+                  <p className="text-[#4a5240] leading-relaxed text-pretty">
+                    {ventaja.descripcion}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────── Información del Programa ─────────────── */}
+      <section id="informacion" className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-7">
+              <div className="mb-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="h-px w-10 bg-[#66822c]" />
+                  <span className="text-eyebrow text-[#66822c]">El programa</span>
+                </div>
+                <h2 className="font-display text-display-lg font-bold text-[#1a1f14] tracking-display-tight text-balance mb-4">
+                  Información del <span className="text-[#66822c]">Programa</span>
+                </h2>
+                <p className="text-lg text-[#4a5240] leading-relaxed text-pretty">
+                  Conoce los detalles de la Licenciatura en Ciencias de la Educación.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <AccordionItem accent="#66822c" icon="👨‍🏫" title="Perfil del Egresado">
+                  <ul className="space-y-3">
                     {perfilEgresado.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <span className="text-orange-500 font-bold mt-1">•</span>
+                      <li key={i} className="flex items-start gap-3 text-[#4a5240] leading-relaxed">
+                        <span className="font-display font-bold text-[#66822c] tabular-nums text-sm mt-0.5 shrink-0">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </details>
+                </AccordionItem>
 
-              {/* Campo Laboral */}
-              <details className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-xl overflow-hidden shadow-lg">
-                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-base">🎓</span>
-                    </div>
-                    <span>Campo Laboral</span>
-                  </div>
-                  <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="p-6 pt-0 bg-white/70">
-                  <ul className="space-y-2">
+                <AccordionItem accent="#f68c24" icon="🎓" title="Campo Laboral">
+                  <ul className="space-y-3">
                     {campoLaboral.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <span className="text-orange-500 font-bold mt-1">•</span>
+                      <li key={i} className="flex items-start gap-3 text-[#4a5240] leading-relaxed">
+                        <span className="font-display font-bold text-[#f68c24] tabular-nums text-sm mt-0.5 shrink-0">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </details>
+                </AccordionItem>
 
-              {/* Requisitos de Ingreso */}
-              <details className="group bg-gradient-to-r from-green-50 to-orange-50 rounded-xl overflow-hidden shadow-lg">
-                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-lg text-gray-900 hover:bg-white/50 transition-all">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-base">📝</span>
-                    </div>
-                    <span>Requisitos de Ingreso</span>
-                  </div>
-                  <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="p-6 pt-0 bg-white/70">
-                  <ul className="space-y-2">
+                <AccordionItem accent="#66822c" icon="📝" title="Requisitos de Ingreso">
+                  <ul className="space-y-3">
                     {requisitos.map((req, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-700">
-                        <span className="text-orange-500 font-bold mt-1">•</span>
+                      <li key={i} className="flex items-start gap-3 text-[#4a5240] leading-relaxed">
+                        <svg className="w-5 h-5 text-[#66822c] mt-0.5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
                         <span>{req}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </details>
-            </div>
-          </div>
-
-          {/* Columna Derecha - Imagen destacada */}
-          <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/educacion-iiesbc.jpg"
-              alt="Licenciatura en Ciencias de la Educación"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <h3 className="text-3xl font-bold mb-2">Educa el Futuro</h3>
-              <p className="text-lg opacity-90">Forma líderes educativos del mañana</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Plan de Estudios */}
-      <section id="plan-estudios" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 text-gray-900">Plan de Estudios</h2>
-            <p className="text-xl text-gray-600">Programa académico estructurado en 9 cuatrimestres</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {planEstudios.map((periodo, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-green-50 to-orange-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
-                <div className="text-center mb-6">
-                  <div className="inline-block bg-gradient-to-r from-green-600 to-orange-600 text-white px-6 py-2 rounded-full font-bold mb-2">
-                    {idx + 1}º Cuatrimestre
-                  </div>
-                  <h3 className="text-sm text-gray-600 font-semibold">{periodo.nombre}</h3>
-                </div>
-                <ul className="space-y-3">
-                  {periodo.materias.map((materia, i) => (
-                    <li key={i} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                      <p className="font-semibold text-gray-800 text-center">{materia}</p>
-                    </li>
-                  ))}
-                </ul>
+                </AccordionItem>
               </div>
-            ))}
+            </div>
+
+            <div className="lg:col-span-5 lg:sticky lg:top-24">
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
+                <Image
+                  src="/images/educacion-iiesbc.jpg"
+                  alt="Licenciatura en Ciencias de la Educación"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1208]/80 via-[#0c1208]/10 to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <p className="text-eyebrow text-[#f68c24] mb-3">Tu vocación</p>
+                  <h3 className="font-display text-3xl lg:text-4xl font-bold tracking-display-tight text-balance mb-3">
+                    Educa el Futuro
+                  </h3>
+                  <p className="text-white/85 text-pretty">
+                    Forma líderes educativos del mañana.
+                  </p>
+                </div>
+
+                <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 bg-white rounded-2xl px-5 py-3 shadow-[var(--shadow-ring)] ring-1 ring-black/5">
+                  <p className="text-eyebrow text-[#f68c24] mb-1">RVOE</p>
+                  <p className="font-display font-semibold text-[#1a1f14] text-sm">Programa oficial</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-          }}></div>
-        </div>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white/20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              ¡Inscripciones Abiertas!
+      {/* ─────────────── Plan de Estudios ─────────────── */}
+      <section id="plan-estudios" className="relative py-24 lg:py-32 bg-[var(--color-surface)] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-10 bg-[#66822c]" />
+              <span className="text-eyebrow text-[#66822c]">Currícula</span>
+            </div>
+            <h2 className="font-display text-display-lg font-bold text-[#1a1f14] tracking-display-tight text-balance mb-6">
+              Plan de <span className="text-[#66822c]">Estudios</span>
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Ten la oportunidad de vincular tus estudios con Universidades Internacionales. 
+            <p className="text-lg text-[#4a5240] leading-relaxed text-pretty">
+              Programa académico estructurado en 9 cuatrimestres.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {planEstudios.map((periodo, idx) => {
+              const accent = idx % 2 === 0 ? '#66822c' : '#f68c24';
+              return (
+                <article
+                  key={idx}
+                  className="group relative bg-white rounded-[1.75rem] p-7 lg:p-8 ring-1 ring-black/5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-500 hover:-translate-y-1"
+                >
+                  <span
+                    className="absolute top-0 left-0 right-0 h-px"
+                    style={{ backgroundColor: accent }}
+                  />
+
+                  <div className="flex items-center justify-between mb-6 pb-5 border-b border-[var(--color-line)]">
+                    <span
+                      className="font-display text-5xl font-extrabold tracking-display-tight tabular-nums leading-none"
+                      style={{ color: accent }}
+                    >
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <div className="text-right">
+                      <p
+                        className="text-eyebrow mb-1"
+                        style={{ color: accent }}
+                      >
+                        Cuatrimestre
+                      </p>
+                      <p className="font-display text-sm font-semibold text-[#1a1f14]">
+                        {periodo.nombre}
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2.5">
+                    {periodo.materias.map((materia, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-[#4a5240] text-sm leading-snug"
+                      >
+                        <span
+                          className="font-display font-bold tabular-nums text-xs mt-0.5 shrink-0 opacity-60"
+                          style={{ color: accent }}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span className="flex-1">{materia}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────── CTA Final ─────────────────────── */}
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[#0c1208]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(246,140,36,0.22),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(102,130,44,0.25),transparent_55%)]" />
+        </div>
+
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[30%] left-[20%] w-1.5 h-1.5 rounded-full bg-white/50 animate-float-slow" />
+          <span className="absolute bottom-[32%] right-[24%] w-2 h-2 rounded-full bg-[#f68c24]/45 animate-float-medium" style={{ animationDelay: "1.4s" }} />
+          <span className="absolute top-[50%] left-[52%] w-1.5 h-1.5 rounded-full bg-[#a5c94c]/60 animate-float-fast" style={{ animationDelay: "0.8s" }} />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-xl border border-white/15 px-4 py-1.5 rounded-full mb-10">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inset-0 rounded-full bg-[#a5c94c] opacity-75 animate-ping" />
+                <span className="relative rounded-full h-2 w-2 bg-[#a5c94c]" />
+              </span>
+              <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
+                Inscripciones abiertas
+              </span>
+            </div>
+
+            <h2 className="font-display font-extrabold text-white text-display-lg tracking-display-tight text-balance mb-8">
+              ¡Inscripciones <span className="text-[#f68c24]">Abiertas!</span>
+            </h2>
+
+            <p className="text-white/85 text-lg lg:text-xl leading-relaxed max-w-2xl text-pretty mb-10">
+              Ten la oportunidad de vincular tus estudios con Universidades Internacionales.
               En un ambiente sano, cómodo y dedicado se estudia mejor.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="text-white font-semibold">✓ Becas Disponibles</span>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="text-white font-semibold">✓ Financiamiento</span>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="text-white font-semibold">✓ RVOE Oficial</span>
-              </div>
+
+            <div className="flex flex-wrap gap-3 mb-12">
+              <Badge>Becas Disponibles</Badge>
+              <Badge>Financiamiento</Badge>
+              <Badge>RVOE Oficial</Badge>
             </div>
+
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfSsj4lfLF9akHmCPjL5pTK8PaebMFQ2__qE-wJZpShmka01A/viewform?usp=publish-editor"
               target="_blank"
-              className="inline-block bg-white text-orange-600 px-12 py-5 rounded-full text-xl font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              className="group inline-flex items-center justify-center gap-2 bg-[#f68c24] hover:bg-[#cd751e] text-white px-10 py-5 rounded-full font-semibold text-lg transition-all duration-300 shadow-[0_14px_36px_-12px_rgba(246,140,36,0.7)] hover:shadow-[0_16px_40px_-8px_rgba(246,140,36,0.9)] hover:-translate-y-0.5"
             >
               Inscríbete Ahora
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </a>
           </div>
         </div>
       </section>
+    </main>
+  );
+}
 
-      {/* Styles */}
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.3);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.5);
-        }
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-      `}</style>
+/* ────────────────────────── Subcomponentes ────────────────────────── */
+
+function AccordionItem({ accent, icon, title, children }) {
+  return (
+    <details className="group bg-white rounded-[1.25rem] ring-1 ring-black/5 shadow-[var(--shadow-card)] open:shadow-[var(--shadow-card-hover)] transition-shadow duration-500 overflow-hidden">
+      <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+        <div className="flex items-center gap-4">
+          <span
+            className="w-11 h-11 rounded-2xl flex items-center justify-center text-lg transition-transform duration-500 group-open:scale-110"
+            style={{ backgroundColor: `${accent}15` }}
+          >
+            {icon}
+          </span>
+          <span className="font-display text-lg lg:text-xl font-bold text-[#1a1f14] tracking-display-tight">
+            {title}
+          </span>
+        </div>
+        <svg
+          className="w-5 h-5 shrink-0 transition-transform duration-300 group-open:rotate-180"
+          fill="none"
+          stroke={accent}
+          strokeWidth={2.5}
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div className="px-6 pb-6 pt-0">
+        <div className="pl-[3.75rem]">
+          {children}
+        </div>
+      </div>
+    </details>
+  );
+}
+
+function Badge({ children }) {
+  return (
+    <div className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 backdrop-blur-md text-white border border-white/20 px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-300">
+      <svg className="w-4 h-4 text-[#a5c94c]" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      {children}
     </div>
   );
 }
