@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function OfertaAcademica() {
@@ -79,37 +80,53 @@ export default function OfertaAcademica() {
   return (
     <main id="main" className="relative isolate bg-[var(--color-surface)]">
       {/* ─────────────────────────── Hero ─────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-white">
-        <div className="absolute inset-0 -z-10 pointer-events-none">
-          <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-[#66822c]/5 rounded-full blur-3xl animate-float-slow" />
-          <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-[#f68c24]/5 rounded-full blur-3xl animate-float-medium" />
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/oferta-academica/programas-desarrollo-profesional.png"
+            alt="Estudiantes adultos colaborando en un entorno académico moderno"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-105 animate-slow-zoom"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1208]/85 via-[#0c1208]/60 to-[#0c1208]/92" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(246,140,36,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(102,130,44,0.22),transparent_55%)]" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
-          <div className="max-w-4xl animate-fade-in-up">
-            <div className="inline-flex items-center gap-2.5 bg-[var(--color-surface)] border border-[var(--color-line)] px-4 py-1.5 rounded-full mb-10">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inset-0 rounded-full bg-[#66822c] opacity-75 animate-ping" />
-                <span className="relative rounded-full h-2 w-2 bg-[#66822c]" />
-              </span>
-              <span className="text-[#66822c] text-xs font-medium tracking-[0.18em] uppercase">
-                Oferta Académica IIESBC
-              </span>
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+          <span className="absolute top-[24%] left-[18%] w-1.5 h-1.5 rounded-full bg-white/50 animate-float-slow" />
+          <span className="absolute top-[42%] right-[22%] w-2 h-2 rounded-full bg-[#f68c24]/45 animate-float-medium" style={{ animationDelay: "1.2s" }} />
+          <span className="absolute bottom-[30%] left-[44%] w-1.5 h-1.5 rounded-full bg-[#a5c94c]/60 animate-float-fast" style={{ animationDelay: "0.6s" }} />
+        </div>
+
+        <div className="relative min-h-[72vh] flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+            <div className="max-w-3xl animate-fade-in-up">
+              <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-xl border border-white/15 px-4 py-1.5 rounded-full mb-10">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inset-0 rounded-full bg-[#a5c94c] opacity-75 animate-ping" />
+                  <span className="relative rounded-full h-2 w-2 bg-[#a5c94c]" />
+                </span>
+                <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
+                  Oferta Académica IIESBC
+                </span>
+              </div>
+
+              <h1 className="font-display font-extrabold text-white text-display-xl tracking-display-tight text-balance mb-8">
+                Programas que impulsan tu{" "}
+                <span className="text-[#f68c24]">desarrollo profesional</span>
+              </h1>
+
+              <div className="relative w-40 h-px bg-gradient-to-r from-[#66822c] via-[#f68c24] to-transparent mb-10 overflow-hidden">
+                <span className="absolute inset-0 bg-white/60 animate-shimmer" />
+              </div>
+
+              <p className="text-white/85 text-lg lg:text-xl leading-relaxed max-w-2xl text-pretty">
+                Descubre nuestra oferta de Licenciaturas, Maestrías, Doctorado y Diplomados,
+                diseñados con enfoque práctico, pertinencia social y acompañamiento docente.
+              </p>
             </div>
-
-            <h1 className="font-display font-extrabold text-[#1a1f14] text-display-xl tracking-display-tight text-balance mb-8">
-              Programas que impulsan tu{" "}
-              <span className="text-[#66822c]">desarrollo profesional</span>
-            </h1>
-
-            <div className="relative w-40 h-px bg-gradient-to-r from-[#66822c] via-[#f68c24] to-transparent mb-10 overflow-hidden">
-              <span className="absolute inset-0 bg-[#1a1f14]/20 animate-shimmer" />
-            </div>
-
-            <p className="text-lg lg:text-xl text-[#4a5240] leading-relaxed max-w-3xl text-pretty">
-              Descubre nuestra oferta de Licenciaturas, Maestrías, Doctorado y Diplomados,
-              diseñados con enfoque práctico, pertinencia social y acompañamiento docente.
-            </p>
           </div>
         </div>
       </section>
