@@ -7,25 +7,42 @@ export default function Mision() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/5] lg:aspect-[4/5] rounded-[2rem] overflow-hidden ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
-              <Image
-                src="/images/brooke-cagle.jpg"
-                alt="Comunidad estudiantil IIESBC"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1a1f14]/25 via-transparent to-transparent" />
-            </div>
+            <div className="absolute -inset-6 lg:-inset-10 rounded-[3rem] bg-[#66822c]/5 blur-3xl" aria-hidden="true" />
+            <div className="absolute -left-4 top-16 h-36 w-36 rounded-full bg-[#f68c24]/10 blur-3xl" aria-hidden="true" />
 
-            <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 bg-white rounded-2xl px-6 py-4 shadow-[var(--shadow-ring)] ring-1 ring-black/5">
-              <p className="text-eyebrow text-[#f68c24] mb-1">Nuestra misión</p>
-              <p className="font-display font-semibold text-[#1a1f14] text-sm">Desde 1999</p>
-            </div>
+            <div className="relative min-h-[520px] sm:min-h-[640px] lg:min-h-[780px]">
+              <div className="absolute inset-x-6 top-8 bottom-0 rounded-[2.75rem] bg-[#66822c]/10 rotate-[-2deg] ring-1 ring-black/5" aria-hidden="true" />
+              <div className="absolute -right-2 top-4 bottom-12 w-24 rounded-full bg-[#f68c24]/10 blur-2xl" aria-hidden="true" />
 
-            <div className="absolute -bottom-6 -left-4 lg:-bottom-8 lg:-left-8 bg-[#66822c] text-white rounded-2xl px-6 py-5 shadow-[0_20px_50px_-20px_rgba(102,130,44,0.7)] hidden sm:block">
-              <p className="font-display text-3xl font-extrabold leading-none">25+</p>
-              <p className="text-xs font-medium text-white/80 mt-1 uppercase tracking-widest">Años de historia</p>
+              <div className="group relative h-[520px] sm:h-[640px] lg:h-[780px] overflow-hidden rounded-[2.75rem] ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
+                <Image
+                  src="/images/brooke-cagle.jpg"
+                  alt="Comunidad estudiantil IIESBC"
+                  fill
+                  className="object-cover scale-105 transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0c1208]/50 via-[#0c1208]/10 to-[#0c1208]/65" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(246,140,36,0.24),transparent_34%),radial-gradient(circle_at_88%_74%,rgba(102,130,44,0.28),transparent_38%)]" />
+                <div className="absolute left-8 right-8 top-8 h-px bg-gradient-to-r from-transparent via-white/55 to-transparent" aria-hidden="true" />
+                <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#0c1208]/85 to-transparent" />
+              </div>
+
+              <div className="absolute top-6 right-4 lg:top-10 lg:right-8 bg-white/90 backdrop-blur-md rounded-2xl px-6 py-4 shadow-[var(--shadow-ring)] ring-1 ring-white/70 animate-float-slow">
+                <p className="text-eyebrow text-[#f68c24] mb-1">Nuestra misión</p>
+                <p className="font-display font-semibold text-[#1a1f14] text-sm">Desde 1999</p>
+              </div>
+
+              <div className="absolute bottom-6 left-4 lg:bottom-10 lg:left-8 bg-[#66822c] text-white rounded-2xl px-6 py-5 shadow-[0_20px_50px_-20px_rgba(102,130,44,0.7)] hidden sm:block">
+                <p className="font-display text-3xl font-extrabold leading-none">25+</p>
+                <p className="text-xs font-medium text-white/80 mt-1 uppercase tracking-widest">Años de historia</p>
+              </div>
+
+              <div className="absolute -bottom-3 right-8 hidden lg:flex items-center gap-2 rounded-full bg-white px-4 py-3 shadow-[var(--shadow-ring)] ring-1 ring-black/5" aria-hidden="true">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#a5c94c] animate-ping" />
+                <span className="h-2.5 w-10 rounded-full bg-[#66822c]/25" />
+                <span className="h-2.5 w-6 rounded-full bg-[#f68c24]/35" />
+              </div>
             </div>
           </div>
 

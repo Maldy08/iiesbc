@@ -69,7 +69,7 @@ export default function SobreNosotros() {
             <div className="lg:col-span-6 relative order-2 lg:order-1">
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden ring-1 ring-black/5 shadow-[var(--shadow-card-hover)]">
                 <Image
-                  src="/images/sobre-nosotros/quienes-somos.jpg"
+                  src="/images/sobre-nosotros/conocenos-iiesbc.png"
                   alt="Estudiantes IIESBC"
                   fill
                   className="object-cover"
