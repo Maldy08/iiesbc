@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const metadata = {
   title: 'Registro al Congreso - IIESBC',
-  description: 'Regístrate al Congreso Académico del IIESBC 2025',
+  description: 'Regístrate al Congreso Académico del IIESBC 2026',
 };
 
 export default function RegistroCongresoPage() {
@@ -29,7 +29,7 @@ export default function RegistroCongresoPage() {
           <div className="text-center">
             <div className="inline-block mb-4">
               <span className="px-4 py-2 bg-white/20 rounded-full text-sm font-semibold backdrop-blur-sm">
-                Congreso Académico 2025
+                Congreso Académico 2026
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
@@ -63,11 +63,11 @@ export default function RegistroCongresoPage() {
                 </svg>
                 contacto@iiesbc.mx
               </a>
-              <a href="tel:+526861248070" className="flex items-center text-orange-700 hover:text-orange-800 font-semibold">
+              <a href="tel:+526864335197" className="flex items-center text-orange-700 hover:text-orange-800 font-semibold">
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                (686) 124-8070
+                (686) 433-5197
               </a>
             </div>
           </div>

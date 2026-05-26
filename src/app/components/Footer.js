@@ -126,10 +126,10 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <IconPhone className="mt-0.5 h-4 w-4 flex-shrink-0 text-white/50" />
                 <a
-                  href="tel:+526865649010"
+                  href="tel:+526864335197"
                   className="font-display font-medium text-white/75 transition-colors duration-300 hover:text-white"
                 >
-                  <span className="link-underline">(686) 564-9010</span>
+                  <span className="link-underline">(686) 433-5197</span>
                 </a>
               </li>
               <li className="flex items-start gap-3">

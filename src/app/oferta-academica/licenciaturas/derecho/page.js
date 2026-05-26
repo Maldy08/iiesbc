@@ -400,7 +400,7 @@ export default function LicenciaturaDerecho() {
 
                 <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 bg-white rounded-2xl px-5 py-3 shadow-[var(--shadow-ring)] ring-1 ring-black/5">
                   <p className="text-eyebrow text-[#f68c24] mb-1">RVOE</p>
-                  <p className="font-display font-semibold text-[#1a1f14] text-sm">Programa oficial</p>
+                  <p className="font-display font-semibold text-[#1a1f14] text-sm tabular-nums">BC-229-M1/13</p>
                 </div>
               </div>
             </div>

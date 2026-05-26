@@ -80,7 +80,7 @@ export default function CongresoLayout({ children }) {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-sm text-gray-600">
-                © 2025 Instituto de Investigación y Desarrollo Educativo de Baja California
+                © 2026 Instituto de Investigación y Desarrollo Educativo de Baja California
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 Sistema de Gestión de Ponencias

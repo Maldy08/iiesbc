@@ -114,10 +114,10 @@ const schemaJsonLd = {
     postalCode: "21290",
     addressCountry: "MX",
   },
-  telephone: "+526865649010",
+  telephone: "+526864335197",
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+52-686-564-9010",
+    telephone: "+52-686-433-5197",
     contactType: "Admissions",
     email: "im.iiesbc@gmail.com",
   },

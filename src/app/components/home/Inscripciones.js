@@ -26,7 +26,7 @@ export default function Inscripciones() {
 
             <div className="absolute -top-5 -right-4 lg:-right-8 bg-[#f68c24] text-white rounded-2xl px-6 py-4 shadow-[0_18px_44px_-16px_rgba(246,140,36,0.8)] rotate-[2deg]">
               <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-white/80 mb-0.5">Abiertas</p>
-              <p className="font-display text-xl font-extrabold leading-none">Inscripciones 2025</p>
+              <p className="font-display text-xl font-extrabold leading-none">Inscripciones 2026</p>
             </div>
 
             <div className="absolute -bottom-6 -left-4 lg:-left-8 bg-white rounded-2xl px-6 py-4 shadow-[var(--shadow-ring)] ring-1 ring-black/5">

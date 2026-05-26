@@ -257,7 +257,7 @@ export default function MaestriaAdministracionCompetitiva() {
 
                 <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 bg-white rounded-2xl px-5 py-3 shadow-[var(--shadow-ring)] ring-1 ring-black/5">
                   <p className="text-eyebrow text-[#f68c24] mb-1">RVOE</p>
-                  <p className="font-display font-semibold text-[#1a1f14] text-sm">Programa oficial</p>
+                  <p className="font-display font-semibold text-[#1a1f14] text-sm tabular-nums">BC-232-M1/13</p>
                 </div>
               </div>
             </div>
@@ -422,13 +422,13 @@ export default function MaestriaAdministracionCompetitiva() {
                   </svg>
                 </Link>
                 <a
-                  href="tel:+526861819889"
+                  href="tel:+526864335197"
                   className="group inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/25 px-8 py-4 rounded-full font-semibold text-base backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <svg className="w-5 h-5 text-[#a5c94c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  (686) 181-9889
+                  (686) 433-5197
                 </a>
               </div>
             </div>

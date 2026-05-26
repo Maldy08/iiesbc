@@ -31,7 +31,7 @@ export default function Hero() {
               <span className="relative rounded-full h-2 w-2 bg-[#a5c94c]" />
             </span>
             <span className="text-white/90 text-xs font-medium tracking-[0.18em] uppercase">
-              Inscripciones Abiertas 2025
+              Inscripciones Abiertas 2026
             </span>
           </div>
 
