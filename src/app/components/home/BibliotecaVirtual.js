@@ -31,7 +31,7 @@ export default function BibliotecaVirtual() {
               para acompañar tu formación académica desde cualquier lugar.
             </p>
             <Link
-              href="https://www.canva.com/design/DAG38pVRiqw/96Z1wuHznTSSzWeZrGt8Gg/view?utm_content=DAG38pVRiqw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8906bd033e"
+              href="https://biblioteca-virtual-iiesbc.my.canva.site/"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 bg-white text-[#1a1f14] hover:bg-[#f68c24] hover:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_20px_50px_-20px_rgba(246,140,36,0.8)] hover:-translate-y-0.5"
