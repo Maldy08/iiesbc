@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const FOOTER_LEGAL = [
+  { href: "/normativa/derechos-de-autor", label: "Derechos de Autor" },
+];
+
 const FOOTER_NAV = [
   { href: "/", label: "Inicio" },
   { href: "/sobre-nosotros", label: "Sobre Nosotros" },
@@ -162,6 +166,17 @@ export default function Footer() {
               <span className="mt-1 block md:mt-0 md:inline">
                 RVOE-BC (229 a la 235) M1/13
               </span>
+              {FOOTER_LEGAL.map((item) => (
+                <span key={item.href}>
+                  <span className="mx-2 text-white/25">·</span>
+                  <Link
+                    href={item.href}
+                    className="transition-colors duration-300 hover:text-white/80"
+                  >
+                    {item.label}
+                  </Link>
+                </span>
+              ))}
             </div>
 
             <div className="flex items-center gap-2">
