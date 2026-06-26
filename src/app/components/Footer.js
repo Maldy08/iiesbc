@@ -113,8 +113,26 @@ export default function Footer() {
             </ul>
           </nav>
 
+          {/* Normativa */}
+          <nav aria-label="Normativa institucional" className="lg:col-span-2">
+            <h3 className="text-eyebrow text-white/50">Normativa</h3>
+            <div className="mt-3 h-px bg-white/10" />
+            <ul className="mt-4 space-y-2.5">
+              {FOOTER_LEGAL.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="font-display text-sm font-medium text-white/70 transition-colors duration-300 hover:text-white"
+                  >
+                    <span className="link-underline">{item.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           {/* Contacto */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-2">
             <h3 className="text-eyebrow text-white/50">Contacto</h3>
             <div className="mt-3 h-px bg-white/10" />
 
@@ -166,17 +184,7 @@ export default function Footer() {
               <span className="mt-1 block md:mt-0 md:inline">
                 RVOE-BC (229 a la 235) M1/13
               </span>
-              {FOOTER_LEGAL.map((item) => (
-                <span key={item.href}>
-                  <span className="mx-2 text-white/25">·</span>
-                  <Link
-                    href={item.href}
-                    className="transition-colors duration-300 hover:text-white/80"
-                  >
-                    {item.label}
-                  </Link>
-                </span>
-              ))}
+
             </div>
 
             <div className="flex items-center gap-2">

@@ -45,6 +45,7 @@ const NAV_LINKS = [
   { href: "/sobre-nosotros", label: "Sobre Nosotros" },
   { href: "/eventos-academicos", label: "Eventos Académicos" },
   { href: "/contacto", label: "Contacto" },
+  { href: "/normativa/derechos-de-autor", label: "Normativa" },
 ];
 
 export default function Navbar() {
@@ -297,6 +298,15 @@ export default function Navbar() {
               className={desktopLinkClass(isActive("/contacto"))}
             >
               Contacto
+            </DesktopLink>
+          </li>
+          <li>
+            <DesktopLink
+              href="/normativa/derechos-de-autor"
+              active={isActive("/normativa")}
+              className={desktopLinkClass(isActive("/normativa"))}
+            >
+              Normativa
             </DesktopLink>
           </li>
         </ul>
