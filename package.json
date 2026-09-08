@@ -6,9 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "constancia:demo": "node scripts/probar-constancia.mjs"
   },
   "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
     "@stripe/react-stripe-js": "^5.3.0",
     "@stripe/stripe-js": "^8.4.0",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
@@ -16,8 +18,13 @@
     "@tailwindcss/cli": "^4.1.12",
     "@vercel/analytics": "^1.6.1",
     "@vercel/blob": "^2.0.0",
+    "bcryptjs": "^3.0.3",
+    "exceljs": "^4.4.0",
     "googleapis": "^164.1.0",
+    "jose": "^6.2.12",
     "next": "15.5.9",
+    "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "resend": "^6.2.2",

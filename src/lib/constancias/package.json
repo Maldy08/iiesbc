@@ -1,0 +1,4 @@
+{
+  "type": "module",
+  "//": "Marca estos módulos como ESM para que scripts/ pueda importarlos con node directamente, sin pasar por el bundler de Next."
+}
