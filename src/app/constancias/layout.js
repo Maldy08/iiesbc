@@ -48,7 +48,13 @@ export default async function LayoutConstancias({ children }) {
             </nav>
 
             <div className="flex items-center gap-3 text-sm">
-              <span className="text-[var(--color-ink-muted)]">{sesion.nombre}</span>
+              <Link
+                href="/constancias/cuenta"
+                className="text-[var(--color-ink-muted)] transition-colors hover:text-[var(--color-primary-green)]"
+                title="Mi cuenta"
+              >
+                {sesion.nombre}
+              </Link>
               <BotonSalir />
             </div>
           </div>

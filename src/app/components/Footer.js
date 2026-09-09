@@ -9,6 +9,7 @@ const FOOTER_NAV = [
   { href: "/", label: "Inicio" },
   { href: "/sobre-nosotros", label: "Sobre Nosotros" },
   { href: "/eventos-academicos", label: "Eventos Académicos" },
+  { href: "/validar", label: "Validar Constancia" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -184,6 +185,13 @@ export default function Footer() {
               <span className="mt-1 block md:mt-0 md:inline">
                 RVOE-BC (229 a la 235) M1/13
               </span>
+              <span className="mx-2 hidden text-white/25 md:inline">·</span>
+              <Link
+                href="/constancias"
+                className="mt-1 block text-white/50 transition-colors duration-300 hover:text-white/90 md:mt-0 md:inline"
+              >
+                Acceso institucional
+              </Link>
 
             </div>
 

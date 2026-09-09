@@ -9,6 +9,12 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${baseUrl}/validar`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
       url: `${baseUrl}/oferta-academica`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
