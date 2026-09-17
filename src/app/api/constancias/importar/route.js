@@ -24,6 +24,7 @@ export async function POST(request) {
       const formulario = await request.formData();
       const archivo = formulario.get('archivo');
       const claveDiplomado = String(formulario.get('claveDiplomado') || '');
+      const claveCentro = String(formulario.get('claveCentro') || '');
 
       if (!archivo || typeof archivo === 'string') {
         return NextResponse.json({ error: 'No llegó ningún archivo.' }, { status: 400 });
@@ -32,7 +33,10 @@ export async function POST(request) {
         return NextResponse.json({ error: 'El archivo supera los 5 MB.' }, { status: 413 });
       }
 
-      const { filas, filaEncabezados } = await leerCedula(await archivo.arrayBuffer(), { claveDiplomado });
+      const { filas, filaEncabezados } = await leerCedula(await archivo.arrayBuffer(), {
+        claveDiplomado,
+        ...(claveCentro ? { claveCentro } : {}),
+      });
       return NextResponse.json({
         filaEncabezados,
         filas,

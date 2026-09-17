@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { CENTROS, nombreCentro } from '@/lib/constancias/centros';
 import { listarConstancias, listarDiplomados } from '@/lib/constancias/service';
 import AccionesConstancia from './componentes/AccionesConstancia';
 
@@ -26,6 +27,7 @@ export default async function PaginaConstancias({ searchParams }) {
       busqueda: filtros.busqueda || '',
       estatus: filtros.estatus || '',
       diplomado: filtros.diplomado || '',
+      centro: filtros.centro || '',
       pagina,
     }),
     listarDiplomados(),
@@ -103,6 +105,22 @@ export default async function PaginaConstancias({ searchParams }) {
           </select>
         </label>
 
+        <label className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-ink-muted)]">
+          Centro
+          <select
+            name="centro"
+            defaultValue={filtros.centro || ''}
+            className="mt-1.5 block max-w-56 rounded-xl border border-[var(--color-line)] px-3.5 py-2.5 text-sm font-normal normal-case tracking-normal text-[var(--color-ink)] outline-none focus:border-[var(--color-primary-green)]"
+          >
+            <option value="">Todos</option>
+            {CENTROS.map((c) => (
+              <option key={c.clave} value={c.clave}>
+                {c.clave} · {c.nombre}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <button
           type="submit"
           className="rounded-full border border-[var(--color-line)] px-5 py-2.5 text-sm font-semibold text-[var(--color-ink)] transition-colors hover:border-[var(--color-primary-green)] hover:text-[var(--color-primary-green)]"
@@ -138,6 +156,12 @@ export default async function PaginaConstancias({ searchParams }) {
                 <tr key={c.folio} className="border-b border-[var(--color-line)] last:border-0 align-top">
                   <td className="px-5 py-4">
                     <span className="font-mono text-xs tabular-nums text-[var(--color-ink)]">{c.folio}</span>
+                    <span
+                      title={nombreCentro(c.centro_clave)}
+                      className="mt-1 block text-[0.7rem] text-[var(--color-ink-muted)]"
+                    >
+                      {c.centro_clave}
+                    </span>
                   </td>
                   <td className="px-5 py-4">
                     <span className="block font-medium text-[var(--color-ink)]">{c.nombre_completo}</span>

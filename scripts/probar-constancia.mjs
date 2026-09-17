@@ -2,15 +2,18 @@
 //
 //   npm run constancia:demo
 //   npm run constancia:demo -- "Nombre del Egresado" 4
+//   npm run constancia:demo -- "Nombre del Egresado" 6 CEFIC
 //
 // Sirve para revisar el diseño del PDF (tipografías, márgenes, QR, tabla de
-// módulos) mientras se itera, y para comprobar que la tabla se ajusta cuando el
-// diplomado tiene menos de 6 módulos.
+// módulos) mientras se itera, para comprobar que la tabla se ajusta cuando el
+// diplomado tiene menos de 6 módulos, y para ver cómo cae el logo y la firma de
+// cada centro emisor.
 
 import { writeFileSync } from 'node:fs';
+import { CLAVE_CENTRO_PREDETERMINADO, nombreCentro } from '../src/lib/constancias/centros.js';
 import { generarConstanciaPDF } from '../src/lib/constancias/pdf.js';
 
-const [nombreArg, modulosArg] = process.argv.slice(2);
+const [nombreArg, modulosArg, centroArg] = process.argv.slice(2);
 
 const MODULOS = [
   'Neurociencias de las Adicciones',
@@ -32,6 +35,7 @@ const constancia = {
   libro_no: 1,
   fecha_emision: '2026-08-12',
   modulos: MODULOS.slice(0, cuantosModulos),
+  centro_clave: centroArg || CLAVE_CENTRO_PREDETERMINADO,
 };
 
 const pdf = await generarConstanciaPDF(constancia, {
@@ -42,5 +46,7 @@ const salida = 'constancia-demo.pdf';
 writeFileSync(salida, pdf);
 
 console.log(`Listo: ${salida}`);
-console.log(`  ${constancia.nombre_completo} · ${cuantosModulos} módulos · ${(pdf.length / 1024 / 1024).toFixed(2)} MB`);
+console.log(
+  `  ${constancia.nombre_completo} · ${cuantosModulos} módulos · ${nombreCentro(constancia.centro_clave)} · ${(pdf.length / 1024 / 1024).toFixed(2)} MB`
+);
 console.log('  Ábrelo con: open constancia-demo.pdf');

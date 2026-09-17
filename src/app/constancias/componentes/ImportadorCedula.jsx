@@ -3,10 +3,13 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
+import { CENTROS, CLAVE_CENTRO_PREDETERMINADO } from '@/lib/constancias/centros';
+
 export default function ImportadorCedula({ diplomados = [] }) {
   const router = useRouter();
   const [archivo, setArchivo] = useState(null);
   const [claveDiplomado, setClaveDiplomado] = useState('');
+  const [claveCentro, setClaveCentro] = useState(CLAVE_CENTRO_PREDETERMINADO);
   const [filas, setFilas] = useState(null);
   const [resultados, setResultados] = useState(null);
   const [error, setError] = useState('');
@@ -24,6 +27,7 @@ export default function ImportadorCedula({ diplomados = [] }) {
       const formulario = new FormData();
       formulario.append('archivo', archivo);
       formulario.append('claveDiplomado', claveDiplomado);
+      formulario.append('claveCentro', claveCentro);
 
       const respuesta = await fetch('/api/constancias/importar', { method: 'POST', body: formulario });
       const datos = await respuesta.json();
@@ -97,6 +101,21 @@ export default function ImportadorCedula({ diplomados = [] }) {
               {diplomados.map((d) => (
                 <option key={d.clave} value={d.clave}>
                   {d.clave} · {d.nombre}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="block text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-ink-muted)]">
+            Centro emisor (si la cédula no trae columna)
+            <select
+              value={claveCentro}
+              onChange={(e) => setClaveCentro(e.target.value)}
+              className="mt-1.5 w-full rounded-xl border border-[var(--color-line)] px-3.5 py-2.5 text-sm font-normal normal-case tracking-normal text-[var(--color-ink)] outline-none focus:border-[var(--color-primary-green)]"
+            >
+              {CENTROS.map((c) => (
+                <option key={c.clave} value={c.clave}>
+                  {c.clave} · {c.nombre}
                 </option>
               ))}
             </select>

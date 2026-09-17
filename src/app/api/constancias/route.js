@@ -15,6 +15,7 @@ export async function GET(request) {
       busqueda: searchParams.get('busqueda') || '',
       estatus: searchParams.get('estatus') || '',
       diplomado: searchParams.get('diplomado') || '',
+      centro: searchParams.get('centro') || '',
       pagina: Number(searchParams.get('pagina')) || 1,
       porPagina: Math.min(Number(searchParams.get('porPagina')) || 25, 100),
     });

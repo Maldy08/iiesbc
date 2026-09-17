@@ -22,6 +22,7 @@ import fontkit from '@pdf-lib/fontkit';
 import QRCode from 'qrcode';
 
 import { PAGINA, COLOR, INSTITUCION, P1, P2, MESES } from './plantilla.js';
+import { archivosDeCentros, obtenerCentro } from './centros.js';
 
 const RAIZ_ASSETS = path.join(process.cwd(), 'src', 'lib', 'constancias', 'assets');
 
@@ -36,15 +37,16 @@ const ARCHIVOS_FUENTE = {
   institucional: 'OpenSans-Regular.ttf',
 };
 
+// Lo fijo del documento, más los logos y firmas de todos los centros: son
+// nueve variantes sobre un puñado de archivos y el caché los deja en memoria,
+// así que no vale la pena cargarlos por constancia.
 const IMAGENES = [
   'fondo-marco.png',
   'logo-iiesbc.png',
-  'logo-cacp.png',
-  'firma-cacp.png',
   'firma-iiesbc.png',
   'banda-avales.png',
-  'logo-cacp-p2.png',
   'logo-iiesbc-p2.png',
+  ...archivosDeCentros(),
 ];
 
 // Los assets no cambian entre invocaciones: se leen una vez por instancia.
@@ -116,6 +118,32 @@ function linea(pagina, { x0, x1, y, grosor, color: tinta }) {
     width: x1 - x0,
     height: grosor,
     color: tinta,
+  });
+}
+
+// Coloca una imagen dentro de una caja. Por omisión la estira a la medida
+// exacta, que es como estaban calcadas las coordenadas del documento original.
+// Con ajuste 'contener' la escala hasta que quepa respetando su proporción: lo
+// que necesitan los logos y las firmas de los centros, que no comparten forma
+// (el logo del CACP es cuadrado y el de CEFIC mide el doble de ancho que de
+// alto). `anclaY: 'abajo'` deja la firma apoyada sobre la regla en vez de
+// flotando al centro de la caja.
+function dibujarImagen(pagina, imagen, caja) {
+  const { x, y, ancho, alto, ajuste = 'estirar', anclaY = 'centro' } = caja;
+
+  if (ajuste !== 'contener') {
+    pagina.drawImage(imagen, { x, y, width: ancho, height: alto });
+    return;
+  }
+
+  const escala = Math.min(ancho / imagen.width, alto / imagen.height);
+  const w = imagen.width * escala;
+  const h = imagen.height * escala;
+  pagina.drawImage(imagen, {
+    x: x + (ancho - w) / 2,
+    y: anclaY === 'abajo' ? y : y + (alto - h) / 2,
+    width: w,
+    height: h,
   });
 }
 
@@ -245,6 +273,10 @@ export async function generarConstanciaPDF(constancia, { urlValidacion }) {
 
   const modulos = (constancia.modulos || []).filter((m) => String(m || '').trim()).slice(0, 6);
 
+  // Centro emisor: define logo, firma y firmante. Una constancia sin centro
+  // —las emitidas antes de que existiera el catálogo— cae al CACP.
+  const centro = obtenerCentro(constancia.centro_clave);
+
   // ---------------------------------------------------------------- página 1
   const p1 = doc.addPage([PAGINA.ancho, PAGINA.alto]);
   p1.drawImage(imagenes['fondo-marco.png'], { x: 0, y: 0, width: PAGINA.ancho, height: PAGINA.alto });
@@ -252,14 +284,22 @@ export async function generarConstanciaPDF(constancia, { urlValidacion }) {
   p1.drawImage(imagenes['logo-iiesbc.png'], {
     x: P1.logoIiesbc.x, y: P1.logoIiesbc.y, width: P1.logoIiesbc.ancho, height: P1.logoIiesbc.alto,
   });
-  p1.drawImage(imagenes['logo-cacp.png'], {
-    x: P1.logoCacp.x, y: P1.logoCacp.y, width: P1.logoCacp.ancho, height: P1.logoCacp.alto,
-  });
-  linea(p1, { ...P1.reglaCacp, color: tinta });
+  dibujarImagen(p1, imagenes[centro.logo], centro.cajaLogo ?? P1.logoCentro);
+  linea(p1, { ...P1.reglaCentro, color: tinta });
 
-  INSTITUCION.centro.forEach((texto, i) => {
+  // Nombre del centro emisor. Los renglones vienen partidos a mano en el
+  // catálogo, pero se encogen solos si alguno se pasa del ancho de la regla.
+  const tamanoCentro = centro.encabezado.reduce((tamano, texto) => {
+    let ajustado = tamano;
+    while (ajustado > 6 && institucional.widthOfTextAtSize(texto, ajustado) > P1.centro.anchoMaximo) {
+      ajustado -= 0.1;
+    }
+    return ajustado;
+  }, P1.centro.tamano);
+
+  centro.encabezado.forEach((texto, i) => {
     dibujarCentrado(p1, texto, {
-      fuente: institucional, tamano: P1.centro.tamano, centroX: P1.centro.centroX,
+      fuente: institucional, tamano: tamanoCentro, centroX: P1.centro.centroX,
       y: P1.centro.ys[i], color: tinta,
     });
   });
@@ -332,11 +372,16 @@ export async function generarConstanciaPDF(constancia, { urlValidacion }) {
     y -= P1.cuerpo.interlineado;
   }
 
-  const firmantes = [INSTITUCION.directores.cacp, INSTITUCION.directores.iiesbc];
+  // Ranura izquierda: el director del centro emisor. Derecha: siempre la
+  // Dirección General del IIESBC, que es quien avala.
+  const firmantes = [centro.firmante, INSTITUCION.director];
   P1.firmas.forEach((firma, i) => {
-    p1.drawImage(imagenes[firma.imagen], {
-      x: firma.caja.x, y: firma.caja.y, width: firma.caja.ancho, height: firma.caja.alto,
-    });
+    const esDelCentro = firma.ranura === 'centro';
+    dibujarImagen(
+      p1,
+      imagenes[esDelCentro ? centro.firma : firma.imagen],
+      (esDelCentro && centro.cajaFirma) || firma.caja
+    );
     linea(p1, { ...firma.regla, color: oro });
     dibujarCentrado(p1, firmantes[i].nombre, {
       fuente: display, tamano: P1.tamanoFirmas, centroX: firma.centroX, y: firma.yNombre, color: tinta,
@@ -416,9 +461,7 @@ export async function generarConstanciaPDF(constancia, { urlValidacion }) {
     });
   });
 
-  p2.drawImage(imagenes['logo-cacp-p2.png'], {
-    x: P2.logoCacp.x, y: P2.logoCacp.y, width: P2.logoCacp.ancho, height: P2.logoCacp.alto,
-  });
+  dibujarImagen(p2, imagenes[centro.logoP2 ?? centro.logo], centro.cajaLogoP2 ?? P2.logoCentro);
   p2.drawImage(imagenes['logo-iiesbc-p2.png'], {
     x: P2.logoIiesbc.x, y: P2.logoIiesbc.y, width: P2.logoIiesbc.ancho, height: P2.logoIiesbc.alto,
   });

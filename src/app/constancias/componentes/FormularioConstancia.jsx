@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
+import { CENTROS, CLAVE_CENTRO_PREDETERMINADO, obtenerCentro } from '@/lib/constancias/centros';
+
 const VACIO = {
   matricula: '',
   folio: '',
@@ -12,6 +14,7 @@ const VACIO = {
   correo: '',
   diplomado_clave: '',
   diplomado_nombre: '',
+  centro_clave: CLAVE_CENTRO_PREDETERMINADO,
   fecha_inicio: '',
   fecha_termino: '',
   horas_totales: '',
@@ -52,6 +55,10 @@ export default function FormularioConstancia({ diplomados = [], constancia = nul
   const [guardando, setGuardando] = useState(false);
 
   const cambiar = (campo) => (evento) => setDatos((d) => ({ ...d, [campo]: evento.target.value }));
+
+  // El centro elegido decide el logo, la firma y el firmante del PDF, así que
+  // se muestra a quién se le va a imprimir la firma antes de emitir.
+  const centro = obtenerCentro(datos.centro_clave);
 
   // Elegir un diplomado del catálogo rellena nombre, clave, horas y módulos;
   // todo sigue siendo editable por si esta generación tuvo variaciones.
@@ -249,6 +256,28 @@ export default function FormularioConstancia({ diplomados = [], constancia = nul
         <h2 className="font-display text-lg font-semibold text-[var(--color-ink)]">Emisión</h2>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Campo
+            etiqueta="Centro emisor *"
+            ancho="sm:col-span-2"
+            hijo={
+              <>
+                <select
+                  value={datos.centro_clave || CLAVE_CENTRO_PREDETERMINADO}
+                  onChange={cambiar('centro_clave')}
+                  className={claseCampo}
+                >
+                  {CENTROS.map((c) => (
+                    <option key={c.clave} value={c.clave}>
+                      {c.clave} · {c.nombre}
+                    </option>
+                  ))}
+                </select>
+                <span className="mt-1.5 block text-[0.7rem] font-normal normal-case tracking-normal text-[var(--color-ink-muted)]">
+                  Firma: {centro.firmante.nombre} · {centro.firmante.cargo}
+                </span>
+              </>
+            }
+          />
           <Campo
             etiqueta={editando ? 'Folio (no se modifica)' : 'Folio (vacío = automático)'}
             ancho="sm:col-span-2"

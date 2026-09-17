@@ -6,6 +6,7 @@
 
 import ExcelJS from 'exceljs';
 
+import { CLAVE_CENTRO_PREDETERMINADO, esClaveCentro, normalizarClaveCentro } from './centros';
 import { desglosarFolio, normalizarFolio } from './folio';
 
 // Cada campo acepta varias formas de escribirse: la cédula tiene erratas
@@ -23,6 +24,7 @@ const COLUMNAS = {
   horas_totales: ['horastotalescursadas', 'horastotales', 'horas'],
   cantidad_modulos: ['cantidaddemoduloscursadospordiplomado', 'cantidaddemodulos'],
   estatus: ['constacia', 'constancia', 'estatus'],
+  centro_clave: ['centro', 'centroemisor', 'clavecentro'],
   fecha_emision: ['fechaemicion', 'fechaemision'],
 };
 
@@ -94,8 +96,13 @@ function mapearEncabezados(fila) {
  * @param {ArrayBuffer|Buffer} contenido
  * @param {object} opciones
  * @param {string} [opciones.claveDiplomado] Clave para las filas sin folio.
+ * @param {string} [opciones.claveCentro] Centro emisor para las filas que no
+ *   traigan columna CENTRO; la cédula que se llena hoy no la tiene.
  */
-export async function leerCedula(contenido, { claveDiplomado = '' } = {}) {
+export async function leerCedula(
+  contenido,
+  { claveDiplomado = '', claveCentro = CLAVE_CENTRO_PREDETERMINADO } = {}
+) {
   const libro = new ExcelJS.Workbook();
   await libro.xlsx.load(contenido);
 
@@ -138,6 +145,11 @@ export async function leerCedula(contenido, { claveDiplomado = '' } = {}) {
     const desglose = folio ? desglosarFolio(folio) : null;
     const estatusCrudo = clave(texto('estatus'));
 
+    // La columna CENTRO es opcional: si no viene, todas las filas se emiten
+    // con el centro que se eligió en la pantalla de importación.
+    const centroCrudo = normalizarClaveCentro(texto('centro_clave'));
+    const centroValido = centroCrudo ? esClaveCentro(centroCrudo) : true;
+
     const datos = {
       fila: i,
       matricula: texto('matricula'),
@@ -152,6 +164,7 @@ export async function leerCedula(contenido, { claveDiplomado = '' } = {}) {
       fecha_termino: normalizarFecha(leer('fecha_termino')),
       horas_totales: Number(texto('horas_totales')) || null,
       modulos,
+      centro_clave: centroValido && centroCrudo ? centroCrudo : normalizarClaveCentro(claveCentro),
       estatus: ESTATUS_VALIDOS[estatusCrudo] || 'emitida',
       fecha_emision: normalizarFecha(leer('fecha_emision')),
     };
@@ -162,6 +175,7 @@ export async function leerCedula(contenido, { claveDiplomado = '' } = {}) {
     if (!datos.horas_totales) problemas.push('Faltan las horas totales.');
     if (!datos.modulos.length) problemas.push('No trae módulos.');
     if (folio && !desglose) problemas.push(`El folio "${folio}" no tiene el formato esperado.`);
+    if (!centroValido) problemas.push(`El centro "${centroCrudo}" no está en el catálogo.`);
     if (datos.curp && !/^[A-Z0-9]{18}$/.test(datos.curp)) problemas.push('La CURP no tiene 18 caracteres.');
     if (!datos.fecha_emision) datos.fecha_emision = new Date().toISOString().slice(0, 10);
 

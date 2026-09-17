@@ -16,6 +16,7 @@ const CAMPOS = [
   { clave: 'folio', etiqueta: 'Folio', mono: true },
   { clave: 'nombre_completo', etiqueta: 'Nombre completo' },
   { clave: 'diplomado_nombre', etiqueta: 'Diplomado' },
+  { clave: 'centro', etiqueta: 'Centro emisor' },
 ];
 
 function Marco({ children }) {
@@ -60,7 +61,7 @@ export default async function PaginaValidacion({ params }) {
         <>
           <p className="mt-6 max-w-xl text-pretty text-white/70">
             Este documento aparece en el registro del Instituto Interamericano de Estudios Superiores de
-            Baja California y del Centro de Actualización y Capacitación Profesional.
+            Baja California y fue emitido por {resultado.constancia.centro}.
           </p>
 
           <dl className="mt-10 overflow-hidden rounded-[1.75rem] bg-white/95 shadow-[var(--shadow-ring)] backdrop-blur">

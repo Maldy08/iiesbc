@@ -5,9 +5,15 @@
 // solo de servidor — nunca importarlo desde un componente cliente.
 
 import { supabaseAdmin } from '@/lib/supabase/server';
+import {
+  CLAVE_CENTRO_PREDETERMINADO,
+  esClaveCentro,
+  nombreCentro,
+  normalizarClaveCentro,
+} from './centros';
 import { construirFolio, desglosarFolio, normalizarFolio } from './folio';
 
-const CAMPOS_PUBLICOS = 'folio, nombre_completo, diplomado_nombre, estatus';
+const CAMPOS_PUBLICOS = 'folio, nombre_completo, diplomado_nombre, centro_clave, estatus';
 
 // --- diplomados --------------------------------------------------------------
 
@@ -45,6 +51,7 @@ export async function listarConstancias({
   busqueda = '',
   estatus = '',
   diplomado = '',
+  centro = '',
   pagina = 1,
   porPagina = 25,
 } = {}) {
@@ -62,6 +69,7 @@ export async function listarConstancias({
   }
   if (estatus) consulta = consulta.eq('estatus', estatus);
   if (diplomado) consulta = consulta.eq('diplomado_clave', diplomado);
+  if (centro) consulta = consulta.eq('centro_clave', normalizarClaveCentro(centro));
 
   const desde = (pagina - 1) * porPagina;
   consulta = consulta.range(desde, desde + porPagina - 1);
@@ -104,6 +112,7 @@ export async function validarFolioPublico(folio) {
       folio: data.folio,
       nombre_completo: data.nombre_completo,
       diplomado_nombre: data.diplomado_nombre,
+      centro: nombreCentro(data.centro_clave),
     },
   };
 }
@@ -127,6 +136,7 @@ function limpiarDatos(datos) {
     correo: texto(datos.correo)?.toLowerCase() ?? null,
     diplomado_clave: texto(datos.diplomado_clave)?.toUpperCase() ?? null,
     diplomado_nombre: texto(datos.diplomado_nombre),
+    centro_clave: normalizarClaveCentro(datos.centro_clave) || CLAVE_CENTRO_PREDETERMINADO,
     fecha_inicio: texto(datos.fecha_inicio),
     fecha_termino: texto(datos.fecha_termino),
     horas_totales: Number(datos.horas_totales) || null,
@@ -142,6 +152,9 @@ export function revisarDatos(datos) {
   if (!datos.nombre_completo) errores.push('El nombre completo es obligatorio.');
   if (!datos.diplomado_nombre) errores.push('El nombre del diplomado es obligatorio.');
   if (!datos.diplomado_clave) errores.push('La clave del diplomado es obligatoria (se usa en el folio).');
+  if (!esClaveCentro(datos.centro_clave)) {
+    errores.push(`El centro emisor "${datos.centro_clave}" no está en el catálogo.`);
+  }
   if (!datos.horas_totales) errores.push('Las horas totales deben ser un número mayor a cero.');
   if (!datos.modulos.length) errores.push('Captura al menos un módulo.');
   if (datos.curp && !/^[A-Z0-9]{18}$/.test(datos.curp)) errores.push('La CURP debe tener 18 caracteres.');

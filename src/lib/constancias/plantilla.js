@@ -15,14 +15,14 @@ export const COLOR = {
   qr: '#332B1E',
 };
 
-// Datos institucionales fijos del documento
+// Datos institucionales fijos del documento. Lo que cambia según el centro
+// emisor (logo, nombre del centro, firma y firmante) vive en centros.js.
 export const INSTITUCION = {
+  // La clave es del IIESBC, no del centro: cuelga del logo del instituto y es
+  // la misma en las nueve variantes.
   claveSep: 'CLAVE: 02MSU0103J',
-  centro: ['CENTRO DE ACTUALIZACIÓN', 'Y CAPACITACIÓN PROFESIONAL'],
-  directores: {
-    cacp: { nombre: 'Ing. Carlos Sebastián Guillen Arguello', cargo: 'DIRECTOR CACP' },
-    iiesbc: { nombre: 'Dr. Rafael López Oñate', cargo: 'DIRECTOR GENERAL IIESBC' },
-  },
+  // Firma derecha: siempre la Dirección General del instituto que avala.
+  director: { nombre: 'Dr. Rafael López Oñate', cargo: 'DIRECTOR GENERAL IIESBC' },
   // Texto tal cual aparece en el documento original (incluye "concocimiento").
   cuerpoCierre: 'otorgan de acuerdo en concocimiento, habilidades, destrezas y aptitudes.',
   leyendaValidez: [
@@ -36,9 +36,17 @@ export const INSTITUCION = {
 // Página 1 ------------------------------------------------------------------
 export const P1 = {
   logoIiesbc: { x: 127.0, y: 592.7, ancho: 171.1, alto: 121.4 },
-  logoCacp: { x: 300.9, y: 576.9, ancho: 183.8, alto: 183.8 },
-  reglaCacp: { x0: 311.5, x1: 485.0, y: 622.1, grosor: 1.2, color: COLOR.tinta },
-  centro: { centroX: 392.95, tamano: 9.7, ys: [604, 594] },
+  // Caja por omisión del logo del centro emisor. Las medidas salieron de medir
+  // dónde cae la tinta del logo del CACP dentro de su caja original (166.4 x
+  // 68.9 pt arrancando en y=631.4), para que ningún centro se vea más grande
+  // que otro; el alto se estiró a 85 pt porque los logos circulares como el del
+  // IDCA quedaban diminutos al alto de un logotipo horizontal. Se apoya sobre
+  // la regla y la imagen se ajusta dentro sin deformarse, que no todos los
+  // logos comparten proporción. El CACP trae su propia caja en centros.js para
+  // no mover ni un punto de lo ya emitido.
+  logoCentro: { x: 313.2, y: 631.4, ancho: 166.4, alto: 85.0, ajuste: 'contener', anclaY: 'abajo' },
+  reglaCentro: { x0: 311.5, x1: 485.0, y: 622.1, grosor: 1.2, color: COLOR.tinta },
+  centro: { centroX: 392.95, tamano: 9.7, ys: [604, 594], anchoMaximo: 173.5 },
   claveSep: { centroX: 212.3, y: 583, tamano: 9.3 },
   otorga: { centroX: 306, y: 556, tamano: 15.2, anchoObjetivo: 166.2 },
   titulo: { centroX: 306, y: 500, tamano: 34.7, anchoObjetivo: 272.6 },
@@ -57,8 +65,13 @@ export const P1 = {
   },
   firmas: [
     {
-      imagen: 'firma-cacp.png',
-      caja: { x: 110.7, y: 196.5, ancho: 154.5, alto: 154.5 },
+      // Firma izquierda: la del director del centro emisor, así que la imagen
+      // y el firmante los pone el catálogo. La caja replica el rectángulo que
+      // ocupa la tinta de la firma del CACP (83 x 51.5 pt apoyados en la
+      // regla): más alta que eso, la firma se encima con la última línea del
+      // cuerpo. El CACP trae la suya en centros.js.
+      ranura: 'centro',
+      caja: { x: 151.5, y: 251.8, ancho: 83.0, alto: 51.5, ajuste: 'contener', anclaY: 'abajo' },
       regla: { x0: 100.8, x1: 282.0, y: 247.7, grosor: 0.8 },
       centroX: 192.95,
       yNombre: 230,
@@ -66,6 +79,7 @@ export const P1 = {
       cargoEnNegrita: false,
     },
     {
+      ranura: 'iiesbc',
       imagen: 'firma-iiesbc.png',
       caja: { x: 383.5, y: 232.7, ancho: 95.2, alto: 74.2 },
       regla: { x0: 336.9, x1: 518.1, y: 245.3, grosor: 0.8 },
@@ -98,7 +112,7 @@ export const P2 = {
     baseModulo: 14.7,
   },
   leyenda: { x: 83.4, yPrimera: 357.9, interlineado: 14.25, tamano: 10.5, anchoJustificado: 445.7 },
-  logoCacp: { x: 297.1, y: 192.8, ancho: 105.7, alto: 80.3 },
+  logoCentro: { x: 297.1, y: 192.8, ancho: 105.7, alto: 80.3, ajuste: 'contener' },
   logoIiesbc: { x: 420.1, y: 179.9, ancho: 108.7, alto: 105.7 },
   registro: { x: 83.0, tamano: 10.5, ys: [159.1, 145.4, 130.6, 116.3], sangriaFolio: 34.6 },
   qr: { x: 447, y: 97, lado: 82, tamanoLeyenda: 6.2, yLeyenda: 88 },
