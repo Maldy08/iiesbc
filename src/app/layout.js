@@ -63,11 +63,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="es" className={`${inter.variable} ${sora.variable} overflow-x-clip`}>
       <head>
         <meta name="google-site-verification" content="CqOy9i65UxB16VhhEt6O4Dgou6PmnbctRFHPCLrSSOM" />
       </head>
-      <body className="min-h-screen flex flex-col font-sans antialiased bg-white text-[var(--color-ink)]">
+      <body className="min-h-screen overflow-x-clip flex flex-col font-sans antialiased bg-white text-[var(--color-ink)]">
         <Navbar />
         <div className="flex-grow">
           {children}
