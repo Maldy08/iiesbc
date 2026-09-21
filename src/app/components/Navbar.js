@@ -150,7 +150,7 @@ export default function Navbar() {
         Saltar al contenido
       </a>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:justify-start lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8 xl:justify-start">
         {/* Logo */}
         <Link
           href="/"
@@ -177,7 +177,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden items-center gap-6 lg:ml-14 lg:flex xl:ml-16">
+        <ul className="hidden items-center gap-6 xl:ml-16 xl:flex">
           <li>
             <DesktopLink href="/" active={isActive("/")} className={desktopLinkClass(isActive("/"))}>
               Inicio
@@ -320,7 +320,7 @@ export default function Navbar() {
               setMobileMenuOpen((v) => !v);
               setDropdownOpen(false);
             }}
-            className="group relative rounded-lg p-2 text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-surface-alt)] lg:hidden"
+            className="group relative rounded-lg p-2 text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-surface-alt)] xl:hidden"
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -349,7 +349,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
+        className={`overflow-hidden transition-all duration-300 ease-in-out xl:hidden ${
           mobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
