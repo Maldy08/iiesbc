@@ -138,8 +138,8 @@ export default function Navbar() {
         "sticky top-0 z-50 transition-all duration-300",
         "border-b backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md",
         scrolled
-          ? "border-[var(--color-line)] bg-white/95 py-2 shadow-[var(--shadow-card)]"
-          : "border-[var(--color-line)]/60 bg-white/80 py-3",
+          ? "border-[var(--color-line)] bg-white/95 py-1.5 shadow-[var(--shadow-card)]"
+          : "border-[var(--color-line)]/60 bg-white/80 py-2.5",
       ].join(" ")}
       aria-label="Navegación principal"
     >
@@ -150,7 +150,7 @@ export default function Navbar() {
         Saltar al contenido
       </a>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:justify-start lg:px-8">
         {/* Logo */}
         <Link
           href="/"
@@ -160,24 +160,24 @@ export default function Navbar() {
           <Image
             src="/images/ICO.png"
             alt="Ícono IIESBC"
-            width={scrolled ? 52 : 68}
-            height={scrolled ? 52 : 68}
+            width={scrolled ? 48 : 60}
+            height={scrolled ? 48 : 60}
             priority
-            sizes="(max-width: 1024px) 48px, 68px"
+            sizes="(max-width: 1024px) 48px, 60px"
             className="flex-shrink-0 transition-all duration-300"
           />
           <Image
             src="/images/iiesbc.png"
             alt="Nombre IIESBC"
-            width={scrolled ? 140 : 180}
+            width={scrolled ? 130 : 160}
             height={36}
-            sizes="(max-width: 1024px) 120px, 180px"
+            sizes="(max-width: 1024px) 120px, 160px"
             className="hidden h-9 w-auto object-contain transition-all duration-300 sm:block"
           />
         </Link>
 
         {/* Desktop */}
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-6 lg:ml-14 lg:flex xl:ml-16">
           <li>
             <DesktopLink href="/" active={isActive("/")} className={desktopLinkClass(isActive("/"))}>
               Inicio
@@ -203,14 +203,14 @@ export default function Navbar() {
               onClick={() => setDropdownOpen((v) => !v)}
               className={[
                 desktopLinkClass(ofertaActive),
-                "group gap-1.5",
+                "group gap-1",
               ].join(" ")}
             >
               <span className="relative">
                 Oferta Académica
                 <span
                   className={[
-                    "absolute -bottom-1 left-0 h-[1.5px] bg-[var(--color-primary-green)] transition-all duration-300",
+                    "absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-[var(--color-primary-green)] transition-all duration-300",
                     ofertaActive || dropdownOpen ? "w-full" : "w-0 group-hover:w-full",
                   ].join(" ")}
                 />
@@ -312,7 +312,7 @@ export default function Navbar() {
         </ul>
 
         {/* Right side: CTA + hamburger */}
-        <div className="flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-3">
 
 
           <button
@@ -454,7 +454,7 @@ function DesktopLink({ href, active, className, children }) {
         {children}
         <span
           className={[
-            "absolute -bottom-1 left-0 h-[1.5px] bg-[var(--color-primary-green)] transition-all duration-300",
+            "absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-[var(--color-primary-green)] transition-all duration-300",
             active ? "w-full" : "w-0 group-hover:w-full",
           ].join(" ")}
         />
