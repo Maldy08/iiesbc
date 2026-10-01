@@ -23,8 +23,7 @@ export const INSTITUCION = {
   claveSep: 'CLAVE: 02MSU0103J',
   // Firma derecha: siempre la Dirección General del instituto que avala.
   director: { nombre: 'Dr. Rafael López Oñate', cargo: 'DIRECTOR GENERAL IIESBC' },
-  // Texto tal cual aparece en el documento original (incluye "concocimiento").
-  cuerpoCierre: 'otorgan de acuerdo en concocimiento, habilidades, destrezas y aptitudes.',
+  cuerpoCierre: 'otorgan de acuerdo en conocimiento, habilidades, destrezas y aptitudes.',
   leyendaValidez: [
     'ESTA CONSTANCIA ES VÁLIDA EN TODO EL TERRITORIO DE LOS ESTADOS UNIDOS',
     'MEXICANOS Y NO REQUIERE TRÁMITES ADICIONALES DE LEGALIZACIÓN, ESTE',

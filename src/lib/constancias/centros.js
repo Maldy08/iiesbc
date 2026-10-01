@@ -12,7 +12,7 @@
 // comparten varios centros.
 const GUILLEN = {
   firma: 'firma-guillen.png',
-  firmante: { nombre: 'Ing. Carlos Sebastián Guillen Arguello', cargo: 'DIRECTOR CACP' },
+  firmante: { nombre: 'Ing. Carlos Sebastián Guillen Argüello', cargo: 'DIRECTOR CACP' },
 };
 
 const SERRANO = {
