@@ -98,6 +98,9 @@ export const CENTROS = [
     nombre: 'Centro de Fisioterapia Continua',
     encabezado: ['CENTRO DE FISIOTERAPIA', 'CONTINUA'],
     ...CEFIC,
+    // La Dirección pidió (2026-10-26) este sello junto al del IIESBC solo
+    // para CEFIC; el IAJFF conserva el logo compartido en la página 2.
+    logoP2: 'logo-cefic-p2.png',
     ...SERRANO,
   },
   {
