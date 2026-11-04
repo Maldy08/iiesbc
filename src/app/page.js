@@ -13,6 +13,7 @@ import NumerosStats from "./components/home/NumerosStats";
 import Testimonios from "./components/home/Testimonios";
 import WhatsAppFloat from "./components/home/WhatsAppFloat";
 import ProgramaModal from "./components/home/ProgramaModal";
+import ComunicadoModal from "./components/home/ComunicadoModal";
 
 const programas = [
   {
@@ -146,6 +147,7 @@ export default function Home() {
 
       <WhatsAppFloat />
       <ProgramaModal program={selectedProgram} onClose={() => setSelectedProgram(null)} />
+      <ComunicadoModal />
 
       {/* Acceso oculto a los datos de programas para integraciones futuras (modal, filtros). */}
       <span className="sr-only" aria-hidden="true" data-programas-count={programas.length} />
