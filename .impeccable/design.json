@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-06T08:31:27.002241-08:00",
+  "title": "Design System: IIESBC",
+  "extensions": {
+    "colorMeta": {
+      "olive": {
+        "role": "primary",
+        "displayName": "Verde Olivo",
+        "canonical": "#66822c",
+        "tonalRamp": [
+          "#2a311b",
+          "#47562a",
+          "#667d35",
+          "#85a83d",
+          "#a5c464",
+          "#bdcf96",
+          "#d6dfc3",
+          "#f3f5ef"
+        ]
+      },
+      "olive-deep": {
+        "role": "primary",
+        "displayName": "Olivo Profundo",
+        "canonical": "#556e23",
+        "tonalRamp": [
+          "#2a321b",
+          "#475729",
+          "#667f33",
+          "#85ab3b",
+          "#a5c662",
+          "#bdd194",
+          "#d6e0c2",
+          "#f3f5ef"
+        ]
+      },
+      "lime": {
+        "role": "tertiary",
+        "displayName": "Lima Brote",
+        "canonical": "#a5c94c",
+        "tonalRamp": [
+          "#2b321a",
+          "#4a5828",
+          "#6a8132",
+          "#8bad39",
+          "#aac860",
+          "#c0d293",
+          "#d8e0c2",
+          "#f4f5ef"
+        ]
+      },
+      "sun": {
+        "role": "primary",
+        "displayName": "Sol de Baja California",
+        "canonical": "#f68c24",
+        "tonalRamp": [
+          "#3b2612",
+          "#693f17",
+          "#9d5916",
+          "#d6720f",
+          "#ed933b",
+          "#e8b27d",
+          "#ebd1b7",
+          "#f8f2ed"
+        ]
+      },
+      "sun-deep": {
+        "role": "primary",
+        "displayName": "Naranja Tostado",
+        "canonical": "#cd751e",
+        "tonalRamp": [
+          "#372616",
+          "#61401f",
+          "#905923",
+          "#c37222",
+          "#dc934c",
+          "#deb287",
+          "#e6d1bc",
+          "#f7f2ee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta de Olivo",
+        "canonical": "#1a1f14",
+        "tonalRamp": [
+          "#272b21",
+          "#414936",
+          "#5b6949",
+          "#758a5b",
+          "#96a97f",
+          "#b4bfa6",
+          "#d2d7cb",
+          "#f2f4f1"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinta Suave",
+        "canonical": "#4a5240",
+        "tonalRamp": [
+          "#272924",
+          "#40453a",
+          "#5a6250",
+          "#748065",
+          "#95a088",
+          "#b3baab",
+          "#d1d5ce",
+          "#f2f3f2"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Tinta Apagada",
+        "canonical": "#8a9180",
+        "tonalRamp": [
+          "#272825",
+          "#40433d",
+          "#5a5e54",
+          "#747a6b",
+          "#959b8d",
+          "#b3b7ae",
+          "#d1d3cf",
+          "#f2f3f2"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#fafaf7",
+        "tonalRamp": [
+          "#2b2b21",
+          "#4a4a35",
+          "#6a6a48",
+          "#8c8c5a",
+          "#aaaa7e",
+          "#c0c0a5",
+          "#d8d8cb",
+          "#f4f4f1"
+        ]
+      },
+      "surface-alt": {
+        "role": "neutral",
+        "displayName": "Papel Tostado",
+        "canonical": "#f3f1ea",
+        "tonalRamp": [
+          "#2c2a20",
+          "#4c4734",
+          "#6d6445",
+          "#908355",
+          "#aea379",
+          "#c2bba3",
+          "#d9d5c9",
+          "#f4f3f1"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea de Arena",
+        "canonical": "#e6e3d8",
+        "tonalRamp": [
+          "#2b2921",
+          "#4a4536",
+          "#696249",
+          "#8a805b",
+          "#a9a07f",
+          "#bfbaa6",
+          "#d7d5cb",
+          "#f4f3f1"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Noche del Desierto",
+        "canonical": "#0c1208",
+        "tonalRamp": [
+          "#252f1e",
+          "#3c512f",
+          "#54753d",
+          "#6a9c49",
+          "#8cb96f",
+          "#aec99c",
+          "#cfdcc6",
+          "#f2f5f0"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanco",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#949494",
+          "#b2b2b2",
+          "#d1d1d1",
+          "#f2f2f2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "h1 del hero, uno por página."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "h2 de sección y CTA final."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3 destacados y cifras."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Párrafos, máx. ~65ch."
+      },
+      "label": {
+        "displayName": "Eyebrow",
+        "purpose": "Etiquetas en mayúsculas sobre titulares y en chips."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-card",
+        "value": "0 1px 2px rgb(26 31 20 / 0.04), 0 8px 24px -12px rgb(26 31 20 / 0.12)",
+        "purpose": "Tarjetas en reposo, menú con scroll."
+      },
+      {
+        "name": "shadow-card-hover",
+        "value": "0 2px 4px rgb(26 31 20 / 0.06), 0 16px 40px -16px rgb(102 130 44 / 0.25)",
+        "purpose": "Tarjetas al hover, con tinte oliva."
+      },
+      {
+        "name": "shadow-ring",
+        "value": "0 0 0 1px rgb(102 130 44 / 0.12), 0 1px 2px rgb(26 31 20 / 0.04), 0 12px 32px -14px rgb(26 31 20 / 0.18)",
+        "purpose": "Badges flotantes sobre imágenes."
+      },
+      {
+        "name": "glow-sun",
+        "value": "0 14px 36px -12px rgba(246,140,36,0.7)",
+        "purpose": "Botón naranja en reposo (hover: 0 16px 40px -8px rgba(246,140,36,0.9))."
+      },
+      {
+        "name": "glow-olive",
+        "value": "0 14px 36px -12px rgba(102,130,44,0.7)",
+        "purpose": "Botón oliva en reposo (hover: 0 16px 40px -8px rgba(102,130,44,0.9))."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-editorial",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Entradas fade-in-up y subrayado de links."
+      },
+      {
+        "name": "slow-zoom",
+        "value": "20s ease-in-out infinite",
+        "purpose": "Fotografía de heroes."
+      },
+      {
+        "name": "float-slow / medium / fast",
+        "value": "6s / 4s / 3s ease-in-out infinite",
+        "purpose": "Partículas de heroes."
+      },
+      {
+        "name": "shimmer",
+        "value": "2s ease-in-out infinite",
+        "purpose": "Barra de luz bajo el h1."
+      },
+      {
+        "name": "hover-standard",
+        "value": "300ms (botones, links), 500ms (tarjetas)",
+        "purpose": "Transiciones de estado."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario (naranja)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal: inscribirse, registrarse, contactar.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Solicitar informes <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M13 5l7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:#f68c24;color:#1a1f14;padding:1rem 2rem;border-radius:9999px;font-weight:600;font-size:1rem;text-decoration:none;box-shadow:0 14px 36px -12px rgba(246,140,36,.7);transition:all .3s}.ds-btn-primary:hover{background:#cd751e;transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(246,140,36,.9)}.ds-btn-primary:focus-visible{outline:2px solid #f68c24;outline-offset:3px}"
+    },
+    {
+      "name": "Botón secundario (oliva)",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción secundaria sobre fondo claro.",
+      "html": "<a class=\"ds-btn-olive\" href=\"#\">Ver programas</a>",
+      "css": ".ds-btn-olive{display:inline-flex;align-items:center;gap:.5rem;background:#66822c;color:#fff;padding:1rem 2rem;border-radius:9999px;font-weight:600;text-decoration:none;box-shadow:0 14px 36px -12px rgba(102,130,44,.7);transition:all .3s}.ds-btn-olive:hover{background:#556e23;transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(102,130,44,.9)}.ds-btn-olive:focus-visible{outline:2px solid #66822c;outline-offset:3px}"
+    },
+    {
+      "name": "Botón glass (sobre oscuro)",
+      "kind": "button",
+      "refersTo": "button-glass",
+      "description": "Acción secundaria en heroes y CTAs oscuros.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-glass\" href=\"#\"><span class=\"ds-dot\"></span>Conocer más</a></div>",
+      "css": ".ds-dark{background:#0c1208;padding:2rem;border-radius:1rem}.ds-btn-glass{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(12px);color:#fff;padding:1rem 2rem;border-radius:9999px;font-weight:600;text-decoration:none;transition:background .3s}.ds-btn-glass:hover{background:rgba(255,255,255,.15)}.ds-btn-glass:focus-visible{outline:2px solid #a5c94c;outline-offset:3px}.ds-dot{width:6px;height:6px;border-radius:9999px;background:#f68c24}"
+    },
+    {
+      "name": "Chip de hero",
+      "kind": "chip",
+      "refersTo": "chip-dark",
+      "description": "Etiqueta de vidrio con punto lima que late, arriba del h1.",
+      "html": "<div class=\"ds-dark\"><span class=\"ds-chip\"><span class=\"ds-ping\"></span>Inscripciones abiertas</span></div>",
+      "css": ".ds-dark{background:#0c1208;padding:2rem;border-radius:1rem}.ds-chip{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(20px);padding:.375rem 1rem;border-radius:9999px;color:rgba(255,255,255,.9);font-size:.75rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase}.ds-ping{width:8px;height:8px;border-radius:9999px;background:#a5c94c;box-shadow:0 0 0 0 rgba(165,201,76,.7);animation:ds-ping 1.5s infinite}@keyframes ds-ping{to{box-shadow:0 0 0 8px rgba(165,201,76,0)}}"
+    },
+    {
+      "name": "Tarjeta estándar",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Contenedor de programas, beneficios y datos; sube al hover.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-card-line\"></span><div class=\"ds-card-icon\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#66822c\" stroke-width=\"1.8\"><path d=\"M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z\"/></svg></div><h3>Horarios flexibles</h3><p>Pensados para quien trabaja tiempo completo.</p></article>",
+      "css": ".ds-card{position:relative;overflow:hidden;background:#fff;border-radius:1.75rem;padding:2rem;box-shadow:0 0 0 1px rgba(0,0,0,.05),var(--shadow-card,0 1px 2px rgb(26 31 20/.04),0 8px 24px -12px rgb(26 31 20/.12));transition:all .5s;max-width:20rem}.ds-card:hover{transform:translateY(-4px);box-shadow:0 0 0 1px rgba(0,0,0,.05),var(--shadow-card-hover,0 2px 4px rgb(26 31 20/.06),0 16px 40px -16px rgb(102 130 44/.25))}.ds-card-line{position:absolute;top:0;left:0;right:0;height:1px;background:#66822c}.ds-card-icon{width:3.5rem;height:3.5rem;border-radius:1rem;background:#66822c15;display:grid;place-items:center;margin-bottom:1.25rem}.ds-card h3{font-family: var(--font-sora), Sora, Inter, system-ui, sans-serif;font-weight:700;font-size:1.25rem;color:#1a1f14;margin:0 0 .5rem}.ds-card p{color:#4a5240;margin:0;line-height:1.6}"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulario con la paleta (estándar a migrar en RegistroCongresoForm).",
+      "html": "<label class=\"ds-field\"><span>Correo electrónico</span><input class=\"ds-input\" type=\"email\" placeholder=\"nombre@correo.com\"></label>",
+      "css": ".ds-field{display:grid;gap:.4rem;max-width:22rem;font-size:.875rem;font-weight:600;color:#1a1f14}.ds-input{background:#fff;border:1px solid #e6e3d8;border-radius:.75rem;padding:.75rem 1rem;font-size:1rem;color:#1a1f14;transition:border-color .2s,box-shadow .2s}.ds-input::placeholder{color:#8a9180}.ds-input:focus-visible{outline:none;border-color:#66822c;box-shadow:0 0 0 2px rgba(102,130,44,.25)}"
+    },
+    {
+      "name": "Link de navegación",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Link del menú con subrayado oliva que crece; activo en oliva.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link\">Sobre Nosotros</a><a href=\"#\" class=\"ds-nav-link is-active\" aria-current=\"page\">Congreso</a><a href=\"#\" class=\"ds-nav-link\">Contacto</a></nav>",
+      "css": ".ds-nav{display:flex;gap:1.5rem;background:rgba(255,255,255,.9);border-bottom:1px solid #e6e3d8;padding:1rem 1.5rem}.ds-nav-link{position:relative;font-family: var(--font-sora), Sora, Inter, system-ui, sans-serif;font-size:.9rem;font-weight:500;color:#4a5240;text-decoration:none;transition:color .3s}.ds-nav-link::after{content:'';position:absolute;left:0;bottom:-2px;height:2px;width:0;border-radius:9999px;background:#66822c;transition:width .3s}.ds-nav-link:hover{color:#1a1f14}.ds-nav-link:hover::after,.ds-nav-link.is-active::after{width:100%}.ds-nav-link.is-active{color:#66822c}.ds-nav-link:focus-visible{outline:2px solid #66822c;outline-offset:4px;border-radius:4px}"
+    },
+    {
+      "name": "Encabezado de sección",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Línea + eyebrow, h2 con una palabra en naranja.",
+      "html": "<header class=\"ds-head\"><div class=\"ds-eyebrow\"><span></span>Oferta académica</div><h2>Estudia sin dejar tu <em>trabajo</em></h2></header>",
+      "css": ".ds-head{max-width:40rem}.ds-eyebrow{display:flex;align-items:center;gap:.75rem;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#66822c;margin-bottom:1rem}.ds-eyebrow span{width:2.5rem;height:1px;background:#66822c}.ds-head h2{font-family: var(--font-sora), Sora, Inter, system-ui, sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;letter-spacing:-.03em;color:#1a1f14;margin:0;text-wrap:balance}.ds-head em{font-style:normal;color:#f68c24}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Olivo y el Sol",
+    "overview": "**Creative North Star: \"El Olivo y el Sol\"**\n\nEl sistema nace de los dos colores de la institución. El verde oliva es la raíz: solidez, tradición, la validez oficial que respalda cada programa. El naranja es el sol: energía, oportunidad, el siguiente paso que el aspirante está por dar. Todo lo demás es tierra cálida (neutros con matiz verdoso, nunca grises fríos) y noche profunda (`night`), el fondo casi negro donde ambos colores brillan más.\n\nEl carácter es **moderno y enérgico**: titulares Sora enormes y apretados, heroes fotográficos a sangre con un zoom lento, partículas que flotan, una barra de luz que recorre el acento. La energía viene del contraste y del movimiento medido, no del ruido: las secciones de contenido respiran sobre blanco y papel cálido con composición editorial alineada a la izquierda.\n\nLa página se lee como un ritmo de día y noche: abre en oscuro con imagen, pasa a secciones claras que alternan blanco y papel, y cierra otra vez en oscuro con la llamada a la acción en naranja.",
+    "keyCharacteristics": [
+      "Dos acentos con papeles distintos: oliva para la estructura, naranja para la acción.",
+      "Neutros cálidos con matiz oliva; ningún gris genérico.",
+      "Titulares display muy grandes, peso extra-negrita, tracking negativo, una palabra en naranja.",
+      "Heroes y cierres sobre `night` con fotografía y overlays en tres paradas.",
+      "Superficies muy redondeadas, sombras suaves con un toque verde al hover.",
+      "Movimiento ambiental continuo pero lento; todo se apaga con `prefers-reduced-motion`."
+    ],
+    "rules": [
+      {
+        "name": "The Two Roles Rule",
+        "body": "El naranja invita a actuar; el oliva ordena. Si un elemento no es una acción ni el acento de un titular, no es naranja.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Ground Rule",
+        "body": "Ningún gris o color genérico de Tailwind (`gray-*`, `green-*`, `blue-*`, `emerald-*`). Los neutros son siempre los tokens de tinta, papel y línea; las transparencias sobre oscuro son `white/XX` y sobre claro `black/5`.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Word Rule",
+        "body": "Cada titular grande lleva como máximo una palabra de acento: en `sun` sobre fondo oscuro, en `olive` sobre fondo claro (el naranja sobre blanco no es legible). Dos ya diluye el acento.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Ink Rule",
+        "body": "El texto de los botones naranjas es `ink`, nunca blanco: blanco sobre `sun` da 2.4:1; `ink` sobre `sun` pasa de 7:1 (y más de 5:1 sobre `sun-deep` al hover).",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Olive Rule",
+        "body": "Texto pequeño en verde (eyebrows, horarios, etiquetas) va en `olive-deep`; `olive` sobre blanco queda en 4.4:1 y solo sirve para texto grande y elementos gráficos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Eyebrow First Rule",
+        "body": "Todo titular de sección va precedido por una línea corta y un eyebrow en mayúsculas. El eyebrow sustituye cualquier decorador debajo del titular.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Horarios, fechas, precios y enumeraciones usan `tabular-nums`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lift On Intent Rule",
+        "body": "En reposo, las tarjetas apenas se levantan. Al hover suben 4px (`-translate-y-1`) y cambian a `--shadow-card-hover`. Nunca se escalan.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** abrir cada página institucional con el Hero institucional y cerrarla con un CTA oscuro y un botón naranja.",
+      "**Do** alternar el fondo de las secciones entre blanco y `surface`.",
+      "**Do** usar solo las animaciones definidas en `globals.css` (`slow-zoom`, `float-*`, `shimmer`, `fade-in-up`, `fade-in`, `pulse-slow`, `marquee`, `ping`) y respetar `prefers-reduced-motion`.",
+      "**Do** usar `text-balance` en titulares y `text-pretty` en párrafos largos.",
+      "**Do** levantar tarjetas con `-translate-y-1` + `--shadow-card-hover` al hover."
+    ],
+    "donts": [
+      "**Don't** usar colores genéricos de Tailwind (`gray-*`, `green-*`, `blue-*`, `emerald-*`).",
+      "**Don't** usar degradados saturados de varios pasos en fondos ni en botones (`from-green-600 to-orange-600`); los botones son de un solo color con su sombra.",
+      "**Don't** poner resplandores borrosos decorativos ni más de dos manchas de color por sección (máx. 10% de opacidad).",
+      "**Don't** escalar tarjetas al hover (`hover:scale-105`) ni usar bordes gruesos (`border-4 border-white`).",
+      "**Don't** centrar titulares con decoradores horizontales; la composición es editorial alineada a la izquierda.",
+      "**Don't** crear keyframes locales ni `<style jsx>` que dupliquen las animaciones globales."
+    ]
+  }
+}
