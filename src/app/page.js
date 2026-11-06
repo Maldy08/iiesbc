@@ -14,6 +14,7 @@ import Testimonios from "./components/home/Testimonios";
 import WhatsAppFloat from "./components/home/WhatsAppFloat";
 import ProgramaModal from "./components/home/ProgramaModal";
 import ComunicadoModal from "./components/home/ComunicadoModal";
+import CongresoBanner from "./components/home/CongresoBanner";
 
 const programas = [
   {
@@ -135,6 +136,7 @@ export default function Home() {
       />
 
       <Hero />
+      <CongresoBanner />
       <BibliotecaVirtual />
       <Mision />
       <Servicios />

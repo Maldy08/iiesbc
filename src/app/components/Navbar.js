@@ -44,6 +44,7 @@ const NAV_LINKS = [
   { href: "/", label: "Inicio" },
   { href: "/sobre-nosotros", label: "Sobre Nosotros" },
   { href: "/eventos-academicos", label: "Eventos Académicos" },
+  { href: "/congreso", label: "Congreso" },
   { href: "/contacto", label: "Contacto" },
   { href: "/normativa/derechos-de-autor", label: "Normativa" },
 ];
@@ -289,6 +290,15 @@ export default function Navbar() {
               className={desktopLinkClass(isActive("/eventos-academicos"))}
             >
               Eventos Académicos
+            </DesktopLink>
+          </li>
+          <li>
+            <DesktopLink
+              href="/congreso"
+              active={isActive("/congreso")}
+              className={desktopLinkClass(isActive("/congreso"))}
+            >
+              Congreso
             </DesktopLink>
           </li>
           <li>
