@@ -172,7 +172,7 @@ export default function DerechosDeAutorPage() {
           </p>
           <Link
             href="/contacto"
-            className="inline-flex items-center gap-2.5 rounded-xl bg-[#f68c24] px-8 py-4 font-display font-semibold text-white transition-all duration-300 hover:bg-[#cd751e] shadow-[0_14px_36px_-12px_rgba(246,140,36,0.7)] hover:shadow-[0_16px_40px_-8px_rgba(246,140,36,0.9)]"
+            className="inline-flex items-center gap-2.5 rounded-xl bg-[#f68c24] px-8 py-4 font-display font-semibold text-[#1a1f14] transition-all duration-300 hover:bg-[#cd751e] shadow-[0_14px_36px_-12px_rgba(246,140,36,0.7)] hover:shadow-[0_16px_40px_-8px_rgba(246,140,36,0.9)]"
           >
             Ir a contacto
           </Link>

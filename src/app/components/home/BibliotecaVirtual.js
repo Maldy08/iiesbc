@@ -34,7 +34,7 @@ export default function BibliotecaVirtual() {
               href="https://biblioteca-virtual-iiesbc.my.canva.site/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-white text-[#1a1f14] hover:bg-[#f68c24] hover:text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_20px_50px_-20px_rgba(246,140,36,0.8)] hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3 bg-white text-[#1a1f14] hover:bg-[#f68c24] hover:text-[#1a1f14] px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 shadow-[0_20px_50px_-20px_rgba(246,140,36,0.8)] hover:-translate-y-0.5"
             >
               Acceder al contenido
               <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
