@@ -1,7 +1,6 @@
 const servicios = [
   {
     id: "clases",
-    emoji: "📚",
     titulo: "Clases Institucionales",
     descripcion:
       "Posgrados dirigidos a instituciones educativas públicas y a empresas que confían en nosotros para la preparación continua de su fuerza laboral.",
@@ -14,7 +13,6 @@ const servicios = [
   },
   {
     id: "vinculacion",
-    emoji: "🤝",
     titulo: "Vinculación",
     descripcion:
       "Convenios con instituciones educativas, gubernamentales y empresas para que nuestros estudiantes realicen en ellos sus prácticas y servicios.",
@@ -26,7 +24,6 @@ const servicios = [
   },
   {
     id: "becas",
-    emoji: "🎓",
     titulo: "Becas",
     descripcion:
       "Tanto para licenciatura como para los cursos de posgrado existe la posibilidad de ser recipiente de una beca y de obtener facilidades de pago de colegiaturas.",
@@ -39,7 +36,6 @@ const servicios = [
   },
   {
     id: "horarios",
-    emoji: "⏰",
     titulo: "Horarios Flexibles",
     descripcion:
       "Entre nuestros estudiantes contamos con personas que trabajan tiempo completo, empresarios y profesores universitarios, por lo que buscamos el mejor horario para su preparación.",
@@ -74,7 +70,7 @@ export default function Servicios() {
         </div>
 
         <div className="grid lg:grid-cols-6 gap-5">
-          <article className="group lg:col-span-3 lg:row-span-2 relative bg-[var(--color-surface)] rounded-[1.75rem] p-10 lg:p-12 ring-1 ring-[var(--color-line)] hover:ring-[#66822c]/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] overflow-hidden">
+          <article className="group lg:col-span-3 lg:row-span-3 relative bg-[var(--color-surface)] rounded-[1.75rem] p-10 lg:p-12 ring-1 ring-[var(--color-line)] hover:ring-[#66822c]/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] overflow-hidden">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#66822c] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-[#66822c]/8 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
@@ -88,7 +84,6 @@ export default function Servicios() {
 
               <div className="flex-1">
                 <h3 className="font-display text-3xl lg:text-4xl font-bold text-[#1a1f14] mb-5 text-balance">
-                  <span className="inline-block mr-2 text-2xl align-middle" aria-hidden="true">{featured.emoji}</span>
                   {featured.titulo}
                 </h3>
                 <p className="text-[#4a5240] text-lg leading-relaxed text-pretty max-w-lg">
@@ -121,7 +116,6 @@ export default function Servicios() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline justify-between gap-4 mb-3">
                     <h3 className="font-display text-xl font-bold text-[#1a1f14] truncate">
-                      <span className="mr-1.5 text-base" aria-hidden="true">{s.emoji}</span>
                       {s.titulo}
                     </h3>
                     <span className="font-display text-[11px] tracking-widest text-[#8a9180] font-semibold tabular-nums shrink-0">

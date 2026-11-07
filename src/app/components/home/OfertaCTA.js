@@ -16,9 +16,9 @@ export default function OfertaCTA() {
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-10 text-center">
         <div className="inline-flex items-center gap-3 mb-8">
-          <span className="h-px w-10 bg-[#f68c24]" />
-          <span className="text-eyebrow text-[#f68c24]">Oferta educativa</span>
-          <span className="h-px w-10 bg-[#f68c24]" />
+          <span className="h-px w-10 bg-[#66822c]" />
+          <span className="text-eyebrow text-[#556e23]">Oferta educativa</span>
+          <span className="h-px w-10 bg-[#66822c]" />
         </div>
 
         <h2 className="font-display text-display-xl font-extrabold text-[#1a1f14] tracking-display-tight leading-[0.95] text-balance mb-8">

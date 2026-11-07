@@ -59,7 +59,7 @@ Los convenios institucionales y la vida académica (congreso, diplomados) existe
 - Oferta académica real: 3 licenciaturas, 3 maestrías, 1 doctorado y diplomados, cada uno con su RVOE.
 - Programa del II Congreso (ponentes, ejes, horario) tomado del PDF oficial; fotos en `public/images/congreso-2026/`.
 - Reglamento de Derechos de Autor y Propiedad Intelectual: PDF en `public/documentos/`.
-- **Ausente / no inventar:** los testimonios y cifras de logros del inicio son **texto de relleno, no reales** (confirmado 2026-11-06). Nunca presentarlos como evidencia. No crear testimonios, cifras, rankings ni conteos de alumnos nuevos sin una fuente real de la institución.
+- **Ausente / no inventar:** no hay testimonios ni cifras de logros reales. Los de relleno que tenía el inicio (+1,000 egresados, 98% de empleabilidad, testimonios inventados) se quitaron el 2026-11-06. No crear testimonios, cifras, rankings ni conteos de alumnos nuevos sin una fuente real de la institución.
 
 ## Product Principles
 

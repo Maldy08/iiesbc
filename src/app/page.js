@@ -9,8 +9,6 @@ import ExitoStats from "./components/home/ExitoStats";
 import Bienvenida from "./components/home/Bienvenida";
 import Inscripciones from "./components/home/Inscripciones";
 import OfertaCTA from "./components/home/OfertaCTA";
-import NumerosStats from "./components/home/NumerosStats";
-import Testimonios from "./components/home/Testimonios";
 import WhatsAppFloat from "./components/home/WhatsAppFloat";
 import ProgramaModal from "./components/home/ProgramaModal";
 import ComunicadoModal from "./components/home/ComunicadoModal";
@@ -144,8 +142,6 @@ export default function Home() {
       <Bienvenida />
       <Inscripciones />
       <OfertaCTA />
-      <NumerosStats />
-      <Testimonios />
 
       <WhatsAppFloat />
       <ProgramaModal program={selectedProgram} onClose={() => setSelectedProgram(null)} />

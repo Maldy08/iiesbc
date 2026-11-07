@@ -28,22 +28,17 @@ export default function Inscripciones() {
               <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#1a1f14]/75 mb-0.5">Abiertas</p>
               <p className="font-display text-xl font-extrabold leading-none">Inscripciones 2026</p>
             </div>
-
-            <div className="absolute -bottom-6 -left-4 lg:-left-8 bg-white rounded-2xl px-6 py-4 shadow-[var(--shadow-ring)] ring-1 ring-black/5">
-              <p className="text-xs text-[#8a9180] uppercase tracking-widest font-semibold">Inscripciones Abiertas</p>
-              <p className="font-display font-semibold text-sm text-[#1a1f14] mt-0.5">Tu futuro académico te espera</p>
-            </div>
           </div>
 
           <div className="lg:col-span-7 order-1 lg:order-2">
             <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-10 bg-[#f68c24]" />
-              <span className="text-eyebrow text-[#f68c24]">Inscripciones</span>
+              <span className="h-px w-10 bg-[#66822c]" />
+              <span className="text-eyebrow text-[#556e23]">Inscripciones</span>
             </div>
 
             <h2 className="font-display text-display-lg font-bold text-[#1a1f14] text-balance mb-6">
               Ten la oportunidad de vincular tus estudios con{" "}
-              <span className="text-[#f68c24]">Universidades Internacionales</span>
+              <span className="text-[#66822c]">Universidades Internacionales</span>
             </h2>
 
             <p className="text-lg text-[#4a5240] leading-relaxed max-w-2xl mb-12 text-pretty">
@@ -55,10 +50,10 @@ export default function Inscripciones() {
               {beneficios.map((b) => (
                 <div key={b.numero} className="group">
                   <div className="flex items-baseline gap-4 mb-2">
-                    <span className="font-display text-2xl font-bold text-[#f68c24] tabular-nums">
+                    <span className="font-display text-2xl font-bold text-[#66822c] tabular-nums">
                       {b.numero}
                     </span>
-                    <span className="flex-1 h-px bg-[var(--color-line)] group-hover:bg-[#f68c24]/40 transition-colors duration-300" />
+                    <span className="flex-1 h-px bg-[var(--color-line)] group-hover:bg-[#66822c]/40 transition-colors duration-300" />
                   </div>
                   <h3 className="font-display text-lg font-bold text-[#1a1f14] mb-1">{b.titulo}</h3>
                   <p className="text-sm text-[#4a5240] leading-relaxed">{b.texto}</p>

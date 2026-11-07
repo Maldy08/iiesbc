@@ -32,15 +32,15 @@ export default function Bienvenida() {
             <div className="mt-10 grid grid-cols-3 gap-6 pt-8 border-t border-[var(--color-line)] max-w-lg">
               <div>
                 <p className="font-display text-3xl font-bold text-[#66822c]">25+</p>
-                <p className="text-xs text-[#8a9180] uppercase tracking-widest mt-1">Años</p>
+                <p className="text-xs text-[#4a5240] uppercase tracking-widest mt-1">Años</p>
               </div>
               <div>
                 <p className="font-display text-3xl font-bold text-[#66822c]">7</p>
-                <p className="text-xs text-[#8a9180] uppercase tracking-widest mt-1">Programas</p>
+                <p className="text-xs text-[#4a5240] uppercase tracking-widest mt-1">Programas</p>
               </div>
               <div>
                 <p className="font-display text-3xl font-bold text-[#66822c]">RVOE</p>
-                <p className="text-xs text-[#8a9180] uppercase tracking-widest mt-1">Oficial</p>
+                <p className="text-xs text-[#4a5240] uppercase tracking-widest mt-1">Oficial</p>
               </div>
             </div>
           </div>
@@ -77,12 +77,6 @@ export default function Bienvenida() {
                     <p className="text-xs text-[#4a5240] mt-0.5">Comprometidos con tu futuro profesional</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="absolute top-8 right-6 hidden sm:flex items-center gap-2 rounded-full bg-white/90 px-4 py-3 shadow-[var(--shadow-ring)] ring-1 ring-white/70 backdrop-blur-md" aria-hidden="true">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#a5c94c] animate-ping" />
-                <span className="h-2.5 w-10 rounded-full bg-[#66822c]/25" />
-                <span className="h-2.5 w-6 rounded-full bg-[#f68c24]/35" />
               </div>
             </div>
           </div>
